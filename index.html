@@ -241,6 +241,35 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
 .contact a:hover{color:var(--accent);text-decoration:underline}
 .copy{font:500 12px var(--sans);border:1px solid var(--rule);background:var(--paper);color:var(--muted);padding:3px 8px;cursor:pointer}
 .fine{font-size:12.5px;color:var(--muted);grid-column:1/-1;border-top:1px solid var(--rule);padding-top:14px}
+/* ESG + note bar */
+.notebar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-top:20px;padding:12px 16px;border:1px solid var(--rule);background:var(--paper)}
+.notebar .esgb{display:flex;gap:10px;align-items:center;font-size:14px;color:var(--ink);text-decoration:none}
+.notebar .esgb:hover b{color:var(--accent)}
+.notebar .acts{display:flex;gap:8px;flex-wrap:wrap}
+.notebar .acts a,.notebar .acts button{font:500 13.5px var(--sans);border:1px solid var(--accent);color:var(--accent);background:var(--paper);padding:7px 12px;text-decoration:none;cursor:pointer}
+.notebar .acts a.pri{background:var(--accent);color:#fff}
+.grade{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border:1px solid currentColor;white-space:nowrap}
+.grade.Leader,.grade.Strong{color:var(--pos)} .grade.Average{color:var(--hold)} .grade.Weak,.grade.Laggard{color:var(--neg)}
+.esgbar{height:8px;background:var(--soft);border:1px solid var(--rule);min-width:90px;position:relative}
+.esgbar i{position:absolute;inset:0 auto 0 0;background:var(--accent)}
+.esgcard{scroll-margin-top:90px}
+.esgcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));gap:18px;margin-top:18px}
+.panel.esgcard h3{font-family:var(--serif);font-size:23px;text-transform:none;letter-spacing:0;color:var(--ink);font-weight:700;margin:0;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.esgcard .big{font-family:var(--serif);font-size:34px;font-weight:700;line-height:1}
+.esgcard table{font-size:13.5px} .esgcard td{padding:6px 8px;vertical-align:top} .esgcard .small{font-size:12.5px;color:var(--muted)}
+@media print{
+  @page{size:A4;margin:12mm}
+  html,body{background:#fff!important}
+  header.mast,footer.site,.notebar .acts,.notebar .muted,.rail,#installBtn{display:none!important}
+  main.wrap{max-width:none!important;padding:0!important}
+  .notebody{display:block!important;margin-top:12px}
+  .notehead{margin-top:0;break-inside:avoid}
+  .ex,.box,table,tr,.cv{break-inside:avoid}
+  section.sec{break-before:auto}
+  .scroll{overflow:visible!important} .scroll table,.scroll.w table{min-width:0!important}
+  table{font-size:10.5px!important} th,td{padding:5px 6px!important} thead th{font-size:8.5px!important;letter-spacing:.04em!important} tr.s td{font-size:9.5px!important} .cv{margin:8px!important}
+  a{color:inherit;text-decoration:none}
+}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style>
 </head>
@@ -254,6 +283,7 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
       <a href="#demo" data-view="demo">Investment demo</a>
       <a href="#calendar" data-view="calendar">Results calendar</a>
       <a href="#news" data-view="news">News</a>
+      <a href="#esg" data-view="esg">ESG</a>
       <a href="#methodology" data-view="methodology">Methodology</a>
       <button class="install" id="installBtn" type="button" hidden>Install app</button>
     </nav>
@@ -415,6 +445,27 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
 </section>
 
 <!-- METHODOLOGY -->
+<!-- ESG -->
+<section data-v="esg" hidden>
+  <div class="page">
+    <span class="kick">ESG ratings</span>
+    <h1>How sustainable is each company?</h1>
+    <p class="lead">Each company covered receives a Puccetti Capital Research ESG score out of 100. For listed companies it combines the main public ratings; for start-ups, which have no public rating, it is our own assessment on five pillars. The grade is Leader (80 and above), Strong (65-79), Average (50-64), Weak (35-49) or Laggard (below 35).</p>
+  </div>
+  <section class="ex">
+    <header><i>Table</i><b>ESG ranking of covered companies</b></header>
+    <div class="scroll"><table id="esgTable"></table></div>
+    <div class="src">Score out of 100. Listed: average of MSCI, Sustainalytics and CDP Climate, minus a controversy deduction. Start-ups: Puccetti Capital Research assessment.</div>
+  </section>
+  <div class="esgcards" id="esgCards"></div>
+  <div class="panel" style="margin-top:24px">
+    <h3>Method</h3>
+    <p style="font-size:14.5px"><b>Listed companies.</b> Three public ratings are converted to a 0-100 scale and averaged. MSCI ESG Rating: AAA = 100, AA = 85, A = 70, BBB = 55, BB = 40, B = 25, CCC = 10. Sustainalytics ESG Risk Rating (lower is better): 100 − 2 × risk score. CDP Climate: A = 100, A- = 90, B = 75, B- = 65, C = 50, C- = 40, D = 25, D- = 15. We then deduct 5 points for a moderate controversy and 10 for a significant one (15 for severe). Other ratings, such as ISS or S&amp;P Global, are shown for information.</p>
+    <p style="font-size:14.5px"><b>Start-ups.</b> No agency rates them, so we score five pillars out of 20 each from public sources: disclosure, environment, social, governance and controversies (20 means none). This is a judgement, and each score is explained with its source.</p>
+    <p style="font-size:14.5px" class="muted">Ratings agencies disagree often, because they measure different things: MSCI and S&amp;P Global look at how a company manages ESG issues, Sustainalytics at the risk left unmanaged, CDP at climate disclosure and action. A single score hides those differences, so the detail is always shown.</p>
+  </div>
+</section>
+
 <section data-v="methodology" hidden>
   <div class="page">
     <span class="kick">Methodology</span>
@@ -470,6 +521,7 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
         <li><a href="#research">Research</a><span></span></li>
         <li><a href="#demo">Investment demo</a><span></span></li>
         <li><a href="#calendar">Results calendar</a><span></span></li>
+        <li><a href="#esg">ESG ratings</a><span></span></li>
         <li><a href="#methodology">Methodology</a><span></span></li>
       </ul>
     </div>
@@ -481,7 +533,7 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
 <script>
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 let charts=[], demoCharts=[], REG=[], MKT=null, current=null, filter="All", newsFilter="All";
-const FIXED=["home","research","demo","calendar","news","methodology"];
+const FIXED=["home","research","demo","calendar","news","esg","methodology"];
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const fmtDate=d=>{if(!d)return"";const [y,m,dd]=d.split("-");return dd?`${dd}/${m}/${y}`:`${MONTHS[+m-1]} ${y}`};
@@ -554,6 +606,28 @@ function renderTrack(){
   document.getElementById("trAsOf").textContent="Data as of "+fmtDate(MKT.updated);
   document.getElementById("trSrc").textContent=(scored?`Calls right so far: ${hit} of ${scored}. `:"No call is 30 days old yet. ")+"Price changes exclude dividends. Start-up values are in billions. Source: data/market.json, updated with each new note.";
 }
+function esgCos(){return MKT?Object.entries(MKT.companies).filter(([,c])=>c.esg).sort((a,b)=>b[1].esg.score-a[1].esg.score):[]}
+function renderESG(){
+  const t=document.getElementById("esgTable");if(!t||!MKT)return;
+  const cos=esgCos();
+  t.innerHTML=`<thead><tr><th>#</th><th>Company</th><th class="n">Score</th><th style="width:30%"></th><th>Grade</th><th>Basis</th></tr></thead><tbody>`+cos.map(([s,c],i)=>`<tr><td class="n">${i+1}</td><td><a href="#esg-${esc(s)}" data-esg="${esc(s)}">${esc(c.name)}</a></td><td class="n"><b>${c.esg.score}</b></td><td><div class="esgbar"><i style="width:${c.esg.score}%"></i></div></td><td><span class="grade ${c.esg.grade}">${c.esg.grade}</span></td><td>${c.esg.method==="own"?"Own assessment":"MSCI · Sustainalytics · CDP"}</td></tr>`).join("")+"</tbody>";
+  document.getElementById("esgCards").innerHTML=cos.map(([s,c])=>{const e=c.esg;let body="";
+    if(e.method==="providers"){
+      body=`<table><thead><tr><th>Rating</th><th>Value</th><th class="n">On 100</th></tr></thead><tbody>${e.providers.map(p=>`<tr><td><a href="${esc(p[3])}" target="_blank" rel="noopener">${esc(p[0])}</a></td><td>${esc(p[1])}</td><td class="n">${p[2]}</td></tr>`).join("")}<tr class="b"><td>Average</td><td></td><td class="n">${e.base}</td></tr>${(e.controversies||[]).map(x=>`<tr><td colspan="2"><a href="${esc(x[2])}" target="_blank" rel="noopener">Controversy</a>: ${esc(x[0])}</td><td class="n dn">${x[1]}</td></tr>`).join("")}<tr class="t"><td>ESG score</td><td></td><td class="n">${e.score}</td></tr></tbody></table>`+
+        (e.memo&&e.memo.length?`<table><tbody>${e.memo.map(m=>`<tr class="s"><td>${esc(m[0])}</td><td>${esc(m[1])}</td></tr>`).join("")}</tbody></table>`:"");
+    }else{
+      body=`<table><thead><tr><th>Pillar</th><th class="n">Score</th><th>Why</th></tr></thead><tbody>${e.pillars.map(p=>`<tr><td>${esc(p[0])}</td><td class="n">${p[1]}/20</td><td class="small">${esc(p[2])} <a href="${esc(p[3])}" target="_blank" rel="noopener">source</a></td></tr>`).join("")}<tr class="t"><td>ESG score</td><td class="n">${e.score}/100</td><td></td></tr></tbody></table>`;
+    }
+    return `<div class="panel esgcard" id="esg-${esc(s)}"><h3><a href="#${esc(s)}" style="color:inherit;text-decoration:none">${esc(c.name)}</a><span class="grade ${e.grade}">${e.grade}</span></h3>
+      <div style="display:flex;gap:14px;align-items:center"><span class="big">${e.score}</span><div style="flex:1"><div class="esgbar"><i style="width:${e.score}%"></i></div><div class="small" style="margin-top:4px">${e.method==="own"?"Own assessment, no public rating":"Based on public ratings"} · as of ${fmtDate(e.asof)}</div></div></div>
+      <p style="font-size:14.5px;margin:0">${esc(e.summary)}</p>${body}</div>`}).join("");
+  document.querySelectorAll("[data-esg]").forEach(a=>a.onclick=ev=>{ev.preventDefault();const el=document.getElementById("esg-"+a.dataset.esg);el&&el.scrollIntoView({behavior:"smooth"})});
+}
+function noteBar(slug){
+  const c=MKT&&MKT.companies[slug],e=c&&c.esg;
+  const esgPart=e?`<a class="esgb" href="#esg" data-goesg="${esc(slug)}"><span class="kick">ESG</span><b>${e.score}/100</b><span class="grade ${e.grade}">${e.grade}</span><span class="muted" style="font-size:13px">See the ESG detail →</span></a>`:"<span></span>";
+  return `<div class="notebar">${esgPart}<div class="acts"><a class="pri" href="pdf/${esc(slug)}.pdf" download="Puccetti-Capital-Research-${esc(slug)}.pdf">Download PDF</a><button type="button" onclick="window.print()">Print</button></div></div>`;
+}
 function fillStart(){const c=MKT.companies[document.getElementById("dCo").value];const s=document.getElementById("dStart");const keep=s.value;
   s.innerHTML=c.series.slice(0,-1).map(([m])=>`<option value="${m}">${mLabel(m)}</option>`).join("");
   s.value=c.series.some(x=>x[0]===keep)&&keep!==c.series[c.series.length-1][0]?keep:c.series[0][0];
@@ -563,13 +637,13 @@ function fillStart(){const c=MKT.companies[document.getElementById("dCo").value]
 async function loadAll(){
   try{const r=await fetch("notes/index.json",{cache:"no-store"});REG=await r.json()}catch(e){document.getElementById("pubsHome").innerHTML='<p style="padding:16px">The list of notes could not be loaded. Refresh the page to try again.</p>'}
   try{const r=await fetch("data/market.json",{cache:"no-store"});MKT=await r.json()}catch(e){MKT=null}
-  renderLists();renderMarket();renderTrack();
+  renderLists();renderMarket();renderTrack();renderESG();
 }
 async function openNote(slug){
   const v=document.getElementById("noteView");
   if(current!==slug){
     v.innerHTML='<p style="padding:40px 0">Loading note…</p>';
-    try{const r=await fetch("notes/"+slug+".html",{cache:"no-store"});if(!r.ok)throw 0;v.innerHTML=await r.text();window.NOTE_DRAW=null;
+    try{const r=await fetch("notes/"+slug+".html",{cache:"no-store"});if(!r.ok)throw 0;v.innerHTML=noteBar(slug)+await r.text();window.NOTE_DRAW=null;
       v.querySelectorAll("script").forEach(old=>{const s=document.createElement("script");s.textContent=old.textContent;old.replaceWith(s)});current=slug;}
     catch(e){v.innerHTML='<p style="padding:40px 0">This note could not be loaded. <a href="#research">Back to all notes</a>.</p>';current=null;return}
   }
@@ -673,6 +747,7 @@ function segSet(l){document.getElementById("segListed").setAttribute("aria-press
 /* ---------- misc ---------- */
 document.addEventListener("click",e=>{
   const j=e.target.closest("[data-jump]");if(j){e.preventDefault();const t=document.getElementById(j.dataset.jump);t&&t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});return}
+  const g=e.target.closest("[data-goesg]");if(g){const id="esg-"+g.dataset.goesg;setTimeout(()=>{const t=document.getElementById(id);t&&t.scrollIntoView()},60);}
   const cp=e.target.closest("[data-copy]");if(cp){const txt=cp.dataset.copy;const done=()=>{cp.textContent="Copied";setTimeout(()=>cp.textContent="Copy",1500)};
     try{navigator.clipboard.writeText(txt).then(done,()=>{selectNext(cp)})}catch(_){selectNext(cp)}}
 });

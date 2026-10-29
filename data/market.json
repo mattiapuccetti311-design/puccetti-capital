@@ -245,7 +245,56 @@
      "source": "BFM Bourse",
      "url": "https://www.tradingsat.com/bnp-paribas-acta-FR0000131104/actualites/bnp-paribas-acta-au-pied-du-podium-du-palmares-du-cac-40-en-2026-27-bnp-paribas-va-encore-ameliorer-sa-rentabilite-en-2030-et-rendre-plus-de-cash-a-ses-actionnaires-1170624.html"
     }
-   ]
+   ],
+   "esg": {
+    "asof": "2026-10-30",
+    "method": "providers",
+    "providers": [
+     [
+      "MSCI ESG Rating",
+      "AAA",
+      100,
+      "https://invest.bnpparibas/en/governance-and-csr"
+     ],
+     [
+      "Sustainalytics ESG Risk",
+      "12.3 (low risk)",
+      75.4,
+      "https://invest.bnpparibas/en/governance-and-csr"
+     ],
+     [
+      "CDP Climate",
+      "A-",
+      90,
+      "https://invest.bnpparibas/en/governance-and-csr"
+     ]
+    ],
+    "base": 88.5,
+    "controversies": [
+     [
+      "US jury verdict (October 2025): about $21m to three Sudanese plaintiffs, appeal pending, risk of further claims",
+      -10,
+      "https://www.aljazeera.com/economy/2025/10/20/bnp-paribas-shares-fall-after-us-jurys-sudan-verdict"
+     ]
+    ],
+    "memo": [
+     [
+      "ISS ESG",
+      "C+ (Prime, first decile of banks)"
+     ],
+     [
+      "S&P Global CSA",
+      "68/100 (top 10% of banks)"
+     ],
+     [
+      "Date of ratings",
+      "September 2026, as published by the bank"
+     ]
+    ],
+    "score": 78,
+    "grade": "Strong",
+    "summary": "BNP Paribas has some of the best ESG ratings among European banks, including MSCI AAA. Its score is cut for legal and governance risk: the Sudan litigation in the United States could lead to further claims."
+   }
   },
   "hermes": {
    "name": "Hermès",
@@ -428,7 +477,64 @@
      "source": "The Middle East Observer (FT data)",
      "url": "https://meobserver.news/luxury-industry/2026/10/26/europes-luxury-giants-lose-e251bn-as-china-weakness-forces-growth-rethink/"
     }
-   ]
+   ],
+   "esg": {
+    "asof": "2026-10-30",
+    "method": "providers",
+    "providers": [
+     [
+      "MSCI ESG Rating",
+      "AA",
+      85,
+      "https://www.greendigest.co/p/evaluating-a-company-s-impact-the-case-of-herm-s"
+     ],
+     [
+      "Sustainalytics ESG Risk",
+      "10.7 (low risk)",
+      78.6,
+      "https://knowesg.com/esg-ratings/hermes-international-sca"
+     ],
+     [
+      "CDP Climate",
+      "A",
+      100,
+      "https://assets-finance.hermes.com/s3fs-public/node/pdf_file/2026-04/1777391858/260320_hermes_urd2025_en.pdf"
+     ]
+    ],
+    "base": 87.9,
+    "controversies": [
+     [
+      "Weak supply-chain traceability: 12/100 in the KnowTheChain forced-labour benchmark",
+      -5,
+      "https://www.greendigest.co/p/evaluating-a-company-s-impact-the-case-of-herm-s"
+     ]
+    ],
+    "memo": [
+     [
+      "CDP Water / Forests",
+      "A- / A (A List for the fourth year, 2025 cycle)"
+     ],
+     [
+      "Scope 1+2 emissions",
+      "−69% since 2018 (market-based)"
+     ],
+     [
+      "Scope 3 intensity",
+      "−58% per unit of gross margin since 2018"
+     ],
+     [
+      "Climate targets",
+      "2030 targets validated by SBTi (2021)"
+     ],
+     [
+      "Women in the top 100 positions",
+      "49%"
+     ]
+    ],
+    "score": 83,
+    "grade": "Leader",
+    "summary": "Hermès scores well on climate and on the way it is run: CDP A List, a low Sustainalytics risk score and an AA from MSCI. The weak point is the supply chain, where outside benchmarks find little traceability on leather and raw materials."
+   }
   },
   "mistral-ai": {
    "name": "Mistral AI",
@@ -494,7 +600,46 @@
      "source": "Generation Digital",
      "url": "https://www.gend.co/fr/blog/mistral-ai-e1b-revenue-2026"
     }
-   ]
+   ],
+   "esg": {
+    "asof": "2026-10-30",
+    "method": "own",
+    "pillars": [
+     [
+      "Disclosure",
+      14,
+      "Published the first full lifecycle analysis of a language model (July 2025, with Carbone 4 and ADEME, peer-reviewed). No full sustainability report, as a private company.",
+      "https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai"
+     ],
+     [
+      "Environment",
+      10,
+      "Heavy compute footprint: training Mistral Large 2 emitted about 20,400 tCO2e and consumed 281,000 m³ of water.",
+      "https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai"
+     ],
+     [
+      "Social",
+      12,
+      "Privacy questions in 2025 over the use of free-tier inputs to train models.",
+      "https://oecd.ai/en/incidents/2025-02-11-f208"
+     ],
+     [
+      "Governance",
+      11,
+      "Founder-led, young governance, strategic investors on the cap table; EU regulators looked at the Microsoft partnership.",
+      "https://www.itpro.com/technology/artificial-intelligence/microsofts-mistral-ai-partnership-has-eu-regulators-concerned-heres-why"
+     ],
+     [
+      "Controversies",
+      10,
+      "Mediapart (February 2026) alleged that copyrighted books and songs were used for training.",
+      "https://ground.news/article/harry-potter-the-little-prince-elton-john-or-amel-bent-mistral-ais-multiple-copyright-violations"
+     ]
+    ],
+    "score": 57,
+    "grade": "Average",
+    "summary": "Mistral is unusually open about its environmental footprint for an AI company, but that footprint is large and growing, and copyright and privacy questions remain open."
+   }
   },
   "revolut": {
    "name": "Revolut",
@@ -560,7 +705,46 @@
      "source": "PYMNTS",
      "url": "https://www.pymnts.com/trends/revolut/"
     }
-   ]
+   ],
+   "esg": {
+    "asof": "2026-10-30",
+    "method": "own",
+    "pillars": [
+     [
+      "Disclosure",
+      13,
+      "The annual report includes a streamlined energy and carbon report; no third-party ESG rating.",
+      "https://assets.revolut.com/pdf/annualreport2025.pdf"
+     ],
+     [
+      "Environment",
+      15,
+      "Small direct footprint: headquarters on 100% renewable energy, cloud provider matches 100% renewable. Net zero target realigned to 2050.",
+      "https://assets.revolut.com/pdf/annualreport2025.pdf"
+     ],
+     [
+      "Social",
+      11,
+      "Low-cost access to banking for millions of users; fraud and customer protection are the main social risks. Over a third of staff work in financial crime prevention.",
+      "https://assets.revolut.com/pdf/annualreport2025.pdf"
+     ],
+     [
+      "Governance",
+      10,
+      "Founder-led. Restrictions on the UK banking licence were lifted only in March 2026, after a long mobilisation period.",
+      "https://assets.revolut.com/pdf/annualreport2025.pdf"
+     ],
+     [
+      "Controversies",
+      9,
+      "The Bank of Lithuania fined Revolut Bank €3.5m in April 2025 for anti-money-laundering control failings.",
+      "https://www.irishtimes.com/business/2025/04/08/revolut-fined-35m-by-over-money-laundering-control-failures"
+     ]
+    ],
+    "score": 58,
+    "grade": "Average",
+    "summary": "Revolut's environmental footprint is small, as for most digital banks. Its ESG risk sits in governance and financial crime controls, where regulators have found weaknesses."
+   }
   }
  }
 }
