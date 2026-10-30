@@ -249,6 +249,13 @@ td.e,th.e{background:color-mix(in srgb,var(--soft) 80%,transparent)}
 .rk{font-family:var(--mono);font-size:11px;letter-spacing:.04em;padding:2px 7px;border:1px solid currentColor;white-space:nowrap}
 .rk.Negligible,.rk.Low{color:var(--pos)} .rk.Medium{color:var(--hold)} .rk.High,.rk.Severe{color:var(--neg)}
 #eTable{min-width:860px} #eTable th[data-k]{cursor:pointer} #eTable th[aria-sort="ascending"]::after{content:" ▲"} #eTable th[aria-sort="descending"]::after{content:" ▼"}
+#rkTop,#rkBot{min-width:820px} .rk tbody tr{cursor:pointer} .rk tbody tr:hover td{background:var(--soft)} .rk td .tk{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-left:6px}
+.rk td.big{font-family:var(--display);font-size:18px;font-weight:600}
+.snapgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,170px),1fr));gap:0;background:var(--paper);border-bottom:1px solid var(--rule);overflow:hidden}
+.snapgrid div{background:var(--paper);box-shadow:1px 1px 0 var(--rule);padding:11px 12px;display:flex;flex-direction:column;gap:2px}
+.snapgrid span{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.snapgrid b{font-family:var(--display);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
+.snapgrid small{font-size:12px;color:var(--muted)}
 /* calendar & news */
 .cal{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--rule)}
 .cal .row{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:16px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--rule)}
@@ -420,6 +427,17 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
     <div class="filters" id="filters" role="group" aria-label="Filter by sector" style="display:none"></div>
   </div>
   <div class="pubs" id="pubsAll" style="display:none"></div>
+  <div class="sectionhead" style="margin-top:28px"><h2>Best and worst of the month</h2><span class="kick" id="rkAsOf"></span></div>
+  <div class="toolbar" style="padding:10px 0;border:0"><p class="muted" style="font-size:14px;flex:1 1 320px" id="rkRule">The ten companies that rose the most and the ten that fell the most over the last month, across all the markets we follow. The ranking is fixed at the start of each month and archived.</p><select id="rkMonth" aria-label="Month"></select></div>
+  <section class="ex">
+    <header><i>Top 10</i><b>Best performers over the last month</b></header>
+    <div class="scroll"><table id="rkTop" class="rk"></table></div>
+  </section>
+  <section class="ex" style="margin-top:18px">
+    <header><i>Bottom 10</i><b>Worst performers over the last month</b></header>
+    <div class="scroll"><table id="rkBot" class="rk"></table></div>
+    <div class="src" id="rkSrc">Share-price total return over the previous 30 days. Only companies worth more than €1bn, each counted once even if it belongs to two indices. Source: Yahoo Finance. Select a company for its full data sheet and an investment simulation.</div>
+  </section>
   <div class="sectionhead"><h2>Track record</h2><span class="kick" id="trAsOf"></span></div>
   <p class="lead" style="margin:10px 0 14px;font-size:15px">Every call is measured against what happened next. Listed companies: share price at publication against the latest close. Start-ups: valuation at publication against the latest round or secondary mark. A call is scored only after 30 days.</p>
   <section class="ex">
@@ -582,6 +600,13 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
       </section>
     </div>
     <p class="explain" id="sText" style="margin-top:18px"></p>
+    <section class="ex" style="margin-top:18px">
+      <header><i>Analysis</i><b>Company data sheet</b></header>
+      <div class="snapgrid" id="snapGrid"></div>
+      <p class="explain" id="snapText" style="margin:0 12px 12px"></p>
+      <div class="src">Automatic analysis built from reported figures (last twelve months) and market data, converted to euros at today's rates. Comparisons use the median of the companies in the same index. It is a factual screen, not a recommendation: companies with a full Puccetti Capital note carry our own rating.</div>
+    </section>
+
   </div>
 
   <div class="grid2" style="margin-top:28px">
@@ -854,6 +879,7 @@ function route(){
   if(isNote)openNote(h);
   if(view==="demo")setTimeout(()=>{runDemo();runPriv()},0);
   if(view==="markets")setTimeout(()=>{loadMarkets(sub);runStock()},0);
+  if(view==="research")renderRanking();
   if(view==="home"||view==="research"){const box=document.getElementById("scrBox"),slot=document.getElementById(view==="home"?"scrSlotHome":"scrSlotResearch");slot.after(box);renderHomeMarkets()}
   if(view==="esg")renderMarketESG();
 }
@@ -1031,7 +1057,7 @@ async function openStock(t){
   const d=M.rows[M.cur];const x=d.rows.find(r=>r.t===t);if(!x)return;
   if(!M.hist[M.cur]){try{M.hist[M.cur]=(await getJSON(`data/markets/${M.cur}-hist.json`)).series}catch(e){return}}
   const ser=M.hist[M.cur][t];
-  M.sel={...x,ser,ix:M.cur};renderCons();
+  M.sel={...x,ser,ix:M.cur};renderCons();renderSnap(M.sel);
   const sd=document.getElementById("sd");sd.hidden=false;
   document.getElementById("sdTitle").textContent="Investment simulation: "+x.n;
   document.getElementById("sdAsOf").textContent=x.d?"Price as of "+fmtDate(x.d):"";
@@ -1190,6 +1216,48 @@ document.getElementById("eSearch").addEventListener("input",e=>{E.q=e.target.val
 document.getElementById("eIx").addEventListener("change",e=>{E.ix=e.target.value;E.page=0;renderMarketESG()});
 document.getElementById("eLvl").addEventListener("change",e=>{E.lvl=e.target.value;E.page=0;renderMarketESG()});
 
+/* ---------- monthly ranking (Research) ---------- */
+let RK=null;
+const MONTHL=ym=>{const [y,m]=ym.split("-");return ["January","February","March","April","May","June","July","August","September","October","November","December"][+m-1]+" "+y};
+async function renderRanking(){
+  try{if(!RK)RK=await getJSON("data/markets/rankings.json");await loadScreener()}catch(e){
+    document.getElementById("rkTop").innerHTML=document.getElementById("rkBot").innerHTML='<tbody><tr><td class="empty">The first monthly ranking will appear after the next data update (every weekday evening).</td></tr></tbody>';document.getElementById("rkMonth").hidden=true;return}
+  const sets=[{month:RK.month,asof:RK.asof,top:RK.top,bottom:RK.bottom},...(RK.history||[])];
+  const sel=document.getElementById("rkMonth");sel.hidden=false;
+  if(sel.options.length!==sets.length){sel.innerHTML=sets.map((x,i)=>`<option value="${i}">${i?"Archive: ":""}${MONTHL(x.month)}</option>`).join("");sel.onchange=renderRanking}
+  const cur=sets[+sel.value||0];
+  document.getElementById("rkAsOf").textContent=`${MONTHL(cur.month)} · ranked on ${fmtDate(cur.asof)}`;
+  const row=(r,i)=>{const pe=r.niE>0&&r.mcapE?r.mcapE/r.niE:null,up=r.tm&&r.p?r.tm/r.p-1:null,ix=(r.ix||[])[0];
+    return `<tr data-href="#markets/${esc(ix)}/${encodeURIComponent(r.t)}" tabindex="0"><td class="n big">${i+1}</td><td><b>${esc(r.n)}</b><span class="tk">${esc(r.t)}</span></td><td>${(r.ix||[]).map(ixName).map(esc).join(", ")}</td><td>${esc(r.s||"")}</td><td class="n big ${cls(r.r1m)}">${pc(r.r1m)}</td><td class="n ${cls(r.rytd)}">${pc(r.rytd)}</td><td class="n">${eurBig(r.mcapE)}</td><td class="n">${pe?pe.toFixed(1)+"×":"–"}</td><td class="n ${cls(up)}">${pc(up)}</td></tr>`};
+  const head=`<thead><tr><th class="n">#</th><th>Company</th><th>Market</th><th>Sector</th><th class="n">1 month</th><th class="n">Year to date</th><th class="n">Market cap</th><th class="n">P/E</th><th class="n">To analyst target</th></tr></thead>`;
+  document.getElementById("rkTop").innerHTML=head+"<tbody>"+cur.top.map(row).join("")+"</tbody>";
+  document.getElementById("rkBot").innerHTML=head+"<tbody>"+cur.bottom.map(row).join("")+"</tbody>";
+  document.querySelectorAll(".rk tbody tr[data-href]").forEach(tr=>{const go=()=>{location.hash=tr.dataset.href};tr.onclick=go;tr.onkeydown=e=>{if(e.key==="Enter")go()}});
+}
+/* ---------- automatic company data sheet ---------- */
+const median=a=>{const v=a.filter(x=>x!=null&&isFinite(x)).sort((p,q)=>p-q);if(!v.length)return null;const m=Math.floor(v.length/2);return v.length%2?v[m]:(v[m-1]+v[m])/2};
+function renderSnap(x){
+  const rows=M.rows[x.ix]?.rows||[],ixN=ixName(x.ix);
+  const pe=x.niE>0&&x.mcapE?x.mcapE/x.niE:null,ps=x.revE>0&&x.mcapE?x.mcapE/x.revE:null,mg=x.revE>0&&x.niE!=null?x.niE/x.revE:null;
+  const mPE=median(rows.map(r=>r.niE>0&&r.mcapE?r.mcapE/r.niE:null)),mMg=median(rows.map(r=>r.revE>0&&r.niE!=null?r.niE/r.revE:null)),mY=median(rows.map(r=>r.rytd));
+  const up=x.tm&&x.p?x.tm/x.p-1:null,rank=x.mcapE?rows.filter(r=>(r.mcapE||0)>x.mcapE).length+1:null;
+  const REC={strong_buy:"strong buy",buy:"buy",hold:"hold",underperform:"underperform",sell:"sell"};
+  const T=[["Market cap",eurBig(x.mcapE),rank?`#${rank} of ${rows.length} in the ${ixN}`:""],["Revenue",eurBig(x.revE),"last twelve months"],["Net profit",eurBig(x.niE),mg!=null?`margin ${pct(mg).replace("+","")}`:""],
+    ["Net margin",mg!=null?pct(mg).replace("+",""):"–",mMg!=null?`index median ${pct(mMg).replace("+","")}`:""],["P/E",pe?pe.toFixed(1)+"×":"–",mPE?`index median ${mPE.toFixed(1)}×`:""],["Price / sales",ps?ps.toFixed(1)+"×":"–",""],
+    ["Cash",eurBig(x.cashE),x.mcapE&&x.cashE?`${(x.cashE/x.mcapE*100).toFixed(0)}% of market cap`:""],["Employees",x.emp?x.emp.toLocaleString("en-GB"):"–",x.emp&&x.revE?`${eurBig(x.revE/x.emp)} revenue per employee`:""],
+    ["1 month",pc(x.r1m),"",x.r1m],["Year to date",pc(x.rytd),mY!=null?`index median ${pct(mY)}`:"",x.rytd],["1 year",pc(x.r1y),"",x.r1y],["5 years",pc(x.r5y),"",x.r5y],
+    ["Analysts",x.na?String(x.na):"–",x.rec?`consensus: ${REC[x.rec]||x.rec}`:""],["To median target",pc(up),x.tm?`target ${money(x.tm,x.sym)}`:"",up]];
+  document.getElementById("snapGrid").innerHTML=T.map(([l,v,n,c])=>`<div><span>${l}</span><b class="${c!==undefined?cls(c):""}">${v}</b><small>${esc(n)}</small></div>`).join("");
+  const S=[];
+  if(x.revE)S.push(`${esc(x.n)} generated ${eurBig(x.revE)} of revenue over the last twelve months${x.niE!=null?` and ${x.niE>=0?"a net profit of "+eurBig(x.niE):"a net loss of "+eurBig(-x.niE)}`:""}.`);
+  if(mg!=null&&mMg!=null)S.push(`Its net margin of ${pct(mg).replace("+","")} is ${mg>mMg?"above":"below"} the ${ixN} median of ${pct(mMg).replace("+","")}.`);
+  if(pe&&mPE)S.push(`At ${pe.toFixed(1)} times earnings the shares are ${pe>mPE*1.15?"more expensive than":pe<mPE*0.85?"cheaper than":"in line with"} the index median of ${mPE.toFixed(1)}×.`);
+  else if(x.niE!=null&&x.niE<0)S.push("As the company is loss-making, a P/E ratio cannot be computed.");
+  if(x.rytd!=null&&mY!=null)S.push(`The share price is ${pct(x.rytd)} this year, ${x.rytd>mY?"ahead of":"behind"} the typical ${ixN} company (${pct(mY)}).`);
+  if(up!=null&&x.na)S.push(`${x.na} analysts see the median fair price ${up>=0?pct(up)+" above":pct(up).replace("−","")+" below"} today's level.`);
+  if(x.cashE&&x.mcapE)S.push(`Cash on the balance sheet equals ${(x.cashE/x.mcapE*100).toFixed(0)}% of the company's market value.`);
+  document.getElementById("snapText").innerHTML=S.join(" ")||"Fundamental data for this company will appear after the next data update.";
+}
 /* ---------- misc ---------- */
 document.addEventListener("click",e=>{
   const j=e.target.closest("[data-jump]");if(j){e.preventDefault();const t=document.getElementById(j.dataset.jump);t&&t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});return}
