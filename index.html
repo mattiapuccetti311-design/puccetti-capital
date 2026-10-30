@@ -406,7 +406,7 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
   <div class="page">
     <span class="kick">Investment demo</span>
     <h1>What would an investment have done?</h1>
-    <p class="lead">Choose a company, an amount and a starting month. The demo shows how the investment would have evolved, compares it with the CAC 40 index, and sets the share price against what analysts expect over the next twelve months.</p>
+    <p class="lead">Choose a company, an amount and a starting month, up to five years back. The demo shows how the investment would have evolved, compares it with the CAC 40 index, and sets the share price against what analysts expect over the next twelve months.</p>
     <div class="seg" role="group" aria-label="Type of company"><button type="button" id="segListed" aria-pressed="true">Listed companies</button><button type="button" id="segPrivate" aria-pressed="false">Start-ups</button></div>
   </div>
 
@@ -416,6 +416,7 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
         <div class="field"><label for="dCo">Company</label><select id="dCo"></select></div>
         <div class="field"><label for="dAmt">Amount invested (€)</label><input id="dAmt" type="number" min="100" step="100" value="1000"></div>
         <div class="field"><label for="dStart">Buy at the end of</label><select id="dStart"></select></div>
+        <div class="seg" id="dQuick" role="group" aria-label="Quick period"></div>
         <label class="check"><input type="checkbox" id="dDiv" checked> Reinvest dividends</label>
         <p class="muted" style="font-size:13px" id="dNote"></p>
       </div>
@@ -519,6 +520,7 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
       <div class="panel form">
         <div class="field"><label for="sAmt">Amount invested (€)</label><input id="sAmt" type="number" min="100" step="100" value="1000"></div>
         <div class="field"><label for="sStart">Bought at the end of</label><select id="sStart"></select></div>
+        <div class="seg" id="sQuick" role="group" aria-label="Quick period"></div>
         <p class="muted" style="font-size:13px" id="sNote"></p>
         <div class="btns"><a class="btn" id="sQuote" target="_blank" rel="noopener">Quote</a><a class="btn" id="sAn" target="_blank" rel="noopener">Analyst page</a></div>
       </div>
@@ -783,15 +785,27 @@ function noteBar(slug){
   const esgPart=e?`<a class="esgb" href="#esg" data-goesg="${esc(slug)}"><span class="kick">ESG</span><b>${e.score}/100</b><span class="grade ${e.grade}">${e.grade}</span><span class="muted" style="font-size:13px">See the ESG detail →</span></a>`:"<span></span>";
   return `<div class="notebar">${esgPart}<div class="acts"><a class="pri" href="pdf/${esc(slug)}.pdf" download="Puccetti-Capital-Research-${esc(slug)}.pdf">Download PDF</a><button type="button" onclick="window.print()">Print</button></div></div>`;
 }
-function fillStart(){const c=MKT.companies[document.getElementById("dCo").value];const s=document.getElementById("dStart");const keep=s.value;
+let COV=null;
+function dd(slug){const c=MKT.companies[slug],h=COV&&COV.series[slug];
+  if(h&&h.s.length>c.series.length&&COV.bench)return{c,series:h.s,dividends:[],bench:COV.bench.s,tr:true,note:COV.note+" Last point: latest close."+" CAC 40: month-end closes, Yahoo Finance."};
+  return{c,series:c.series,dividends:c.dividends,bench:MKT.benchmark.series,tr:false,note:c.seriesNote+" CAC 40: "+MKT.benchmark.note}}
+// quick period buttons: "N years" = buy at the same month-end N years before the latest month
+function backN(sel,n){const o=[...sel.options].map(x=>x.value).sort();if(!o.length)return null;let [y,m]=o[o.length-1].split("-").map(Number);m++;if(m>12){m=1;y++}
+  const w=`${y-n}-${String(m).padStart(2,"0")}`;return o.includes(w)?w:null}
+function quick(id,selId,run){document.getElementById(id).innerHTML=[1,3,5].map(y=>`<button type="button" data-y="${y}">${y} year${y>1?"s":""}</button>`).join("");
+  document.querySelectorAll("#"+id+" button").forEach(b=>b.onclick=()=>{const sel=document.getElementById(selId),v=backN(sel,+b.dataset.y);if(v){sel.value=v;run()}})}
+function markQuick(id,selId){const sel=document.getElementById(selId);
+  document.querySelectorAll("#"+id+" button").forEach(b=>{const v=backN(sel,+b.dataset.y);b.disabled=!v;b.setAttribute("aria-pressed",!!v&&sel.value===v)})}
+function fillStart(){const D=dd(document.getElementById("dCo").value),c={...D.c,series:D.series,dividends:D.dividends};const s=document.getElementById("dStart");const keep=s.value;
   s.innerHTML=c.series.slice(0,-1).map(([m])=>`<option value="${m}">${mLabel(m)}</option>`).join("");
   s.value=c.series.some(x=>x[0]===keep)&&keep!==c.series[c.series.length-1][0]?keep:c.series[0][0];
   const div=document.getElementById("dDiv");div.disabled=!c.dividends.length;div.parentElement.style.opacity=c.dividends.length?1:.5;
-  document.getElementById("dNote").textContent=c.dividends.length?"Dividends paid: "+c.dividends.map(d=>mLabel(d[0])+" "+c.currency+d[1].toFixed(2)).join(", ")+".":"Dividend data not included for this company: price return only.";}
+  document.getElementById("dNote").textContent=D.tr?"Five years of history. Prices are adjusted for dividends, which are therefore already reinvested.":c.dividends.length?"Dividends paid: "+c.dividends.map(d=>mLabel(d[0])+" "+c.currency+d[1].toFixed(2)).join(", ")+".":"Dividend data not included for this company: price return only.";}
 
 async function loadAll(){
   try{const r=await fetch("notes/index.json",{cache:"no-store"});REG=await r.json()}catch(e){document.getElementById("pubsHome").innerHTML='<p style="padding:16px">The list of notes could not be loaded. Refresh the page to try again.</p>'}
   try{const r=await fetch("data/market.json",{cache:"no-store"});MKT=await r.json()}catch(e){MKT=null}
+  try{COV=await getJSON("data/markets/covered-hist.json")}catch(e){COV=null}
   renderLists();renderMarket();renderTrack();renderESG();
 }
 async function openNote(slug){
@@ -828,19 +842,19 @@ function base(){Chart.defaults.font.family=css('--mono');Chart.defaults.font.siz
 /* ---------- listed demo ---------- */
 function runDemo(){
   if(!MKT||!window.Chart||document.querySelector('[data-v="demo"]').hidden)return;
-  const slug=document.getElementById("dCo").value,c=MKT.companies[slug];if(!c)return;
+  const slug=document.getElementById("dCo").value;if(!MKT.companies[slug])return;const D=dd(slug),c={...MKT.companies[slug],series:D.series,dividends:D.dividends};
   const amt=Math.max(0,+document.getElementById("dAmt").value||0),start=document.getElementById("dStart").value,withDiv=document.getElementById("dDiv").checked&&c.dividends.length>0;
   const i0=c.series.findIndex(x=>x[0]===start);const ser=c.series.slice(i0);
   let shares=amt/ser[0][1];const vals=[amt];
   for(let i=1;i<ser.length;i++){const d=withDiv?c.dividends.find(x=>x[0]===ser[i][0]):null;if(d)shares+=shares*d[1]/ser[i][1];vals.push(shares*ser[i][1])}
-  const B=MKT.benchmark.series;const bi=B.findIndex(x=>x[0]===start);let bvals=null;
+  const B=D.bench;const bi=B.findIndex(x=>x[0]===start);let bvals=null;
   if(bi>=0){bvals=ser.map(([m])=>{const b=B.find(x=>x[0]===m);return b?amt*b[1]/B[bi][1]:null})}
   const last=vals[vals.length-1],g=last-amt,r=amt?g/amt:0,bl=bvals?bvals[bvals.length-1]:null;
   document.getElementById("tInv").textContent=eur(amt);
   document.getElementById("tVal").textContent=eur(last);
   const tg=document.getElementById("tGain");tg.textContent=eur(g)+" ("+pct(r)+")";tg.className=g>=0?"up":"dn";
   const tb=document.getElementById("tBench");tb.textContent=bl!=null?eur(bl)+" ("+pct(bl/amt-1)+")":"n/a";
-  document.getElementById("srcDemo").textContent=c.seriesNote+" CAC 40: "+MKT.benchmark.note;
+  document.getElementById("srcDemo").textContent=D.note;markQuick("dQuick","dStart");
   const a=c.analysts,lastPx=c.series[c.series.length-1][1],med=a.median;
   const verdict=r>=0?"gained":"lost";
   document.getElementById("demoText").innerHTML=`An investment of <b>${eur(amt)}</b> in ${esc(c.name)} at the end of ${mLabel(start)} would be worth <b>${eur(last)}</b> today: it has ${verdict} <b>${pct(Math.abs(r)).slice(1)}</b>${withDiv?", with dividends reinvested":""}. ${bl!=null?`The same amount in the CAC 40 would be worth ${eur(bl)} (${pct(bl/amt-1)}), so ${esc(c.name)} has ${last>bl?"beaten":"lagged"} the French market over the period. `:""}Looking ahead, the median analyst target of ${c.currency}${med.toLocaleString("en-GB")} is ${pct(med/lastPx-1)} from today's price of ${c.currency}${lastPx.toLocaleString("en-GB")}, while our own target is ${c.currency}${c.ourTarget.toLocaleString("en-GB")} (${pct(c.ourTarget/lastPx-1)}).`;
@@ -859,13 +873,13 @@ function runDemo(){
   const ink=css('--ink'),mut=css('--muted'),rule=css('--rule'),acc=css('--accent'),gold=css('--gold'),paper=css('--paper');
   const grid={color:rule,drawTicks:false};
   demoCharts.push(new Chart(document.getElementById('cDemo'),{type:'line',data:{labels:ser.map(x=>mLabel(x[0])),datasets:[
-    {label:c.name,data:vals,borderColor:acc,backgroundColor:acc+"1a",fill:true,tension:0,pointRadius:3,borderWidth:2},
+    {label:c.name,data:vals,borderColor:acc,backgroundColor:acc+"1a",fill:true,tension:0,pointRadius:ser.length>20?0:3,borderWidth:2},
     ...(bvals?[{label:"CAC 40",data:bvals,borderColor:mut,borderDash:[5,4],pointRadius:0,borderWidth:1.5,fill:false}]:[]),
     {label:"Invested",data:ser.map(()=>amt),borderColor:rule,pointRadius:0,borderWidth:1,fill:false}]},
     options:{maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{labels:{color:ink,boxWidth:12,filter:l=>l.text!=="Invested"}},tooltip:{callbacks:{label:x=>x.dataset.label+": "+eur(x.raw)}}},
       scales:{y:{grid,ticks:{callback:v=>eur(v)}},x:{grid:{display:false},ticks:{color:ink,maxRotation:0,autoSkip:true}}}}}));
   // targets chart: history + 12m fan
-  const hist=c.series.map(x=>x[1]),labs=c.series.map(x=>mLabel(x[0]));
+  const S25=c.series.slice(-25),hist=S25.map(x=>x[1]),labs=S25.map(x=>mLabel(x[0]));
   const lastYm=c.series[c.series.length-1][0];const [ly,lm]=lastYm.split("-").map(Number);
   const fut=[];for(let k=3;k<=12;k+=3){const mm=((lm-1+k)%12)+1,yy=ly+Math.floor((lm-1+k)/12);fut.push(MONTHS[mm-1]+" "+String(yy).slice(2))}
   const L=[...labs,...fut],n=hist.length,lp=hist[n-1];
@@ -1026,7 +1040,7 @@ function runStock(){
   const sg=document.getElementById("sGain");sg.textContent=g!=null?eur(g)+" ("+pct(g/amt)+")":"–";sg.className=g==null?"":g>=0?"up":"dn";
   document.getElementById("sBench").textContent=bl!=null?eur(bl)+" ("+pct(bl/amt-1)+")":"–";
   document.getElementById("sNote").textContent=`${x.n} is quoted in ${cur}. ${cur==="EUR"?"No currency conversion is needed.":`Euros are converted at the month-end EUR/${cur} rate; today €1 = ${fxNow(cur)?.toFixed(cur==="JPY"?1:4)} ${cur}.`} Prices include reinvested dividends.`;
-  document.getElementById("srcStock").textContent="Month-end total-return prices and EUR exchange rates: Yahoo Finance. Last point: latest close. Index comparison uses the price index in euros.";
+  markQuick("sQuick","sStart");document.getElementById("srcStock").textContent="Month-end total-return prices and EUR exchange rates: Yahoo Finance. Last point: latest close. Index comparison uses the price index in euros.";
   if(vals.length)M.charts.push(new Chart(document.getElementById("cStock"),{type:"line",data:{labels,datasets:[
     {label:x.n,data:vals,borderColor:acc,backgroundColor:acc+"1a",fill:true,pointRadius:0,borderWidth:2,tension:0},
     ...(bvals?[{label:M.ix.indices.find(i=>i.id===x.ix).name,data:bvals,borderColor:mut,borderDash:[5,4],pointRadius:0,borderWidth:1.5,spanGaps:true}]:[]),
@@ -1063,6 +1077,7 @@ function runStock(){
 }
 document.getElementById("sAmt").addEventListener("input",runStock);
 document.getElementById("sStart").addEventListener("change",runStock);
+quick("dQuick","dStart",runDemo);quick("sQuick","sStart",runStock);
 
 /* ---------- all constituents: home directory, movers, market ESG ---------- */
 const IXIDS=["sp500","ndx","csi300","nikkei225","euronext100"];

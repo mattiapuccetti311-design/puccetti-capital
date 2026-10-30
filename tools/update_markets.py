@@ -314,6 +314,32 @@ def refresh_esg(tickers, cache):
     return cache
 
 
+BBG = {"FP": ".PA", "NA": ".AS", "IM": ".MI", "GY": ".DE", "LN": ".L", "SM": ".MC", "BB": ".BR", "SW": ".SW", "US": ""}
+
+
+def covered_history(today):
+    """5-year month-end total-return history for the listed companies in our notes, plus the CAC 40."""
+    mk = load(os.path.join(os.path.dirname(OUT), "market.json"), {})
+    want = {}
+    for slug, c in mk.get("companies", {}).items():
+        if c.get("type") != "listed":
+            continue
+        y = c.get("yahoo")
+        if not y and c.get("ticker"):
+            parts = c["ticker"].split()
+            if len(parts) == 2 and parts[1] in BBG:
+                y = parts[0] + BBG[parts[1]]
+        if y:
+            want[slug] = y
+    px = download(sorted(set(want.values())) + ["^FCHI"], period="6y", interval="1d")
+    cut = lambda s: monthly(s[s.index > s.index[-1] - pd.Timedelta(days=5 * 366)])
+    out = {"updated": today, "series": {slug: {"yahoo": y, "s": cut(px[y])} for slug, y in want.items() if y in px},
+           "bench": {"name": "CAC 40", "yahoo": "^FCHI", "s": cut(px["^FCHI"])} if "^FCHI" in px else None,
+           "note": "Month-end closes adjusted for dividends and splits (total return), Yahoo Finance."}
+    save(os.path.join(OUT, "covered-hist.json"), out)
+    log(f"covered companies: 5-year history for {len(out['series'])} of {len(want)}")
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -396,6 +422,10 @@ def main():
         save(os.path.join(OUT, ix["id"] + "-hist.json"), {"id": ix["id"], "updated": today, "series": hist})
         log(f"{ix['name']}: wrote {len(rows)} rows, {sum(1 for r in rows if 'tm' in r)} with analyst targets")
 
+    try:
+        covered_history(today)
+    except Exception as e:
+        log("covered history failed:", e)
     save(os.path.join(OUT, "indices.json"), {"updated": today, "fx": fx, "fxNote": "Month-end euro reference rates from Yahoo Finance (local currency per €1).", "indices": out_ix})
     if not out_ix:
         log("No index data at all: check the network or Yahoo Finance.")
