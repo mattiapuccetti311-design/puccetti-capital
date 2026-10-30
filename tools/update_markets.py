@@ -218,6 +218,8 @@ SECTOR_COLS = ("sector", "industry", "gics", "icb", "segment")
 def norm_ticker(raw, ix):
     t = re.sub(r"\[.*?\]", "", str(raw)).strip()
     t = re.sub(r"^(SEHK|HKEX|LSE|NSE|BSE|ASX|TSX|SGX|BMV|B3|BMAD|BIT|XETRA|FWB|SIX|OMX|Euronext|EPA|AMS)\s*:\s*", "", t, flags=re.I)
+    if ix.get("suffix") == ".MX":  # Mexican series letters are part of the Yahoo symbol: "GFNORTE O" -> GFNORTEO.MX
+        t = re.sub(r"\s*\*\s*$", "", t).replace(" ", "")
     if ix.get("suffix") == ".ST":
         t = re.sub(r"\s+([A-Z])$", r"-\1", t)
     t = t.split()[0] if t.split() else ""
