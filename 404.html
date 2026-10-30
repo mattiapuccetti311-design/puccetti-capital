@@ -900,7 +900,7 @@ function drawIdx(){
   M.charts.push(mkIdx(document.getElementById("cIdx"),{type:"line",data:{labels,datasets:ds},options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
     plugins:{legend:{labels:{color:ink,boxWidth:12}},tooltip:{callbacks:{title:x=>key==="daily"?fmtDate(x[0].label):mLabel(x[0].label),label:x=>x.dataset.label+": "+(x.raw==null?"–":x.raw.toFixed(1))}}},
     scales:{y:{grid:{color:rule,drawTicks:false}},x:{grid:{display:false},ticks:{color:ink,maxRotation:0,autoSkip:true,maxTicksLimit:8,callback:function(v){const l=this.getLabelForValue(v);return key==="daily"?fmtDate(l).slice(3):mLabel(l)}}}}}}));
-  document.getElementById("srcIdx").innerHTML=`Price indices in local currency, ${key==="daily"?"daily closes":"month-end closes"}. Source: Yahoo Finance, last close ${fmtDate(M.ix.indices[0].lastDate)}. Markets close on different days, so the last points can differ by a day.`;
+  document.getElementById("srcIdx").innerHTML=`Price indices in local currency, ${key==="daily"?"daily closes":"month-end closes"}. Source: Yahoo Finance, last close ${fmtDate(M.ix.indices[0].lastDate)}. Markets close on different days, so the last points can differ by a day.${M.ix.indices.filter(i=>i.note).map(i=>" "+esc(i.note)).join("")}`;
 }
 async function selectIndex(id){
   M.cur=id;M.page=0;M.sec="All";M.q="";document.getElementById("cSearch").value="";

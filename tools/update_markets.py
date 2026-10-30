@@ -30,7 +30,7 @@ import yfinance as yf
 
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "markets")
 UA = {"User-Agent": "PuccettiCapitalResearch/1.0 (https://mattiapuccetti311-design.github.io/puccetti-capital; data refresh)"}
-TARGETS_PER_RUN = int(os.environ.get("TARGETS_PER_RUN", "450"))
+TARGETS_PER_RUN = int(os.environ.get("TARGETS_PER_RUN", "1400"))
 TARGET_MAX_AGE_DAYS = 7
 
 INDICES = [
@@ -42,7 +42,8 @@ INDICES = [
      "official": "https://www.nasdaq.com/market-activity/quotes/nasdaq-ndx-index"},
     {"id": "csi300", "name": "CSI 300", "market": "China · Shanghai and Shenzhen", "yahoo": "000300.SS", "currency": "CNY", "symbol": "¥",
      "wiki": "https://en.wikipedia.org/wiki/CSI_300_Index",
-     "official": "https://www.csindex.com.cn/en/indices/index-detail/000300"},
+     "official": "https://www.csindex.com.cn/en/indices/index-detail/000300",
+     "proxy": "510300.SS", "proxyNote": "Yahoo Finance has little history for the CSI 300 index itself, so its level is tracked through the Huatai-PineBridge CSI 300 ETF (510300.SS)."},
     {"id": "nikkei225", "name": "Nikkei 225", "market": "Japan · Tokyo Stock Exchange", "yahoo": "^N225", "currency": "JPY", "symbol": "¥",
      "wiki": "https://en.wikipedia.org/wiki/Nikkei_225",
      "official": "https://indexes.nikkei.co.jp/en/nkave/index/component"},
@@ -299,7 +300,7 @@ def main():
     all_t = sorted({m["t"] for v in members.values() for m in v})
 
     # 2. indices, FX and constituent prices (5 years, daily, then made monthly)
-    idx_px = download([i["yahoo"] for i in INDICES] + list(FX.values()), period="6y", interval="1d")
+    idx_px = download([i["yahoo"] for i in INDICES] + [i["proxy"] for i in INDICES if i.get("proxy")] + list(FX.values()), period="6y", interval="1d")
     px = download(all_t, period="6y", interval="1d")
     log(f"prices: {len(px)} of {len(all_t)} tickers")
 
@@ -311,6 +312,9 @@ def main():
     out_ix = []
     for ix in INDICES:
         s = idx_px.get(ix["yahoo"])
+        note = ""
+        if ix.get("proxy") and (s is None or len(s) < 250) and ix["proxy"] in idx_px:
+            s, note = idx_px[ix["proxy"]], ix["proxyNote"]
         if s is None:
             if ix["id"] in prev_ix:
                 out_ix.append(prev_ix[ix["id"]])
@@ -324,7 +328,7 @@ def main():
             "r1m": ret(s, 30), "rytd": ret(s, ytd=True), "r1y": ret(s, 365), "r3y": ret(s, 3 * 365), "r5y": ret(s, 5 * 365),
             "daily": [[d.strftime("%Y-%m-%d"), clean(v, 2)] for d, v in d1.items()],
             "monthly": monthly(s[s.index > s.index[-1] - pd.Timedelta(days=5 * 366)]),
-            "count": len(members.get(ix["id"], [])),
+            "count": len(members.get(ix["id"], [])), "note": note,
         })
 
     for ix in INDICES:
