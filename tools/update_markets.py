@@ -79,9 +79,9 @@ INDICES = [
      "wiki": "https://en.wikipedia.org/wiki/S%26P/TSX_60", "official": "https://www.spglobal.com/spdji/en/indices/equity/sp-tsx-60-index/", "suffix": ".TO", "min": 55,
      "levelNote": "Level shown: S&P/TSX Composite, the broad Toronto index (Yahoo has no history for the TSX 60)."},
     {"id": "ibovespa", "name": "Ibovespa", "market": "Brazil · B3, São Paulo", "region": "Americas", "yahoo": "^BVSP", "currency": "BRL", "symbol": "R$",
-     "wiki": "https://en.wikipedia.org/wiki/List_of_companies_listed_on_B3", "wiki2": "https://en.wikipedia.org/wiki/%C3%8Dndice_Bovespa", "official": "https://www.b3.com.br/en_us/market-data-and-indices/indices/broad-indices/ibovespa.htm", "suffix": ".SA", "min": 60},
+     "wiki": "https://en.wikipedia.org/wiki/%C3%8Dndice_Bovespa", "wiki2": "https://en.wikipedia.org/wiki/List_of_companies_listed_on_B3", "official": "https://www.b3.com.br/en_us/market-data-and-indices/indices/broad-indices/ibovespa.htm", "suffix": ".SA", "min": 60},
     {"id": "ipc", "name": "S&P/BMV IPC", "market": "Mexico · Bolsa Mexicana de Valores", "region": "Americas", "yahoo": "^MXX", "currency": "MXN", "symbol": "MX$",
-     "wiki": "https://en.wikipedia.org/wiki/S%26P/BMV_IPC", "official": "https://www.spglobal.com/spdji/en/indices/equity/sp-bmv-ipc/", "suffix": ".MX", "min": 30},
+     "wiki": "https://en.wikipedia.org/wiki/Indice_de_Precios_y_Cotizaciones", "official": "https://www.spglobal.com/spdji/en/indices/equity/sp-bmv-ipc/", "suffix": ".MX", "min": 30},
 ]
 FX = {c: f"EUR{c}=X" for c in ["USD", "CNY", "JPY", "GBP", "CHF", "SEK", "NOK", "DKK", "HKD", "AUD", "INR", "SGD", "CAD", "BRL", "MXN", "KRW", "TWD", "ZAR", "PLN", "ILS"]}  # local currency units per euro
 SYM = {"USD": "$", "EUR": "€", "JPY": "¥", "CNY": "¥", "GBP": "£", "GBp": "p", "NOK": "kr ", "CHF": "CHF ", "DKK": "kr ", "SEK": "kr ",
@@ -210,7 +210,7 @@ def cons_euronext(ix):
     raise RuntimeError("Euronext 100 table not found")
 
 
-TICK_COLS = ("ticker", "symbol", "code", "epic", "stock code", "nse symbol", "asx code")
+TICK_COLS = ("ticker", "symbol", "stock symbol", "ticker symbol", "trading symbol", "code", "epic", "stock code", "nse symbol", "asx code")
 NAME_COLS = ("company", "name", "constituent", "security", "issuer")
 SECTOR_COLS = ("sector", "industry", "gics", "icb", "segment")
 
@@ -546,6 +546,9 @@ def main():
             e = esg.get(t, {})
             if e.get("tot") is not None:
                 row.update({"esg": e["tot"], "esgE": e.get("e"), "esgS": e.get("s"), "esgG": e.get("g"), "cont": e.get("cont"), "esgPct": e.get("pct")})
+            if row.get("p") is None and len(members.get(ix["id"], [])) > 0:
+                DIAG.setdefault(ix["id"], {}).setdefault("unpriced", []).append(t)
+                continue
             rows.append(row)
         rows.sort(key=lambda r: -(r.get("mcap") or 0))
         if not rows:
