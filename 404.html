@@ -369,6 +369,8 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
     </div>
   </div>
   <div class="stats" id="stats"><div><b>–</b><span>Notes</span></div><div><b>–</b><span>Listed</span></div><div><b>–</b><span>Start-ups</span></div><div><b>–</b><span>Sectors</span></div></div>
+  <div id="scrSlotHome"></div>
+  <div id="scrBox">
   <div class="sectionhead" id="find"><h2>Find a company</h2><span class="kick" id="scrCount"></span></div>
   <p class="lead" style="margin:10px 0 12px;font-size:15px">Every company in the twenty largest stock markets we follow, one by one. Search by name or ticker, filter by market and sector, and sort by size, revenue, cash or share-price move. Select a company to analyse it: figures, analyst targets and an investment simulation over up to five years.</p>
   <section class="ex">
@@ -396,6 +398,7 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
     <div class="pager" id="scrPager"></div>
     <div class="src" id="scrSrc">Revenue, net profit and cash: latest twelve months as reported, converted to euros at today's rates. Market data: Yahoo Finance. Constituent lists: Wikipedia, linked on the Markets page.</div>
   </section>
+  </div>
   <div class="sectionhead"><h2>Latest research</h2><a class="kick" href="#research">All notes →</a></div>
   <div class="pubs" id="pubsHome"></div>
   <div class="sectionhead"><h2>Latest news on covered companies</h2><a class="kick" href="#news">All news →</a></div>
@@ -413,7 +416,7 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
   <div class="page">
     <span class="kick">Research</span>
     <h1>All notes</h1>
-    <p class="lead">Notes are dated and archived as published. A change of view is published as a new note.</p>
+    <p class="lead">Notes are dated and archived as published. A change of view is published as a new note. Below the notes, every company in the markets we follow can be searched and analysed.</p>
     <div class="filters" id="filters" role="group" aria-label="Filter by sector"></div>
   </div>
   <div class="pubs" id="pubsAll"></div>
@@ -423,6 +426,7 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
     <div class="scroll w"><table id="trTable"></table></div>
     <div class="src" id="trSrc"></div>
   </section>
+  <div id="scrSlotResearch"></div>
 </section>
 
 <!-- NOTE -->
@@ -850,7 +854,7 @@ function route(){
   if(isNote)openNote(h);
   if(view==="demo")setTimeout(()=>{runDemo();runPriv()},0);
   if(view==="markets")setTimeout(()=>{loadMarkets(sub);runStock()},0);
-  if(view==="home")renderHomeMarkets();
+  if(view==="home"||view==="research"){const box=document.getElementById("scrBox"),slot=document.getElementById(view==="home"?"scrSlotHome":"scrSlotResearch");slot.after(box);renderHomeMarkets()}
   if(view==="esg")renderMarketESG();
 }
 function drawNote(){
@@ -1104,7 +1108,14 @@ quick("dQuick","dStart",runDemo);quick("sQuick","sStart",runStock);
 let SCR=null,SCRP=null;
 const ixName=id=>(M.ix?.indices.find(i=>i.id===id)||{}).name||id;
 function loadScreener(){
-  if(!SCRP)SCRP=(async()=>{if(!M.ix)M.ix=await getJSON("data/markets/indices.json");SCR=await getJSON("data/markets/screener.json");return SCR})().catch(e=>{SCRP=null;throw e});
+  if(!SCRP)SCRP=(async()=>{if(!M.ix)M.ix=await getJSON("data/markets/indices.json");
+    try{SCR=await getJSON("data/markets/screener.json")}catch(e){
+      // screener file not built yet: assemble it from the per-index files
+      const map=new Map();
+      for(const i of M.ix.indices){let d=M.rows[i.id];if(!d){try{d=M.rows[i.id]=await getJSON(`data/markets/${i.id}.json`)}catch(_){continue}}
+        d.rows.forEach(r=>{const x=map.get(r.t);if(x){x.ix.push(i.id);return}const f=fxNow(r.cur);map.set(r.t,{...r,ix:[i.id],mcapE:r.mcapE??(r.mcap&&f?r.mcap/f:null)})})}
+      SCR={updated:M.ix.updated,rows:[...map.values()]}}
+    return SCR})().catch(e=>{SCRP=null;throw e});
   return SCRP;
 }
 function ixCardHTML(i,link){return `${link?`<a class="ixcard" href="#markets/${esc(i.id)}">`:`<button type="button" class="ixcard" data-ix="${esc(i.id)}" aria-pressed="false">`}<span class="kick">${esc(i.region||"")} · ${i.count} cos.</span><span class="nm">${esc(i.name)}</span><span class="mk">${esc(i.market)}</span><span class="lv">${/ETF/.test(i.note||"")?'<small class="muted">ETF </small>':''}${i.last.toLocaleString("en-GB",{maximumFractionDigits:2})} <small class="${cls(i.r1d)}">${pc(i.r1d)}</small></span><span class="rs"><span>YTD</span><span>1Y</span><span>5Y</span><b class="${cls(i.rytd)}">${pc(i.rytd)}</b><b class="${cls(i.r1y)}">${pc(i.r1y)}</b><b class="${cls(i.r5y)}">${pc(i.r5y)}</b></span>${link?"</a>":"</button>"}`}
