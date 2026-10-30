@@ -1,0 +1,1002 @@
+{
+ "updated": "2026-10-30",
+ "benchmark": {
+  "name": "CAC 40",
+  "series": [
+   [
+    "2025-10",
+    8121.07
+   ],
+   [
+    "2025-11",
+    8122.71
+   ],
+   [
+    "2025-12",
+    8149.5
+   ],
+   [
+    "2026-01",
+    8126.53
+   ],
+   [
+    "2026-02",
+    8580.75
+   ],
+   [
+    "2026-03",
+    7816.94
+   ],
+   [
+    "2026-04",
+    8114.84
+   ],
+   [
+    "2026-05",
+    8183.34
+   ],
+   [
+    "2026-06",
+    8403.99
+   ],
+   [
+    "2026-07",
+    8509.64
+   ],
+   [
+    "2026-08",
+    8334.5
+   ],
+   [
+    "2026-09",
+    8081.43
+   ],
+   [
+    "2026-10",
+    7969.42
+   ]
+  ],
+  "note": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October (Zonebourse)."
+ },
+ "companies": {
+  "bnp-paribas": {
+   "name": "BNP Paribas",
+   "type": "listed",
+   "ticker": "BNP FP",
+   "currency": "€",
+   "series": [
+    [
+     "2025-11",
+     73.69
+    ],
+    [
+     "2025-12",
+     80.79
+    ],
+    [
+     "2026-01",
+     91.2
+    ],
+    [
+     "2026-02",
+     95.5
+    ],
+    [
+     "2026-03",
+     80.99
+    ],
+    [
+     "2026-04",
+     89.23
+    ],
+    [
+     "2026-05",
+     92.95
+    ],
+    [
+     "2026-06",
+     102.14
+    ],
+    [
+     "2026-07",
+     109.66
+    ],
+    [
+     "2026-08",
+     102.78
+    ],
+    [
+     "2026-09",
+     95.0
+    ],
+    [
+     "2026-10",
+     85.65
+    ]
+   ],
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October (MarketScreener).",
+   "dividends": [
+    [
+     "2026-05",
+     2.57
+    ],
+    [
+     "2026-09",
+     3.23
+    ]
+   ],
+   "ourTarget": 116,
+   "rating": "BUY",
+   "analysts": {
+    "asof": "S&P Global consensus via StockAnalysis, September-October 2026",
+    "n": 19,
+    "low": 100,
+    "median": 119,
+    "avg": 118.8,
+    "high": 136,
+    "consensus": "Buy",
+    "ratings": [
+     [
+      "Strong buy",
+      10
+     ],
+     [
+      "Buy",
+      4
+     ],
+     [
+      "Hold",
+      5
+     ],
+     [
+      "Sell",
+      0
+     ],
+     [
+      "Strong sell",
+      0
+     ]
+    ],
+    "estimates": [
+     {
+      "year": "2026E",
+      "rev": 55.05,
+      "eps": 11.56,
+      "ourRev": 55.4,
+      "ourEps": 12.3
+     },
+     {
+      "year": "2027E",
+      "rev": 57.46,
+      "eps": 13.23,
+      "ourRev": 57.8,
+      "ourEps": 13.6
+     }
+    ],
+    "estUnit": "Revenue €bn, EPS €",
+    "actions": [
+     [
+      "2026-09-02",
+      "Morgan Stanley",
+      "Hold",
+      "€120 → €129"
+     ],
+     [
+      "2026-07-28",
+      "Goldman Sachs",
+      "Buy",
+      "€122 → €136"
+     ],
+     [
+      "2026-07-28",
+      "J.P. Morgan",
+      "Buy",
+      "€110 → €119"
+     ],
+     [
+      "2026-07-27",
+      "RBC Capital",
+      "Buy",
+      "€99 → €109"
+     ],
+     [
+      "2026-07-27",
+      "Kepler Cheuvreux",
+      "Upgrade to Hold",
+      "€110.30"
+     ]
+    ],
+    "source": "https://stockanalysis.com/quote/epa/BNP/forecast/"
+   },
+   "nextResults": {
+    "date": "2027-02-02",
+    "event": "Full-year 2026 results and 2030 strategic plan",
+    "confirmed": true,
+    "source": "https://in.marketscreener.com/quote/stock/BNP-PARIBAS-4618/calendar/"
+   },
+   "news": [
+    {
+     "date": "2026-10-29",
+     "title": "ECB sets the 2027 CET1 requirement at 10.73%, against an actual 12.91% at end-September",
+     "source": "BNP Paribas via GlobeNewswire",
+     "url": "https://www.globenewswire.com/news-release/2026/10/29/3391725/0/en/bnp-paribas-group-2026-srep-notification.html"
+    },
+    {
+     "date": "2026-10-28",
+     "title": "Q3 net income of €3.46bn beats the €3.23bn consensus; €1.3bn buyback announced",
+     "source": "Reuters via Global Banking & Finance",
+     "url": "https://www.globalbankingandfinance.com/bnp-paribas-beats-q3-profit-forecast-unveils-1-3-billion/"
+    },
+    {
+     "date": "2026-10-28",
+     "title": "BNP downplays its €19bn French debt exposure as equity trading lifts profit",
+     "source": "Euronews",
+     "url": "https://www.euronews.com/2026/10/28/bnp-paribas-downplays-french-debt-exposure-as-stock-trading-lifts-profit"
+    },
+    {
+     "date": "2026-10-28",
+     "title": "Share buyback of €1.3bn to start on 2 November",
+     "source": "ad-hoc-news",
+     "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/bnp-paribas-launches-eur-1-3-billion-buyback-bnp-paribas-stock-gains-1-54-percent/70424673"
+    },
+    {
+     "date": "2026-10-22",
+     "title": "French bank shares slide as 10-year OAT yields pass 5%",
+     "source": "Admiral Markets",
+     "url": "https://admiralmarkets.com/education/articles/shares/french-bank-shares"
+    }
+   ],
+   "esg": {
+    "asof": "2026-10-30",
+    "method": "providers",
+    "providers": [
+     [
+      "MSCI ESG Rating",
+      "AAA",
+      100,
+      "https://invest.bnpparibas/en/governance-and-csr"
+     ],
+     [
+      "Sustainalytics ESG Risk",
+      "12.3 (low risk)",
+      75.4,
+      "https://invest.bnpparibas/en/governance-and-csr"
+     ],
+     [
+      "CDP Climate",
+      "A-",
+      90,
+      "https://invest.bnpparibas/en/governance-and-csr"
+     ]
+    ],
+    "base": 88.5,
+    "controversies": [
+     [
+      "US jury verdict (October 2025): about $21m to three Sudanese plaintiffs, appeal pending, risk of further claims",
+      -10,
+      "https://www.aljazeera.com/economy/2025/10/20/bnp-paribas-shares-fall-after-us-jurys-sudan-verdict"
+     ]
+    ],
+    "memo": [
+     [
+      "ISS ESG",
+      "C+ (Prime, first decile of banks)"
+     ],
+     [
+      "S&P Global CSA",
+      "68/100 (top 10% of banks)"
+     ],
+     [
+      "Date of ratings",
+      "September 2026, as published by the bank"
+     ]
+    ],
+    "score": 78,
+    "grade": "Strong",
+    "summary": "BNP Paribas has some of the best ESG ratings among European banks, including MSCI AAA. Its score is cut for legal and governance risk: the Sudan litigation in the United States could lead to further claims."
+   }
+  },
+  "hermes": {
+   "name": "Hermès",
+   "type": "listed",
+   "ticker": "RMS FP",
+   "currency": "€",
+   "series": [
+    [
+     "2025-10",
+     2149.0
+    ],
+    [
+     "2025-11",
+     2100.0
+    ],
+    [
+     "2025-12",
+     2122.0
+    ],
+    [
+     "2026-01",
+     2029.0
+    ],
+    [
+     "2026-02",
+     2049.0
+    ],
+    [
+     "2026-03",
+     1609.0
+    ],
+    [
+     "2026-04",
+     1623.5
+    ],
+    [
+     "2026-05",
+     1620.0
+    ],
+    [
+     "2026-06",
+     1598.0
+    ],
+    [
+     "2026-07",
+     1531.5
+    ],
+    [
+     "2026-08",
+     1581.0
+    ],
+    [
+     "2026-09",
+     1375.0
+    ],
+    [
+     "2026-10",
+     1293.5
+    ]
+   ],
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October (MarketScreener). Dividends not included.",
+   "dividends": [],
+   "ourTarget": 871,
+   "rating": "REDUCE",
+   "analysts": {
+    "asof": "S&P Global consensus via StockAnalysis, mid-October 2026",
+    "n": 23,
+    "low": 1168,
+    "median": 1660,
+    "avg": 1639,
+    "high": 2000,
+    "consensus": "Buy",
+    "ratings": [
+     [
+      "Strong buy",
+      8
+     ],
+     [
+      "Buy",
+      2
+     ],
+     [
+      "Hold",
+      11
+     ],
+     [
+      "Sell",
+      0
+     ],
+     [
+      "Strong sell",
+      2
+     ]
+    ],
+    "estimates": [
+     {
+      "year": "2026E",
+      "rev": 16.74,
+      "eps": 44.1,
+      "ourRev": 16.47,
+      "ourEps": 47.0
+     },
+     {
+      "year": "2027E",
+      "rev": 18.03,
+      "eps": 48.66,
+      "ourRev": 17.62,
+      "ourEps": 51.2
+     }
+    ],
+    "estUnit": "Revenue €bn, EPS €",
+    "actions": [
+     [
+      "2026-10-23",
+      "Berenberg",
+      "Downgrade to Hold",
+      "target cut"
+     ],
+     [
+      "2026-10-23",
+      "RBC Capital",
+      "Hold",
+      "target cut after Q3"
+     ],
+     [
+      "2026-10-15",
+      "Bernstein",
+      "Buy",
+      "€1,750"
+     ],
+     [
+      "2026-10-05",
+      "UBS",
+      "Downgrade to Sell",
+      "€1,695 → €1,168"
+     ],
+     [
+      "2026-10-04",
+      "Goldman Sachs",
+      "Initiate at Sell",
+      "€1,350"
+     ]
+    ],
+    "source": "https://stockanalysis.com/quote/epa/RMS/forecast/"
+   },
+   "nextResults": {
+    "date": "2027-02-12",
+    "event": "Full-year 2026 results",
+    "confirmed": true,
+    "source": "https://www.ideal-investisseur.fr/en/stock-news/hermes-growth-slowed-to-4-3-in-third-quarter-leather-goods-advance-by-10-8/27708.html"
+   },
+   "news": [
+    {
+     "date": "2026-10-23",
+     "title": "Berenberg downgrades Hermès to Hold and cuts its price target",
+     "source": "MarketScreener",
+     "url": "https://in.marketscreener.com/news/berenberg-downgrades-hermes-international-to-hold-rating-cuts-pt-ce785cdfdb8af325"
+    },
+    {
+     "date": "2026-10-23",
+     "title": "RBC cuts its Hermès target after the Q3 revenue miss",
+     "source": "MarketScreener",
+     "url": "https://in.marketscreener.com/news/rbc-cuts-hermes-price-target-after-q3-revenue-miss-forecasts-revised-ce785cdfdb89f320"
+    },
+    {
+     "date": "2026-10-23",
+     "title": "Leather holds, broader demand weakens",
+     "source": "MarketScreener",
+     "url": "https://in.marketscreener.com/news/hermes-international-leather-holds-broader-demand-weakens-ce785cdcda8bf620"
+    },
+    {
+     "date": "2026-10-22",
+     "title": "Q3 revenue grows 4.3% at constant currency, slowest since 2020",
+     "source": "Idéal Investisseur",
+     "url": "https://www.ideal-investisseur.fr/en/stock-news/hermes-growth-slowed-to-4-3-in-third-quarter-leather-goods-advance-by-10-8/27708.html"
+    },
+    {
+     "date": "2026-10-26",
+     "title": "Europe's luxury giants have lost €251bn of value in 2026, Hermès €93bn",
+     "source": "The Middle East Observer (FT data)",
+     "url": "https://meobserver.news/luxury-industry/2026/10/26/europes-luxury-giants-lose-e251bn-as-china-weakness-forces-growth-rethink/"
+    }
+   ],
+   "esg": {
+    "asof": "2026-10-30",
+    "method": "providers",
+    "providers": [
+     [
+      "MSCI ESG Rating",
+      "AA",
+      85,
+      "https://www.greendigest.co/p/evaluating-a-company-s-impact-the-case-of-herm-s"
+     ],
+     [
+      "Sustainalytics ESG Risk",
+      "10.7 (low risk)",
+      78.6,
+      "https://knowesg.com/esg-ratings/hermes-international-sca"
+     ],
+     [
+      "CDP Climate",
+      "A",
+      100,
+      "https://assets-finance.hermes.com/s3fs-public/node/pdf_file/2026-04/1777391858/260320_hermes_urd2025_en.pdf"
+     ]
+    ],
+    "base": 87.9,
+    "controversies": [
+     [
+      "Weak supply-chain traceability: 12/100 in the KnowTheChain forced-labour benchmark",
+      -5,
+      "https://www.greendigest.co/p/evaluating-a-company-s-impact-the-case-of-herm-s"
+     ]
+    ],
+    "memo": [
+     [
+      "CDP Water / Forests",
+      "A- / A (A List for the fourth year, 2025 cycle)"
+     ],
+     [
+      "Scope 1+2 emissions",
+      "−69% since 2018 (market-based)"
+     ],
+     [
+      "Scope 3 intensity",
+      "−58% per unit of gross margin since 2018"
+     ],
+     [
+      "Climate targets",
+      "2030 targets validated by SBTi (2021)"
+     ],
+     [
+      "Women in the top 100 positions",
+      "49%"
+     ]
+    ],
+    "score": 83,
+    "grade": "Leader",
+    "summary": "Hermès scores well on climate and on the way it is run: CDP A List, a low Sustainalytics risk score and an AA from MSCI. The weak point is the supply chain, where outside benchmarks find little traceability on leather and raw materials."
+   }
+  },
+  "mistral-ai": {
+   "name": "Mistral AI",
+   "type": "private",
+   "currency": "€",
+   "unit": "bn",
+   "valuations": [
+    [
+     "2023-06",
+     0.24,
+     "Seed"
+    ],
+    [
+     "2023-12",
+     2.0,
+     "Series A"
+    ],
+    [
+     "2024-06",
+     5.8,
+     "Series B"
+    ],
+    [
+     "2025-09",
+     11.7,
+     "Series C"
+    ],
+    [
+     "2026-09",
+     21.0,
+     "Series D"
+    ]
+   ],
+   "fairValue": 16.7,
+   "rating": "STRETCHED",
+   "nextResults": {
+    "date": null,
+    "event": "No scheduled disclosure: private company. Watch for a 2026 revenue update against the €1bn target.",
+    "confirmed": false
+   },
+   "news": [
+    {
+     "date": "2026-10-29",
+     "title": "Mistral releases open weights for its trillion-parameter Mistral Large 4, aimed at cybersecurity",
+     "source": "TechCrunch",
+     "url": "https://techcrunch.com/2026/10/29/mistral-releases-weights-for-its-trillion-parameter-ai-model-targeting-cybersecurity/"
+    },
+    {
+     "date": "2026-10-06",
+     "title": "Mistral unveils a new open model it says rivals the best Chinese models",
+     "source": "CNBC",
+     "url": "https://www.cnbc.com/2026/10/06/mistral-ai-model-le-chonk.html"
+    },
+    {
+     "date": "2026-09-08",
+     "title": "Series D closes: €3bn at more than €21bn post-money, led by Samsung and the Scaleup Europe Fund",
+     "source": "Value Add VC",
+     "url": "https://valueaddvc.com/pulse/company/mistral"
+    },
+    {
+     "date": "2026-06-15",
+     "title": "Talks to raise €3bn at a €20bn valuation, mostly for data centres",
+     "source": "Tech Funding News",
+     "url": "https://techfundingnews.com/mistral-ai-3b-euro-20b-valuation-data-centres/"
+    },
+    {
+     "date": "2026-05-28",
+     "title": "Le Chat becomes Vibe; industrial AI offer with Airbus and BMW; €1bn revenue target for 2026",
+     "source": "VentureBeat",
+     "url": "https://venturebeat.com/technology/mistral-ai-launches-vibe-expands-into-industrial-ai-and-announces-data-center-push-to-challenge-openai"
+    }
+   ],
+   "esg": {
+    "asof": "2026-10-30",
+    "method": "own",
+    "pillars": [
+     [
+      "Disclosure",
+      14,
+      "Published the first full lifecycle analysis of a language model (July 2025, with Carbone 4 and ADEME, peer-reviewed). No full sustainability report, as a private company.",
+      "https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai"
+     ],
+     [
+      "Environment",
+      10,
+      "Heavy compute footprint: training Mistral Large 2 emitted about 20,400 tCO2e and consumed 281,000 m³ of water.",
+      "https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai"
+     ],
+     [
+      "Social",
+      12,
+      "Privacy questions in 2025 over the use of free-tier inputs to train models.",
+      "https://oecd.ai/en/incidents/2025-02-11-f208"
+     ],
+     [
+      "Governance",
+      11,
+      "Founder-led, young governance, strategic investors on the cap table; EU regulators looked at the Microsoft partnership.",
+      "https://www.itpro.com/technology/artificial-intelligence/microsofts-mistral-ai-partnership-has-eu-regulators-concerned-heres-why"
+     ],
+     [
+      "Controversies",
+      10,
+      "Mediapart (February 2026) alleged that copyrighted books and songs were used for training.",
+      "https://ground.news/article/harry-potter-the-little-prince-elton-john-or-amel-bent-mistral-ais-multiple-copyright-violations"
+     ]
+    ],
+    "score": 57,
+    "grade": "Average",
+    "summary": "Mistral is unusually open about its environmental footprint for an AI company, but that footprint is large and growing, and copyright and privacy questions remain open."
+   }
+  },
+  "revolut": {
+   "name": "Revolut",
+   "type": "private",
+   "currency": "$",
+   "unit": "bn",
+   "valuations": [
+    [
+     "2021-07",
+     33,
+     "Series E"
+    ],
+    [
+     "2024-08",
+     45,
+     "Secondary"
+    ],
+    [
+     "2025-11",
+     75,
+     "Secondary"
+    ],
+    [
+     "2026-07",
+     115,
+     "Secondary"
+    ],
+    [
+     "2026-10",
+     121.2,
+     "Forge mark"
+    ]
+   ],
+   "fairValue": 72,
+   "rating": "STRETCHED",
+   "nextResults": {
+    "date": "2027-03-24",
+    "event": "2026 annual report (expected; 2025 accounts were published on 24 March 2026)",
+    "confirmed": false
+   },
+   "news": [
+    {
+     "date": "2026-10-27",
+     "title": "UK regulator orders an outside review of Revolut's product-approval processes",
+     "source": "Financial Times via Cryptonews",
+     "url": "https://cryptonews.net/news/finance/33659874/"
+    },
+    {
+     "date": "2026-10-20",
+     "title": "Revolut app hit by a major worldwide outage",
+     "source": "Euronews",
+     "url": "https://www.euronews.com/2026/10/20/digital-bank-revolut-down-in-major-worldwide-outage"
+    },
+    {
+     "date": "2026-10-18",
+     "title": "Secondary trading marks Revolut at $121.2bn as IPO talk turns serious",
+     "source": "Startup Fortune",
+     "url": "https://startupfortune.com/revolut-hits-a-1212-billion-valuation-mark-as-ipo-talk-turns-serious/"
+    },
+    {
+     "date": "2026-03-24",
+     "title": "2025 results: revenue up 46% to £4.5bn, record pre-tax profit of £1.7bn",
+     "source": "FinTech Futures",
+     "url": "https://www.fintechfutures.com/challenger-banks/revolut-profit-jumps-57-to-1-7bn-for-2025"
+    },
+    {
+     "date": "2026-03-05",
+     "title": "Revolut files for a US bank charter and names a US chief executive",
+     "source": "PYMNTS",
+     "url": "https://www.pymnts.com/trends/revolut/"
+    }
+   ],
+   "esg": {
+    "asof": "2026-10-30",
+    "method": "own",
+    "pillars": [
+     [
+      "Disclosure",
+      13,
+      "The annual report includes a streamlined energy and carbon report; no third-party ESG rating.",
+      "https://assets.revolut.com/pdf/annualreport2025.pdf"
+     ],
+     [
+      "Environment",
+      15,
+      "Small direct footprint: headquarters on 100% renewable energy, cloud provider matches 100% renewable. Net zero target realigned to 2050.",
+      "https://assets.revolut.com/pdf/annualreport2025.pdf"
+     ],
+     [
+      "Social",
+      11,
+      "Low-cost access to banking for millions of users; fraud and customer protection are the main social risks. Over a third of staff work in financial crime prevention.",
+      "https://assets.revolut.com/pdf/annualreport2025.pdf"
+     ],
+     [
+      "Governance",
+      10,
+      "Founder-led. Restrictions on the UK banking licence were lifted only in March 2026, after a long mobilisation period.",
+      "https://assets.revolut.com/pdf/annualreport2025.pdf"
+     ],
+     [
+      "Controversies",
+      7,
+      "The Bank of Lithuania fined Revolut Bank €3.5m in April 2025 for anti-money-laundering failings, and in October 2026 the UK PRA ordered an outside review of its product-approval processes.",
+      "https://cryptonews.net/news/finance/33659874/"
+     ]
+    ],
+    "score": 56,
+    "grade": "Average",
+    "summary": "Revolut's environmental footprint is small, as for most digital banks. Its ESG risk sits in governance and financial crime controls, where regulators have found weaknesses."
+   }
+  },
+  "nordex": {
+   "name": "Nordex",
+   "type": "listed",
+   "ticker": "NDX1 GY",
+   "currency": "€",
+   "series": [
+    [
+     "2025-11",
+     25.82
+    ],
+    [
+     "2025-12",
+     29.12
+    ],
+    [
+     "2026-01",
+     33.8
+    ],
+    [
+     "2026-02",
+     43.12
+    ],
+    [
+     "2026-03",
+     45.54
+    ],
+    [
+     "2026-04",
+     48.52
+    ],
+    [
+     "2026-05",
+     41.4
+    ],
+    [
+     "2026-06",
+     46.2
+    ],
+    [
+     "2026-07",
+     38.44
+    ],
+    [
+     "2026-08",
+     37.74
+    ],
+    [
+     "2026-09",
+     39.16
+    ],
+    [
+     "2026-10",
+     37.74
+    ]
+   ],
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = Xetra close of 30 October (MarketScreener). No dividend paid.",
+   "dividends": [],
+   "ourTarget": 47,
+   "rating": "BUY",
+   "analysts": {
+    "asof": "S&P Global consensus via StockAnalysis, 13-16 October 2026",
+    "n": 15,
+    "low": 36,
+    "median": 52.8,
+    "avg": 50.52,
+    "high": 63,
+    "consensus": "Buy",
+    "ratings": [
+     [
+      "Strong buy",
+      9
+     ],
+     [
+      "Buy",
+      2
+     ],
+     [
+      "Hold",
+      3
+     ],
+     [
+      "Sell",
+      1
+     ],
+     [
+      "Strong sell",
+      0
+     ]
+    ],
+    "estimates": [
+     {
+      "year": "2026E",
+      "rev": 8.78,
+      "eps": 2.17,
+      "ourRev": 8.65,
+      "ourEps": 2.41
+     },
+     {
+      "year": "2027E",
+      "rev": 9.6,
+      "eps": 2.63,
+      "ourRev": 9.43,
+      "ourEps": 2.73
+     }
+    ],
+    "estUnit": "Revenue €bn, EPS €",
+    "actions": [
+     [
+      "2026-10-19",
+      "Berenberg",
+      "Buy",
+      "€58 → €61"
+     ],
+     [
+      "2026-10-16",
+      "Jefferies",
+      "Buy",
+      "€60 → €63"
+     ],
+     [
+      "2026-10-13",
+      "Barclays",
+      "Hold",
+      "€35 → €36"
+     ],
+     [
+      "2026-10-09",
+      "RBC Capital",
+      "Sell",
+      "€36"
+     ],
+     [
+      "2026-10-02",
+      "Deutsche Bank",
+      "Buy",
+      "€58 → €59"
+     ]
+    ],
+    "source": "https://stockanalysis.com/quote/etr/NDX1/forecast/"
+   },
+   "nextResults": {
+    "date": "2026-11-05",
+    "event": "Q3 2026 results (full report)",
+    "confirmed": true,
+    "source": "https://www.nordex-online.com/en/2026/10/nordex-group-reports-strong-preliminary-q3-2026-results-and-raises-ebitda-margin-guidance-for-full-year-2026/"
+   },
+   "news": [
+    {
+     "date": "2026-10-27",
+     "title": "DenkerWulf orders turbines for a 51 MW wind farm in Schleswig-Holstein",
+     "source": "ad-hoc-news (EQS)",
+     "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/nordex-erhaelt-auftrag-ueber-51-30-mw-nordex-aktie-notiert-unveraendert/70418950"
+    },
+    {
+     "date": "2026-10-22",
+     "title": "Nordex enters New Zealand with a 192 MW order from Mercury",
+     "source": "MarketScreener",
+     "url": "https://www.marketscreener.com/news/nordex-se-enters-new-zealand-market-with-192-mw-order-from-mercury-ce785cdfde81f52d"
+    },
+    {
+     "date": "2026-10-19",
+     "title": "Berenberg raises its target to €61 after the guidance upgrade, keeps Buy",
+     "source": "MarketScreener",
+     "url": "https://www.marketscreener.com/news/nordex-price-target-up-as-berenberg-notes-fy26-guidance-upgrade-buy-rating-kept-ce785cdbdb8bfe24"
+    },
+    {
+     "date": "2026-10-16",
+     "title": "Shares jump 12% as Q3 EBITDA beats consensus by about 15%",
+     "source": "Investing.com",
+     "url": "https://www.investing.com/news/earnings/nordex-shares-jump-as-q3-profit-beats-consensus-margin-guidance-raised-4953239"
+    },
+    {
+     "date": "2026-10-15",
+     "title": "Preliminary Q3: EBITDA margin 12.7%, 2026 margin guidance raised to 11.5-12.5%",
+     "source": "Nordex",
+     "url": "https://www.nordex-online.com/en/2026/10/nordex-group-reports-strong-preliminary-q3-2026-results-and-raises-ebitda-margin-guidance-for-full-year-2026/"
+    }
+   ],
+   "esg": {
+    "asof": "2026-10-30",
+    "method": "providers",
+    "providers": [
+     [
+      "MSCI ESG Rating",
+      "BBB",
+      55,
+      "https://www.nordex-online.com/en/sustainability/"
+     ],
+     [
+      "Sustainalytics ESG Risk",
+      "20.5 (medium risk)",
+      59.0,
+      "https://www.nordex-online.com/en/sustainability/"
+     ],
+     [
+      "CDP Climate",
+      "B",
+      75,
+      "https://www.nordex-online.com/en/sustainability/"
+     ]
+    ],
+    "base": 63.0,
+    "controversies": [
+     [
+      "Turbine safety incidents: a turbine collapse in Oklahoma (2025) and blade-related project delays in Türkiye (2026)",
+      -5,
+      "https://www.rechargenews.com/wind/nordex-wind-turbine-collapses-in-bizarre-circumstances/2-1-1786517"
+     ]
+    ],
+    "memo": [
+     [
+      "ISS ESG",
+      "B+ (Prime)"
+     ],
+     [
+      "S&P Global ESG Score",
+      "53"
+     ],
+     [
+      "EcoVadis",
+      "85/100, Platinum"
+     ],
+     [
+      "Climate targets",
+      "Near-term, long-term and net-zero targets validated by SBTi (2024)"
+     ],
+     [
+      "Emissions 2025",
+      "Scope 1+2 about 41 kt CO2e; Scope 3 5.2 Mt, target −25% by 2030"
+     ],
+     [
+      "Avoided emissions",
+      "92.2 Mt CO2e by turbines installed (2025)"
+     ]
+    ],
+    "score": 58,
+    "grade": "Average",
+    "summary": "Nordex's products cut emissions, and its public ratings are solid but not top tier: MSCI BBB, CDP B and medium risk at Sustainalytics. Safety is the weak point: the lost-time injury rate rose in 2025 and turbine failures recur."
+   }
+  }
+ }
+}

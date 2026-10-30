@@ -1,0 +1,77 @@
+[
+ {
+  "slug": "nordex",
+  "date": "2026-10-30",
+  "sector": "Industrials",
+  "country": "Germany",
+  "company": "Nordex",
+  "ticker": "NDX1 GY",
+  "headline": "The turnaround is in the cash, not yet in the price",
+  "rating": "BUY",
+  "target": "€47",
+  "price": "€37.74",
+  "potential": "+25%"
+ },
+ {
+  "slug": "hermes",
+  "date": "2026-10-30",
+  "sector": "Luxury goods",
+  "country": "France",
+  "company": "Hermès",
+  "ticker": "RMS FP",
+  "headline": "Still priced for growth it no longer shows",
+  "rating": "REDUCE",
+  "target": "€871",
+  "price": "€1,266",
+  "potential": "−31%"
+ },
+ {
+  "slug": "mistral-ai",
+  "date": "2026-10-30",
+  "sector": "Start-ups",
+  "country": "France",
+  "company": "Mistral AI",
+  "ticker": "Private",
+  "headline": "Europe's AI champion, priced for everything to work",
+  "rating": "STRETCHED",
+  "target": "€16.7bn",
+  "price": "€21bn (Series D)",
+  "potential": "−20%",
+  "private": true
+ },
+ {
+  "slug": "revolut",
+  "date": "2026-10-30",
+  "sector": "Start-ups",
+  "country": "United Kingdom",
+  "company": "Revolut",
+  "ticker": "Private",
+  "headline": "Outstanding bank, valuation already counts the IPO",
+  "rating": "STRETCHED",
+  "target": "$72bn",
+  "price": "$121.2bn (Oct mark)",
+  "potential": "−40%",
+  "private": true
+ },
+ {
+  "slug": "bnp-paribas",
+  "date": "2026-10-29",
+  "sector": "Banks",
+  "country": "France",
+  "company": "BNP Paribas",
+  "ticker": "BNP FP",
+  "headline": "The market is pricing France, not the bank",
+  "rating": "BUY",
+  "target": "€116",
+  "price": "€87.65",
+  "potential": "+33%"
+ },
+ {
+  "external": "https://claude.ai/artifact/C4BR4FVM7938VUNuY6uvAy",
+  "date": "2026-10-28",
+  "sector": "Markets",
+  "company": "Q3 2026 earnings surprises",
+  "headline": "Twelve companies, beats and misses",
+  "rating": "REVIEW"
+ }
+]
