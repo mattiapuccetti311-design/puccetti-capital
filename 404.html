@@ -1127,6 +1127,9 @@ async function renderMarketESG(){
   const sel=document.getElementById("eIx");if(sel.options.length<2)sel.innerHTML+=M.ix.indices.map(i=>`<option value="${i.id}">${esc(i.name)}</option>`).join("");
   const seen=new Map();IXIDS.forEach(id=>(M.rows[id]?.rows||[]).forEach(r=>{const x=seen.get(r.t);if(x)x.ixs.push(id);else seen.set(r.t,{...r,ixs:[id],pcr:pcrScore(r),lvl:riskLvl(r.esg)})}));
   const all=[...seen.values()],withE=all.filter(r=>r.esg!=null);
+  if(!withE.length){document.querySelector("#eTable").closest("section").querySelector(".toolbar").hidden=true;document.getElementById("ePager").innerHTML="";
+    document.getElementById("eCount").textContent="";document.getElementById("esgMAsOf").textContent="";
+    document.getElementById("eTable").innerHTML='<tbody><tr><td class="empty">No free source currently publishes ESG ratings for all 1,231 companies: Yahoo Finance stopped showing Sustainalytics scores in 2026. Companies we cover in our notes are rated above, with MSCI, Sustainalytics and CDP. This table will fill as soon as a reliable source is connected.</td></tr></tbody>';return}
   const q=E.q.trim().toLowerCase();
   let f=all.filter(r=>(E.ix==="all"||r.ixs.includes(E.ix))&&(E.lvl==="all"||r.lvl===E.lvl)&&(!q||r.n.toLowerCase().includes(q)||r.t.toLowerCase().includes(q)));
   const {k,d}=E.sort;f.sort((a,b)=>{const va=a[k],vb=b[k];if(va==null&&vb==null)return(b.mcap||0)-(a.mcap||0);if(va==null)return 1;if(vb==null)return -1;return typeof va==="string"?va.localeCompare(vb)*d:(va-vb)*d});

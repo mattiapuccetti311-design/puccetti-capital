@@ -369,7 +369,8 @@ def main():
     cache = refresh_targets(all_t, cache)
     save(cache_path, cache)
     esg_path = os.path.join(OUT, "esg-cache.json")
-    esg = refresh_esg(all_t, load(esg_path, {}))
+    # Yahoo Finance stopped serving Sustainalytics scores (0 of 1,231 found on 30 Oct 2026); off unless FETCH_ESG=1.
+    esg = refresh_esg(all_t, {}) if os.environ.get("FETCH_ESG") == "1" else load(esg_path, {})
     save(esg_path, esg)
 
     fx = {cur: monthly(idx_px[t]) for cur, t in FX.items() if t in idx_px}
