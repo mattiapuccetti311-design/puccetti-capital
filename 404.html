@@ -198,19 +198,21 @@ td.e,th.e{background:color-mix(in srgb,var(--soft) 80%,transparent)}
 .seg button{touch-action:manipulation}
 
 /* markets */
-.ixcards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border:1px solid var(--rule);background:var(--paper);margin-top:18px}
-.ixcard{all:unset;box-sizing:border-box;cursor:pointer;padding:14px 14px 12px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:4px;min-width:0}
-.ixcard:last-child{border-right:0}
+.ixcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,205px),1fr));gap:1px;border:1px solid var(--rule);background:var(--rule);margin-top:18px}
+.ixcards>.empty{background:var(--paper);grid-column:1/-1}
+.ixcard{all:unset;box-sizing:border-box;cursor:pointer;padding:13px 14px 12px;background:var(--paper);display:flex;flex-direction:column;gap:3px;min-width:0}
 .ixcard:hover{background:var(--soft)}
 .ixcard[aria-pressed="true"]{background:var(--accentSoft);box-shadow:inset 0 3px 0 var(--accent)}
 .ixcard:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
-.ixcard .nm{font-family:var(--display);font-size:19px;font-weight:600;line-height:1.15}
+.ixcard .nm{font-family:var(--display);font-size:18px;font-weight:600;line-height:1.15}
 .ixcard .mk{font-size:12px;color:var(--muted);line-height:1.35;min-height:32px}
-.ixcard .lv{font-family:var(--mono);font-size:17px;font-variant-numeric:tabular-nums}
+.ixcard .lv{font-family:var(--mono);font-size:16px;font-variant-numeric:tabular-nums}
 .ixcard .rs{display:grid;grid-template-columns:repeat(3,auto);gap:2px 10px;font-family:var(--mono);font-size:11.5px;justify-content:start}
 .ixcard .rs span{color:var(--muted)}
-@media (max-width:1000px){.ixcards{grid-template-columns:repeat(3,minmax(0,1fr))}.ixcard:nth-child(3){border-right:0}.ixcard:nth-child(-n+3){border-bottom:1px solid var(--rule)}}
-@media (max-width:600px){.ixcards{grid-template-columns:repeat(2,minmax(0,1fr))}.ixcard{border-bottom:1px solid var(--rule)}.ixcard:nth-child(3){border-right:1px solid var(--rule)}.ixcard:nth-child(2n){border-right:0}}
+.scrbar select{flex:1 1 170px}
+#scrTable{min-width:940px} #scrTable tbody tr{cursor:pointer} #scrTable tbody tr:hover td{background:var(--soft)}
+#scrTable td .tk{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-left:6px}
+#scrTable th.on{color:var(--accent)}
 .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--rule)}
 .toolbar input[type=search],.toolbar select{font:14px var(--sans);padding:8px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);min-width:0}
 .toolbar input[type=search]{flex:1 1 220px}
@@ -352,7 +354,7 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
       <span class="kick">Independent research · Listed companies and start-ups</span>
       <h1>Company research with the assumptions shown.</h1>
       <p>Puccetti Capital Research publishes one note a day on a listed company or a venture-backed start-up that has recently surprised the market. Each note sets out the reported figures, the estimates and the valuation model in full, so readers can test the reasoning as well as the conclusion.</p>
-      <div class="btns"><a class="btn primary" id="latestBtn" href="#research">Read the latest note</a><a class="btn" href="#demo">Try the investment demo</a><a class="btn" href="#markets">World markets</a></div>
+      <div class="btns"><a class="btn primary" id="latestBtn" href="#research">Read the latest note</a><a class="btn" href="#demo">Try the investment demo</a><a class="btn" href="#markets">World markets</a><a class="btn" href="#find" data-jump="find">Find a company</a></div>
     </div>
     <div class="stack">
       <div class="panel">
@@ -367,6 +369,33 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
     </div>
   </div>
   <div class="stats" id="stats"><div><b>–</b><span>Notes</span></div><div><b>–</b><span>Listed</span></div><div><b>–</b><span>Start-ups</span></div><div><b>–</b><span>Sectors</span></div></div>
+  <div class="sectionhead" id="find"><h2>Find a company</h2><span class="kick" id="scrCount"></span></div>
+  <p class="lead" style="margin:10px 0 12px;font-size:15px">Every company in the twenty largest stock markets we follow, one by one. Search by name or ticker, filter by market and sector, and sort by size, revenue, cash or share-price move. Select a company to analyse it: figures, analyst targets and an investment simulation over up to five years.</p>
+  <section class="ex">
+    <div class="toolbar scrbar">
+      <input type="search" id="scrQ" placeholder="Search a company or ticker" aria-label="Search a company or ticker">
+      <select id="scrIx" aria-label="Market"><option value="all">All markets</option></select>
+      <select id="scrSec" aria-label="Sector"><option value="all">All sectors</option></select>
+      <select id="scrSort" aria-label="Sort by">
+        <option value="mcapE:-1">Largest companies (market cap)</option>
+        <option value="n:1">Alphabetical, A to Z</option>
+        <option value="n:-1">Alphabetical, Z to A</option>
+        <option value="revE:-1">Highest revenue</option>
+        <option value="revE:1">Lowest revenue</option>
+        <option value="chg:-1">Biggest rise</option>
+        <option value="chg:1">Biggest fall</option>
+        <option value="cashE:-1">Most cash</option>
+        <option value="cashE:1">Least cash</option>
+        <option value="niE:-1">Highest profit</option>
+        <option value="niE:1">Biggest loss</option>
+        <option value="up:-1">Most upside to analyst target</option>
+      </select>
+      <select id="scrPer" aria-label="Period for price moves"><option value="r1d">Move: last session</option><option value="rytd" selected>Move: year to date</option><option value="r1y">Move: 1 year</option><option value="r5y">Move: 5 years</option></select>
+    </div>
+    <div class="scroll"><table id="scrTable"></table></div>
+    <div class="pager" id="scrPager"></div>
+    <div class="src" id="scrSrc">Revenue, net profit and cash: latest twelve months as reported, converted to euros at today's rates. Market data: Yahoo Finance. Constituent lists: Wikipedia, linked on the Markets page.</div>
+  </section>
   <div class="sectionhead"><h2>Latest research</h2><a class="kick" href="#research">All notes →</a></div>
   <div class="pubs" id="pubsHome"></div>
   <div class="sectionhead"><h2>Latest news on covered companies</h2><a class="kick" href="#news">All news →</a></div>
@@ -377,10 +406,6 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
     <div class="panel"><h3>Biggest rises, last session</h3><ul class="list-plain" id="movUp"><li><span>Loading…</span><span></span></li></ul></div>
     <div class="panel"><h3>Biggest falls, last session</h3><ul class="list-plain" id="movDn"><li><span>Loading…</span><span></span></li></ul></div>
   </div>
-  <div class="sectionhead"><h2>Every company in the five markets</h2><span class="kick" id="dirCount"></span></div>
-  <p class="lead" style="margin:10px 0 12px;font-size:15px">All the companies in the S&amp;P 500, Nasdaq-100, CSI 300, Nikkei 225 and Euronext 100, one by one. Select a name to see its figures, what analysts expect and an investment simulation.</p>
-  <div class="toolbar" style="border:1px solid var(--rule);background:var(--paper)"><input type="search" id="dirSearch" placeholder="Search among all companies" aria-label="Search among all companies"><span class="cnt" id="dirHits"></span></div>
-  <div id="dirList" class="dir"></div>
 </section>
 
 <!-- RESEARCH -->
@@ -492,8 +517,8 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
 <section data-v="markets" hidden>
   <div class="page">
     <span class="kick">World markets · updated every weekday</span>
-    <h1>The five largest stock markets</h1>
-    <p class="lead">The United States, China, Japan and Europe hold most of the world's listed value. Each market is followed through its benchmark index, with every company in it: share price, returns, size and what analysts expect over the next twelve months. Select a company to simulate an investment.</p>
+    <h1>Twenty of the world's largest stock markets</h1>
+    <p class="lead">The United States, China, Japan, Europe and the main markets of Asia-Pacific and the Americas hold most of the world's listed value. Each market is followed through its benchmark index, with every company in it: share price, returns, size and what analysts expect over the next twelve months. Select a company to simulate an investment.</p>
   </div>
   <div class="ixcards" id="ixCards" role="group" aria-label="Choose an index"><p class="empty">Loading market data…</p></div>
 
@@ -948,7 +973,7 @@ function renderIxCards(){
   document.getElementById("ixCards").innerHTML=M.ix.indices.map(i=>ixCardHTML(i,false)).join("");
   document.querySelectorAll(".ixcard").forEach(b=>b.onclick=()=>selectIndex(b.dataset.ix));
 }
-const IXCOL=()=>[css('--accent'),css('--gold'),css('--neg'),css('--pos'),css('--muted')];
+const IXCOL=()=>[css('--accent'),css('--gold'),css('--neg'),css('--pos'),css('--muted'),"#7B5EA7","#2E8B9A","#C4622D","#5A7D2B","#B0457A"];
 const mkIdx=(el,cfg)=>{const c=new Chart(el,cfg);c._pc="idx";return c};
 function drawIdx(){
   if(!M.ix||!window.Chart||document.querySelector('[data-v="markets"]').hidden)return;
@@ -958,12 +983,12 @@ function drawIdx(){
   const sets=M.ix.indices.map(i=>i[key]);const ref=sets.reduce((a,b)=>a.length>=b.length?a:b);
   const labels=ref.map(x=>x[0]);
   const ds=M.ix.indices.map((i,k)=>{const map=new Map(i[key]);let b0=null;const data=labels.map(d=>{const v=map.get(d);if(v==null)return null;if(b0==null)b0=v;return +(v/b0*100).toFixed(2)});
-    return {label:i.name,data,borderColor:IXCOL()[k],borderWidth:i.id===M.cur?2.6:1.4,pointRadius:0,spanGaps:true,tension:0}});
+    const P=IXCOL();return {label:i.name,data,borderColor:P[k%P.length],borderDash:k>=P.length?[5,3]:[],borderWidth:i.id===M.cur?2.6:1.4,pointRadius:0,spanGaps:true,tension:0,hidden:!(k<5||i.id===M.cur)}});
   const ink=css('--ink'),rule=css('--rule');
   M.charts.push(mkIdx(document.getElementById("cIdx"),{type:"line",data:{labels,datasets:ds},options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
     plugins:{legend:{labels:{color:ink,boxWidth:12}},tooltip:{callbacks:{title:x=>key==="daily"?fmtDate(x[0].label):mLabel(x[0].label),label:x=>x.dataset.label+": "+(x.raw==null?"–":x.raw.toFixed(1))}}},
     scales:{y:{grid:{color:rule,drawTicks:false}},x:{grid:{display:false},ticks:{color:ink,maxRotation:0,autoSkip:true,maxTicksLimit:8,callback:function(v){const l=this.getLabelForValue(v);return key==="daily"?fmtDate(l).slice(3):mLabel(l)}}}}}}));
-  document.getElementById("srcIdx").innerHTML=`Price indices in local currency, ${key==="daily"?"daily closes":"month-end closes"}. Source: Yahoo Finance, last close ${fmtDate(M.ix.indices[0].lastDate)}. Markets close on different days, so the last points can differ by a day.${M.ix.indices.filter(i=>i.note).map(i=>" "+esc(i.note)).join("")}`;
+  document.getElementById("srcIdx").innerHTML=`Price indices in local currency, ${key==="daily"?"daily closes":"month-end closes"}. Source: Yahoo Finance, last close ${fmtDate(M.ix.indices[0].lastDate)}. Markets close on different days, so the last points can differ by a day. Tap a name in the legend to show or hide a market.${M.ix.indices.filter(i=>i.note).map(i=>" "+esc(i.note)).join("")}`;
 }
 async function selectIndex(id){
   M.cur=id;M.page=0;M.sec="All";M.q="";document.getElementById("cSearch").value="";
@@ -1024,8 +1049,8 @@ async function openStock(t){
   }else st.innerHTML="";
   runStock();sd.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
 }
-function fxAt(cur,ym){if(cur==="EUR")return 1;const s=M.ix.fx[cur];if(!s)return null;let v=null;for(const [m,r] of s){if(m<=ym)v=r;else break}return v??s[0][1]}
-function fxNow(cur){if(cur==="EUR")return 1;const s=M.ix.fx[cur];return s?s[s.length-1][1]:null}
+function fxAt(cur,ym){if(cur==="GBp"){const g=fxAt("GBP",ym);return g==null?null:g*100}if(cur==="EUR")return 1;const s=M.ix.fx[cur];if(!s)return null;let v=null;for(const [m,r] of s){if(m<=ym)v=r;else break}return v??s[0][1]}
+function fxNow(cur){if(cur==="GBp"){const g=fxNow("GBP");return g==null?null:g*100}if(cur==="EUR")return 1;const s=M.ix.fx[cur];return s?s[s.length-1][1]:null}
 function runStock(){
   const x=M.sel;if(!x||!window.Chart||document.querySelector('[data-v="markets"]').hidden)return;
   M.charts.filter(c=>c._pc!=="idx").forEach(c=>c.destroy());M.charts=M.charts.filter(c=>c._pc==="idx");base();
@@ -1084,48 +1109,64 @@ document.getElementById("sAmt").addEventListener("input",runStock);
 document.getElementById("sStart").addEventListener("change",runStock);
 quick("dQuick","dStart",runDemo);quick("sQuick","sStart",runStock);
 
-/* ---------- all constituents: home directory, movers, market ESG ---------- */
-const IXIDS=["sp500","ndx","csi300","nikkei225","euronext100"];
-let ALLP=null;
-function loadAllRows(){
-  if(!ALLP)ALLP=(async()=>{
-    if(!M.ix)M.ix=await getJSON("data/markets/indices.json");
-    await Promise.all(IXIDS.map(async id=>{if(!M.rows[id])try{M.rows[id]=await getJSON(`data/markets/${id}.json`)}catch(e){}}));
-    return M;
-  })().catch(e=>{ALLP=null;throw e});
-  return ALLP;
+/* ---------- all companies: home screener and movers ---------- */
+let SCR=null,SCRP=null;
+const ixName=id=>(M.ix?.indices.find(i=>i.id===id)||{}).name||id;
+function loadScreener(){
+  if(!SCRP)SCRP=(async()=>{if(!M.ix)M.ix=await getJSON("data/markets/indices.json");SCR=await getJSON("data/markets/screener.json");return SCR})().catch(e=>{SCRP=null;throw e});
+  return SCRP;
 }
-function ixCardHTML(i,link){return `${link?`<a class="ixcard" href="#markets/${esc(i.id)}">`:`<button type="button" class="ixcard" data-ix="${esc(i.id)}" aria-pressed="false">`}<span class="kick">${i.count} companies</span><span class="nm">${esc(i.name)}</span><span class="mk">${esc(i.market)}</span><span class="lv">${i.note?'<small class="muted">ETF </small>':''}${i.last.toLocaleString("en-GB",{maximumFractionDigits:2})} <small class="${cls(i.r1d)}">${pc(i.r1d)}</small></span><span class="rs"><span>YTD</span><span>1Y</span><span>5Y</span><b class="${cls(i.rytd)}">${pc(i.rytd)}</b><b class="${cls(i.r1y)}">${pc(i.r1y)}</b><b class="${cls(i.r5y)}">${pc(i.r5y)}</b></span>${link?"</a>":"</button>"}`}
+function ixCardHTML(i,link){return `${link?`<a class="ixcard" href="#markets/${esc(i.id)}">`:`<button type="button" class="ixcard" data-ix="${esc(i.id)}" aria-pressed="false">`}<span class="kick">${esc(i.region||"")} · ${i.count} cos.</span><span class="nm">${esc(i.name)}</span><span class="mk">${esc(i.market)}</span><span class="lv">${/ETF/.test(i.note||"")?'<small class="muted">ETF </small>':''}${i.last.toLocaleString("en-GB",{maximumFractionDigits:2})} <small class="${cls(i.r1d)}">${pc(i.r1d)}</small></span><span class="rs"><span>YTD</span><span>1Y</span><span>5Y</span><b class="${cls(i.rytd)}">${pc(i.rytd)}</b><b class="${cls(i.r1y)}">${pc(i.r1y)}</b><b class="${cls(i.r5y)}">${pc(i.r5y)}</b></span>${link?"</a>":"</button>"}`}
+const eurBig=v=>v==null?"–":(v<0?"−":"")+big(Math.abs(v),"€");
+const Q={q:"",ix:"all",sec:"all",sort:"mcapE:-1",per:"rytd",page:0};
 async function renderHomeMarkets(){
-  try{await loadAllRows()}catch(e){document.getElementById("ixHome").innerHTML='<p class="empty">Market data is not available yet. It is refreshed every weekday evening.</p>';return}
+  try{await loadScreener()}catch(e){document.getElementById("ixHome").innerHTML='<p class="empty">Market data is not available yet. It is refreshed every weekday evening.</p>';document.getElementById("scrTable").innerHTML='<tbody><tr><td class="empty">The list of companies could not be loaded. Refresh the page to try again.</td></tr></tbody>';return}
   document.getElementById("ixHome").innerHTML=M.ix.indices.map(i=>ixCardHTML(i,true)).join("");
-  // one entry per company (a company in two indices, e.g. S&P 500 and Nasdaq-100, appears once in the movers)
-  const seen=new Map();IXIDS.forEach(id=>(M.rows[id]?.rows||[]).forEach(r=>{if(!seen.has(r.t)&&r.r1d!=null)seen.set(r.t,{...r,ix:id})}));
-  const all=[...seen.values()].filter(r=>r.mcap&&r.mcap>2e9);
-  const li=r=>`<li><a href="#markets/${esc(r.ix)}/${encodeURIComponent(r.t)}">${esc(r.n)}</a><span class="${cls(r.r1d)}">${pc(r.r1d)} · ${esc(M.ix.indices.find(i=>i.id===r.ix).name)}</span></li>`;
+  const cov=document.getElementById("coverage");if(cov&&!cov.querySelector("[data-all]"))cov.insertAdjacentHTML("beforeend",`<li data-all><a href="#find" data-jump="find"><b>+ ${SCR.rows.length.toLocaleString("en-GB")} companies in ${M.ix.indices.length} markets</b></a><span>Find a company →</span></li>`);
+  const all=SCR.rows.filter(r=>r.mcapE&&r.mcapE>2e9&&r.r1d!=null);
+  const li=r=>`<li><a href="#markets/${esc(r.ix[0])}/${encodeURIComponent(r.t)}">${esc(r.n)}</a><span class="${cls(r.r1d)}">${pc(r.r1d)} · ${esc(ixName(r.ix[0]))}</span></li>`;
   const srt=[...all].sort((a,b)=>b.r1d-a.r1d);
   document.getElementById("movUp").innerHTML=srt.slice(0,6).map(li).join("");
   document.getElementById("movDn").innerHTML=srt.slice(-6).reverse().map(li).join("");
-  renderDir();
+  const ixSel=document.getElementById("scrIx");
+  if(ixSel.options.length<2){const regs=[...new Set(M.ix.indices.map(i=>i.region||"Other"))];
+    ixSel.innerHTML='<option value="all">All markets</option>'+regs.map(r=>`<optgroup label="${esc(r)}">${M.ix.indices.filter(i=>(i.region||"Other")===r).map(i=>`<option value="${i.id}">${esc(i.name)}</option>`).join("")}</optgroup>`).join("");}
+  fillSectors();renderScreener();
 }
-function renderDir(){
-  const q=(document.getElementById("dirSearch").value||"").trim().toLowerCase();let tot=0,hits=0;
-  document.getElementById("dirList").innerHTML=M.ix.indices.map(i=>{const rows=[...(M.rows[i.id]?.rows||[])].sort((a,b)=>a.n.localeCompare(b.n));tot+=rows.length;
-    const f=rows.filter(r=>!q||r.n.toLowerCase().includes(q)||r.t.toLowerCase().includes(q));hits+=f.length;if(q&&!f.length)return"";
-    return `<details open><summary>${esc(i.name)}<span>${f.length}${q?" of "+rows.length:""} companies · ${esc(i.market)}</span></summary><ol>${f.map(r=>`<li><a href="#markets/${esc(i.id)}/${encodeURIComponent(r.t)}" title="${esc(r.n)}">${esc(r.n)}</a><span class="${cls(r.rytd)}">${pc(r.rytd)}</span></li>`).join("")}</ol></details>`}).join("")||'<p class="empty">No company matches this search.</p>';
-  document.getElementById("dirCount").textContent=tot+" listings";
-  document.getElementById("dirHits").textContent=q?hits+" found":"Year-to-date return next to each name";
+function fillSectors(){const sel=document.getElementById("scrSec"),keep=Q.sec;
+  const secs=[...new Set(SCR.rows.filter(r=>Q.ix==="all"||r.ix.includes(Q.ix)).map(r=>r.s).filter(Boolean))].sort();
+  sel.innerHTML='<option value="all">All sectors</option>'+secs.map(s=>`<option ${s===keep?"selected":""}>${esc(s)}</option>`).join("");if(!secs.includes(keep))Q.sec="all"}
+function renderScreener(){
+  if(!SCR)return;
+  const q=Q.q.trim().toLowerCase(),[k,dd]=Q.sort.split(":"),d=+dd,per=Q.per;
+  const val=r=>k==="chg"?r[per]:k==="up"?(r.tm&&r.p?r.tm/r.p-1:null):r[k];
+  let f=SCR.rows.filter(r=>(Q.ix==="all"||r.ix.includes(Q.ix))&&(Q.sec==="all"||r.s===Q.sec)&&(!q||r.n.toLowerCase().includes(q)||r.t.toLowerCase().includes(q)));
+  f.sort((a,b)=>{const va=val(a),vb=val(b);if(va==null&&vb==null)return a.n.localeCompare(b.n);if(va==null)return 1;if(vb==null)return -1;return k==="n"?va.localeCompare(vb)*d:(va-vb)*d});
+  const pages=Math.max(1,Math.ceil(f.length/PAGE));Q.page=Math.min(Q.page,pages-1);
+  const perL={r1d:"Last session",rytd:"Year to date",r1y:"1 year",r5y:"5 years"}[per];
+  const on=c=>c===k||(k==="chg"&&c==="chg")?' class="n on"':' class="n"';
+  document.getElementById("scrTable").innerHTML=`<thead><tr><th>#</th><th${k==="n"?' class="on"':""}>Company</th><th>Market</th><th>Sector</th><th class="n">Price</th><th${on("chg")}>${perL}</th><th${on("mcapE")}>Market cap</th><th${on("revE")}>Revenue</th><th${on("niE")}>Net profit</th><th${on("cashE")}>Cash</th><th${on("up")}>To target</th></tr></thead><tbody>`+
+    (f.slice(Q.page*PAGE,(Q.page+1)*PAGE).map((r,i)=>{const up=r.tm&&r.p?r.tm/r.p-1:null;return `<tr data-href="#markets/${esc(r.ix[0])}/${encodeURIComponent(r.t)}" tabindex="0"><td class="n muted">${Q.page*PAGE+i+1}</td><td><b>${esc(r.n)}</b><span class="tk">${esc(r.t)}</span></td><td>${r.ix.map(ixName).map(esc).join(", ")}</td><td>${esc(r.s||"")}</td><td class="n">${money(r.p,r.sym||"")}</td><td class="n ${cls(r[per])}">${pc(r[per])}</td><td class="n">${eurBig(r.mcapE)}</td><td class="n">${eurBig(r.revE)}</td><td class="n ${r.niE<0?"dn":""}">${eurBig(r.niE)}</td><td class="n">${eurBig(r.cashE)}</td><td class="n ${cls(up)}">${pc(up)}</td></tr>`}).join("")||'<tr><td colspan="11" class="empty">No company matches this search.</td></tr>')+"</tbody>";
+  document.getElementById("scrCount").textContent=`${f.length.toLocaleString("en-GB")} of ${SCR.rows.length.toLocaleString("en-GB")} companies · ${M.ix.indices.length} markets · data as of ${fmtDate(SCR.updated)}`;
+  document.getElementById("scrPager").innerHTML=pages>1?`<button type="button" id="qPrev" ${Q.page?"":"disabled"}>← Previous</button><span>Page ${Q.page+1} of ${pages}</span><button type="button" id="qNext" ${Q.page<pages-1?"":"disabled"}>Next →</button>`:"";
+  const pv=document.getElementById("qPrev"),nx=document.getElementById("qNext");
+  if(pv)pv.onclick=()=>{Q.page--;renderScreener();document.getElementById("find").scrollIntoView()};if(nx)nx.onclick=()=>{Q.page++;renderScreener();document.getElementById("find").scrollIntoView()};
+  document.querySelectorAll("#scrTable tbody tr[data-href]").forEach(tr=>{const go=()=>{location.hash=tr.dataset.href};tr.onclick=go;tr.onkeydown=e=>{if(e.key==="Enter")go()}});
 }
-document.getElementById("dirSearch").addEventListener("input",()=>{if(M.ix)renderDir()});
+document.getElementById("scrQ").addEventListener("input",e=>{Q.q=e.target.value;Q.page=0;renderScreener()});
+document.getElementById("scrIx").addEventListener("change",e=>{Q.ix=e.target.value;Q.page=0;fillSectors();renderScreener()});
+document.getElementById("scrSec").addEventListener("change",e=>{Q.sec=e.target.value;Q.page=0;renderScreener()});
+document.getElementById("scrSort").addEventListener("change",e=>{Q.sort=e.target.value;Q.page=0;renderScreener()});
+document.getElementById("scrPer").addEventListener("change",e=>{Q.per=e.target.value;Q.page=0;renderScreener()});
 /* market ESG table */
 const E={q:"",ix:"all",lvl:"all",sort:{k:"pcr",d:-1},page:0};
 const riskLvl=v=>v==null?null:v<10?"Negligible":v<20?"Low":v<30?"Medium":v<40?"High":"Severe";
 const pcrScore=r=>r.esg==null?null:Math.max(0,Math.round(100-2*r.esg-({3:5,4:10,5:15}[r.cont]||0)));
 const gradeOf=v=>v==null?null:v>=80?"Leader":v>=65?"Strong":v>=50?"Average":v>=35?"Weak":"Laggard";
 async function renderMarketESG(){
-  try{await loadAllRows()}catch(e){document.getElementById("eTable").innerHTML='<tbody><tr><td class="empty">Market data is not available yet.</td></tr></tbody>';return}
+  try{await loadScreener()}catch(e){document.getElementById("eTable").innerHTML='<tbody><tr><td class="empty">Market data is not available yet.</td></tr></tbody>';return}
   const sel=document.getElementById("eIx");if(sel.options.length<2)sel.innerHTML+=M.ix.indices.map(i=>`<option value="${i.id}">${esc(i.name)}</option>`).join("");
-  const seen=new Map();IXIDS.forEach(id=>(M.rows[id]?.rows||[]).forEach(r=>{const x=seen.get(r.t);if(x)x.ixs.push(id);else seen.set(r.t,{...r,ixs:[id],pcr:pcrScore(r),lvl:riskLvl(r.esg)})}));
+  const seen=new Map();SCR.rows.forEach(r=>seen.set(r.t,{...r,ixs:r.ix,pcr:pcrScore(r),lvl:riskLvl(r.esg)}));
   const all=[...seen.values()],withE=all.filter(r=>r.esg!=null);
   if(!withE.length){document.querySelector("#eTable").closest("section").querySelector(".toolbar").hidden=true;document.getElementById("ePager").innerHTML="";
     document.getElementById("eCount").textContent="";document.getElementById("esgMAsOf").textContent="";
@@ -1134,7 +1175,6 @@ async function renderMarketESG(){
   let f=all.filter(r=>(E.ix==="all"||r.ixs.includes(E.ix))&&(E.lvl==="all"||r.lvl===E.lvl)&&(!q||r.n.toLowerCase().includes(q)||r.t.toLowerCase().includes(q)));
   const {k,d}=E.sort;f.sort((a,b)=>{const va=a[k],vb=b[k];if(va==null&&vb==null)return(b.mcap||0)-(a.mcap||0);if(va==null)return 1;if(vb==null)return -1;return typeof va==="string"?va.localeCompare(vb)*d:(va-vb)*d});
   const pages=Math.max(1,Math.ceil(f.length/PAGE));E.page=Math.min(E.page,pages-1);
-  const ixName=id=>M.ix.indices.find(i=>i.id===id)?.name||id;
   const cols=[["n","Company"],["ix","Index"],["s","Sector"],["esg","Risk score","n"],["lvl","Risk level"],["esgE","E","n"],["esgS","S","n"],["esgG","G","n"],["cont","Controversy","n"],["pcr","Our score","n"]];
   document.getElementById("eTable").innerHTML=`<thead><tr>${cols.map(([kk,l,c])=>`<th class="${c||""}" ${kk!=="ix"?`data-k="${kk}"`:""} ${E.sort.k===kk?`aria-sort="${E.sort.d>0?"ascending":"descending"}"`:""}>${l}</th>`).join("")}<th>Grade</th></tr></thead><tbody>`+
     (f.slice(E.page*PAGE,(E.page+1)*PAGE).map(r=>`<tr><td><a href="#markets/${esc(r.ixs[0])}/${encodeURIComponent(r.t)}"><b>${esc(r.n)}</b></a> <span class="muted mono" style="font-size:11.5px">${esc(r.t)}</span></td><td>${r.ixs.map(ixName).join(", ")}</td><td>${esc(r.s)}</td><td class="n">${r.esg??"–"}</td><td>${r.lvl?`<span class="rk ${r.lvl}">${r.lvl}</span>`:'<span class="muted">No score</span>'}</td><td class="n">${r.esgE??"–"}</td><td class="n">${r.esgS??"–"}</td><td class="n">${r.esgG??"–"}</td><td class="n">${r.cont??"–"}</td><td class="n"><b>${r.pcr??"–"}</b></td><td>${r.pcr!=null?`<span class="grade ${gradeOf(r.pcr)}">${gradeOf(r.pcr)}</span>`:""}</td></tr>`).join("")||'<tr><td colspan="11" class="empty">No company matches this search.</td></tr>')+"</tbody>";
