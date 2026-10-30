@@ -195,6 +195,40 @@ td.e,th.e{background:color-mix(in srgb,var(--soft) 80%,transparent)}
 #estTable th,#estTable td{padding:8px 8px}
 .seg button+button{border-left:0}
 
+/* markets */
+.ixcards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border:1px solid var(--rule);background:var(--paper);margin-top:18px}
+.ixcard{all:unset;box-sizing:border-box;cursor:pointer;padding:14px 14px 12px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:4px;min-width:0}
+.ixcard:last-child{border-right:0}
+.ixcard:hover{background:var(--soft)}
+.ixcard[aria-pressed="true"]{background:var(--accentSoft);box-shadow:inset 0 3px 0 var(--accent)}
+.ixcard:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.ixcard .nm{font-family:var(--display);font-size:19px;font-weight:600;line-height:1.15}
+.ixcard .mk{font-size:12px;color:var(--muted);line-height:1.35;min-height:32px}
+.ixcard .lv{font-family:var(--mono);font-size:17px;font-variant-numeric:tabular-nums}
+.ixcard .rs{display:grid;grid-template-columns:repeat(3,auto);gap:2px 10px;font-family:var(--mono);font-size:11.5px;justify-content:start}
+.ixcard .rs span{color:var(--muted)}
+@media (max-width:1000px){.ixcards{grid-template-columns:repeat(3,minmax(0,1fr))}.ixcard:nth-child(3){border-right:0}.ixcard:nth-child(-n+3){border-bottom:1px solid var(--rule)}}
+@media (max-width:600px){.ixcards{grid-template-columns:repeat(2,minmax(0,1fr))}.ixcard{border-bottom:1px solid var(--rule)}.ixcard:nth-child(3){border-right:1px solid var(--rule)}.ixcard:nth-child(2n){border-right:0}}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--rule)}
+.toolbar input[type=search],.toolbar select{font:14px var(--sans);padding:8px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);min-width:0}
+.toolbar input[type=search]{flex:1 1 220px}
+.toolbar .cnt{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:auto}
+#cTable{min-width:900px}
+#cTable th[data-k]{cursor:pointer;user-select:none}
+#cTable th[data-k]:hover{color:var(--ink)}
+#cTable th[aria-sort="ascending"]::after{content:" ▲"} #cTable th[aria-sort="descending"]::after{content:" ▼"}
+#cTable tbody tr{cursor:pointer}
+#cTable tbody tr:hover td{background:var(--soft)}
+#cTable tbody tr.sel td{background:var(--accentSoft)}
+#cTable td .tk{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-left:6px}
+#cTable td a{color:var(--accent)}
+.pager{display:flex;gap:8px;align-items:center;justify-content:center;padding:10px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:12.5px}
+.pager button{font:500 13px var(--sans);padding:6px 12px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer}
+.pager button:disabled{opacity:.4;cursor:default}
+.empty{padding:28px 18px;color:var(--muted);font-size:15px}
+.srclist{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:14px}
+.scn td.n b{font-family:var(--display);font-size:18px}
+
 /* calendar & news */
 .cal{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--rule)}
 .cal .row{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:16px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--rule)}
@@ -280,6 +314,7 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
     <nav class="nav" aria-label="Main">
       <a href="#home" data-view="home">Home</a>
       <a href="#research" data-view="research">Research</a>
+      <a href="#markets" data-view="markets">Markets</a>
       <a href="#demo" data-view="demo">Investment demo</a>
       <a href="#calendar" data-view="calendar">Results calendar</a>
       <a href="#news" data-view="news">News</a>
@@ -299,7 +334,7 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
       <span class="kick">Independent research · Listed companies and start-ups</span>
       <h1>Company research with the assumptions shown.</h1>
       <p>Puccetti Capital Research publishes one note a day on a listed company or a venture-backed start-up that has recently surprised the market. Each note sets out the reported figures, the estimates and the valuation model in full, so readers can test the reasoning as well as the conclusion.</p>
-      <div class="btns"><a class="btn primary" id="latestBtn" href="#research">Read the latest note</a><a class="btn" href="#demo">Try the investment demo</a></div>
+      <div class="btns"><a class="btn primary" id="latestBtn" href="#research">Read the latest note</a><a class="btn" href="#demo">Try the investment demo</a><a class="btn" href="#markets">World markets</a></div>
     </div>
     <div class="stack">
       <div class="panel">
@@ -424,6 +459,85 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
   <p class="muted" style="font-size:12.5px;margin-top:18px">Educational simulation based on month-end closing prices. It excludes fees and taxes. Past performance does not predict future returns. Not investment advice.</p>
 </section>
 
+<!-- MARKETS -->
+<section data-v="markets" hidden>
+  <div class="page">
+    <span class="kick">World markets · updated every weekday</span>
+    <h1>The five largest stock markets</h1>
+    <p class="lead">The United States, China, Japan and Europe hold most of the world's listed value. Each market is followed through its benchmark index, with every company in it: share price, returns, size and what analysts expect over the next twelve months. Select a company to simulate an investment.</p>
+  </div>
+  <div class="ixcards" id="ixCards" role="group" aria-label="Choose an index"><p class="empty">Loading market data…</p></div>
+
+  <div class="sectionhead"><h2>How the indices performed</h2><div class="seg" role="group" aria-label="Period"><button type="button" data-per="1y" aria-pressed="true">1 year</button><button type="button" data-per="5y" aria-pressed="false">5 years</button></div></div>
+  <section class="ex" style="margin-top:14px">
+    <header><i>Chart M1</i><b>Index level, rebased to 100 at the start of the period (local currency)</b></header>
+    <div class="cv" style="height:320px"><canvas id="cIdx" aria-label="Performance of the five indices"></canvas></div>
+    <div class="src" id="srcIdx"></div>
+  </section>
+
+  <div class="sectionhead"><h2 id="consTitle">Constituents</h2><span class="kick" id="consAsOf"></span></div>
+  <section class="ex" style="margin-top:14px">
+    <div class="toolbar">
+      <input type="search" id="cSearch" placeholder="Search a company or ticker" aria-label="Search a company or ticker">
+      <select id="cSector" aria-label="Filter by sector"></select>
+      <span class="cnt" id="cCount"></span>
+    </div>
+    <div class="scroll"><table id="cTable"></table></div>
+    <div class="pager" id="cPager"></div>
+    <div class="src" id="srcCons"></div>
+  </section>
+
+  <div id="sd" hidden>
+    <div class="sectionhead"><h2 id="sdTitle">Investment simulation</h2><span class="kick" id="sdAsOf"></span></div>
+    <div class="demo-grid" style="margin-top:14px">
+      <div class="panel form">
+        <div class="field"><label for="sAmt">Amount invested (€)</label><input id="sAmt" type="number" min="100" step="100" value="1000"></div>
+        <div class="field"><label for="sStart">Bought at the end of</label><select id="sStart"></select></div>
+        <p class="muted" style="font-size:13px" id="sNote"></p>
+        <div class="btns"><a class="btn" id="sQuote" target="_blank" rel="noopener">Quote</a><a class="btn" id="sAn" target="_blank" rel="noopener">Analyst page</a></div>
+      </div>
+      <div class="stack">
+        <div class="tiles">
+          <div><span>Invested</span><b id="sInv">–</b></div>
+          <div><span>Value today</span><b id="sVal">–</b></div>
+          <div><span>Gain / loss</span><b id="sGain">–</b></div>
+          <div><span>Same in the index</span><b id="sBench">–</b></div>
+        </div>
+        <section class="ex">
+          <header><i>Chart M2</i><b>Value of the investment in euros</b></header>
+          <div class="cv" style="height:270px"><canvas id="cStock" aria-label="Value of the investment over time"></canvas></div>
+          <div class="src" id="srcStock"></div>
+        </section>
+      </div>
+    </div>
+    <div class="grid2">
+      <section class="ex">
+        <header><i>Table M3</i><b>What the investment could be worth in twelve months</b></header>
+        <div class="scroll"><table id="scnTable" class="scn"></table></div>
+        <div class="src" id="srcScn"></div>
+      </section>
+      <section class="ex">
+        <header><i>Chart M4</i><b>Share price and analyst 12-month targets</b></header>
+        <div class="cv" style="height:260px"><canvas id="cFan" aria-label="Share price and analyst targets"></canvas></div>
+        <div class="src">Solid line: month-end share price, local currency. Shaded fan: lowest to highest analyst target in twelve months. Dashed line: median target.</div>
+      </section>
+    </div>
+    <p class="explain" id="sText" style="margin-top:18px"></p>
+  </div>
+
+  <div class="grid2" style="margin-top:28px">
+    <div class="panel">
+      <h3>How to read the figures</h3>
+      <p style="font-size:14.5px">Returns are total returns: share prices are adjusted for dividends and splits, so a dividend counts as if it were reinvested. The simulation converts euros into the share's currency on the purchase date and back at today's rate, so currency moves are included. Twelve-month scenarios use analysts' lowest, median and highest price targets with today's exchange rate. Targets are opinions, not forecasts we endorse, and they are often wrong.</p>
+    </div>
+    <div class="panel">
+      <h3>Sources</h3>
+      <ul class="srclist" id="mSources"></ul>
+    </div>
+  </div>
+  <p class="muted" style="font-size:12.5px;margin-top:18px">Educational simulation. Prices are end-of-day and may be delayed; data can contain errors. It excludes fees and taxes. Past performance does not predict future returns. Not investment advice.</p>
+</section>
+
 <!-- CALENDAR -->
 <section data-v="calendar" hidden>
   <div class="page">
@@ -520,6 +634,7 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
       <h3>Site</h3>
       <ul class="list-plain" style="font-size:14px">
         <li><a href="#research">Research</a><span></span></li>
+        <li><a href="#markets">World markets</a><span></span></li>
         <li><a href="#demo">Investment demo</a><span></span></li>
         <li><a href="#calendar">Results calendar</a><span></span></li>
         <li><a href="#esg">ESG ratings</a><span></span></li>
@@ -534,7 +649,7 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
 <script>
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 let charts=[], demoCharts=[], REG=[], MKT=null, current=null, filter="All", newsFilter="All";
-const FIXED=["home","research","demo","calendar","news","esg","methodology"];
+const FIXED=["home","research","markets","demo","calendar","news","esg","methodology"];
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const fmtDate=d=>{if(!d)return"";const [y,m,dd]=d.split("-");return dd?`${dd}/${m}/${y}`:`${MONTHS[+m-1]} ${y}`};
@@ -659,6 +774,7 @@ function route(){
   window.scrollTo(0,0);
   if(isNote)openNote(h);
   if(view==="demo")setTimeout(()=>{runDemo();runPriv()},0);
+  if(view==="markets")setTimeout(()=>{loadMarkets();runStock()},0);
 }
 function drawNote(){
   if(!window.Chart||typeof window.NOTE_DRAW!=="function"||document.getElementById("noteView").hidden)return;
@@ -745,6 +861,165 @@ document.getElementById("segListed").onclick=()=>{segSet(true)};
 document.getElementById("segPrivate").onclick=()=>{segSet(false)};
 function segSet(l){document.getElementById("segListed").setAttribute("aria-pressed",l);document.getElementById("segPrivate").setAttribute("aria-pressed",!l);document.getElementById("demoListed").hidden=!l;document.getElementById("demoPrivate").hidden=l;setTimeout(l?runDemo:runPriv,0)}
 
+/* ---------- world markets ---------- */
+const M={ix:null,cur:null,rows:{},hist:{},sel:null,per:"1y",q:"",sec:"All",sort:{k:"mcap",d:-1},page:0,charts:[],loading:false};
+const PAGE=50;
+const pc=v=>v==null?"–":pct(v);
+const cls=v=>v==null?"":v>=0?"up":"dn";
+function money(v,sym,dp){if(v==null)return"–";const a=Math.abs(v);dp=dp??(a>=1000?0:a>=10?2:3);return(v<0?"−":"")+sym+a.toLocaleString("en-GB",{minimumFractionDigits:dp,maximumFractionDigits:dp})}
+function big(v,sym){if(v==null)return"–";const u=[[1e12,"tn"],[1e9,"bn"],[1e6,"m"]];for(const [d,s] of u)if(v>=d)return sym+(v/d).toLocaleString("en-GB",{maximumFractionDigits:v/d>=100?0:1})+s;return sym+Math.round(v).toLocaleString("en-GB")}
+async function getJSON(u){const r=await fetch(u,{cache:"no-store"});if(!r.ok)throw new Error(u+" "+r.status);return r.json()}
+async function loadMarkets(){
+  if(M.ix||M.loading){if(M.ix)drawIdx();return}
+  M.loading=true;
+  try{M.ix=await getJSON("data/markets/indices.json")}catch(e){M.loading=false;document.getElementById("ixCards").innerHTML='<p class="empty">Market data is being prepared and will appear after the next automatic update (every weekday evening). Refresh the page later.</p>';return}
+  M.loading=false;
+  renderSources();renderIxCards();drawIdx();
+  selectIndex(M.ix.indices[0].id);
+}
+function renderSources(){
+  const L=M.ix.indices.map(i=>`<li><b>${esc(i.name)}</b>: <a href="${esc(i.official)}" target="_blank" rel="noopener">index provider</a> · <a href="${esc(i.wiki)}" target="_blank" rel="noopener">constituent list</a> · <a href="${esc(i.quote)}" target="_blank" rel="noopener">prices</a></li>`).join("");
+  document.getElementById("mSources").innerHTML=L+`<li>Share prices, analyst targets, market capitalisation and exchange rates: <a href="https://finance.yahoo.com" target="_blank" rel="noopener">Yahoo Finance</a>, retrieved with the open-source <a href="https://github.com/ranaroussi/yfinance" target="_blank" rel="noopener">yfinance</a> library.</li><li>Update script: <a href="https://github.com/mattiapuccetti311-design/puccetti-capital/blob/main/tools/update_markets.py" target="_blank" rel="noopener">tools/update_markets.py</a>, run every weekday by GitHub Actions.</li>`;
+}
+function renderIxCards(){
+  document.getElementById("ixCards").innerHTML=M.ix.indices.map(i=>`<button type="button" class="ixcard" data-ix="${esc(i.id)}" aria-pressed="false"><span class="kick">${i.count} companies</span><span class="nm">${esc(i.name)}</span><span class="mk">${esc(i.market)}</span><span class="lv">${i.last.toLocaleString("en-GB",{maximumFractionDigits:2})} <small class="${cls(i.r1d)}">${pc(i.r1d)}</small></span><span class="rs"><span>YTD</span><span>1Y</span><span>5Y</span><b class="${cls(i.rytd)}">${pc(i.rytd)}</b><b class="${cls(i.r1y)}">${pc(i.r1y)}</b><b class="${cls(i.r5y)}">${pc(i.r5y)}</b></span></button>`).join("");
+  document.querySelectorAll(".ixcard").forEach(b=>b.onclick=()=>selectIndex(b.dataset.ix));
+}
+const IXCOL=()=>[css('--accent'),css('--gold'),css('--neg'),css('--pos'),css('--muted')];
+const mkIdx=(el,cfg)=>{const c=new Chart(el,cfg);c._pc="idx";return c};
+function drawIdx(){
+  if(!M.ix||!window.Chart||document.querySelector('[data-v="markets"]').hidden)return;
+  M.charts.filter(c=>c._pc==="idx").forEach(c=>c.destroy());M.charts=M.charts.filter(c=>c._pc!=="idx");base();
+  const key=M.per==="1y"?"daily":"monthly";
+  // common date axis from the first index; others are matched by date (or month)
+  const sets=M.ix.indices.map(i=>i[key]);const ref=sets.reduce((a,b)=>a.length>=b.length?a:b);
+  const labels=ref.map(x=>x[0]);
+  const ds=M.ix.indices.map((i,k)=>{const map=new Map(i[key]);let b0=null;const data=labels.map(d=>{const v=map.get(d);if(v==null)return null;if(b0==null)b0=v;return +(v/b0*100).toFixed(2)});
+    return {label:i.name,data,borderColor:IXCOL()[k],borderWidth:i.id===M.cur?2.6:1.4,pointRadius:0,spanGaps:true,tension:0}});
+  const ink=css('--ink'),rule=css('--rule');
+  M.charts.push(mkIdx(document.getElementById("cIdx"),{type:"line",data:{labels,datasets:ds},options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+    plugins:{legend:{labels:{color:ink,boxWidth:12}},tooltip:{callbacks:{title:x=>key==="daily"?fmtDate(x[0].label):mLabel(x[0].label),label:x=>x.dataset.label+": "+(x.raw==null?"–":x.raw.toFixed(1))}}},
+    scales:{y:{grid:{color:rule,drawTicks:false}},x:{grid:{display:false},ticks:{color:ink,maxRotation:0,autoSkip:true,maxTicksLimit:8,callback:function(v){const l=this.getLabelForValue(v);return key==="daily"?fmtDate(l).slice(3):mLabel(l)}}}}}}));
+  document.getElementById("srcIdx").innerHTML=`Price indices in local currency, ${key==="daily"?"daily closes":"month-end closes"}. Source: Yahoo Finance, last close ${fmtDate(M.ix.indices[0].lastDate)}. Markets close on different days, so the last points can differ by a day.`;
+}
+async function selectIndex(id){
+  M.cur=id;M.page=0;M.sec="All";M.q="";document.getElementById("cSearch").value="";
+  document.querySelectorAll(".ixcard").forEach(b=>b.setAttribute("aria-pressed",b.dataset.ix===id));
+  drawIdx();
+  const ix=M.ix.indices.find(i=>i.id===id);
+  document.getElementById("consTitle").textContent=`${ix.name}: all ${ix.count} companies`;
+  document.getElementById("cTable").innerHTML='<tbody><tr><td class="empty">Loading companies…</td></tr></tbody>';
+  if(!M.rows[id]){try{M.rows[id]=await getJSON(`data/markets/${id}.json`)}catch(e){document.getElementById("cTable").innerHTML='<tbody><tr><td class="empty">The list of companies could not be loaded. Refresh the page to try again.</td></tr></tbody>';return}}
+  if(M.cur!==id)return;
+  const d=M.rows[id];
+  const secs=["All",...[...new Set(d.rows.map(r=>r.s).filter(Boolean))].sort()];
+  document.getElementById("cSector").innerHTML=secs.map(s=>`<option value="${esc(s)}">${s==="All"?"All sectors":esc(s)}</option>`).join("");
+  document.getElementById("consAsOf").textContent="Data as of "+fmtDate(d.updated);
+  const withT=d.rows.filter(r=>r.tm).length;
+  document.getElementById("srcCons").innerHTML=`Constituents: <a href="${esc(d.source)}" target="_blank" rel="noopener">${esc(d.source.replace("https://",""))}</a>. Prices and analyst consensus: Yahoo Finance. Analyst targets available for ${withT} of ${d.rows.length} companies; they are refreshed in rotation, at least once a week. Click a row to simulate an investment.`;
+  renderCons();
+}
+function filtered(){
+  const d=M.rows[M.cur];if(!d)return[];const q=M.q.trim().toLowerCase();
+  let r=d.rows.filter(x=>(M.sec==="All"||x.s===M.sec)&&(!q||x.n.toLowerCase().includes(q)||x.t.toLowerCase().includes(q)));
+  const {k,d:dir}=M.sort;
+  const val=x=>k==="up"?(x.tm&&x.p?x.tm/x.p-1:null):x[k];
+  r=[...r].sort((a,b)=>{const va=val(a),vb=val(b);if(va==null&&vb==null)return 0;if(va==null)return 1;if(vb==null)return -1;return typeof va==="string"?va.localeCompare(vb)*dir:(va-vb)*dir});
+  return r;
+}
+function renderCons(){
+  const r=filtered(),pages=Math.max(1,Math.ceil(r.length/PAGE));M.page=Math.min(M.page,pages-1);
+  const cols=[["n","Company"],["s","Sector"],["p","Price","n"],["r1d","1 day","n"],["rytd","YTD","n"],["r1y","1 year","n"],["mcap","Market cap","n"],["tm","Median target","n"],["up","Upside","n"],["na","Analysts","n"]];
+  const head=`<thead><tr>${cols.map(([k,l,c])=>`<th class="${c||""}" data-k="${k}" ${M.sort.k===k?`aria-sort="${M.sort.d>0?"ascending":"descending"}"`:""} scope="col">${l}</th>`).join("")}<th>Source</th></tr></thead>`;
+  const body=r.slice(M.page*PAGE,(M.page+1)*PAGE).map(x=>{const up=x.tm&&x.p?x.tm/x.p-1:null;
+    return `<tr data-t="${esc(x.t)}" class="${M.sel&&M.sel.t===x.t?"sel":""}" tabindex="0"><td><b>${esc(x.n)}</b><span class="tk">${esc(x.t)}</span></td><td>${esc(x.s)}</td><td class="n">${money(x.p,x.sym)}</td><td class="n ${cls(x.r1d)}">${pc(x.r1d)}</td><td class="n ${cls(x.rytd)}">${pc(x.rytd)}</td><td class="n ${cls(x.r1y)}">${pc(x.r1y)}</td><td class="n">${big(x.mcap,x.sym)}</td><td class="n">${money(x.tm,x.sym)}</td><td class="n ${cls(up)}">${pc(up)}</td><td class="n">${x.na||"–"}</td><td><a href="https://finance.yahoo.com/quote/${encodeURIComponent(x.t)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Yahoo</a></td></tr>`}).join("");
+  document.getElementById("cTable").innerHTML=head+`<tbody>${body||'<tr><td colspan="11" class="empty">No company matches this search.</td></tr>'}</tbody>`;
+  document.getElementById("cCount").textContent=`${r.length} companies`;
+  document.getElementById("cPager").innerHTML=pages>1?`<button type="button" id="pgPrev" ${M.page?"":"disabled"}>← Previous</button><span>Page ${M.page+1} of ${pages}</span><button type="button" id="pgNext" ${M.page<pages-1?"":"disabled"}>Next →</button>`:"";
+  const pv=document.getElementById("pgPrev"),nx=document.getElementById("pgNext");
+  if(pv)pv.onclick=()=>{M.page--;renderCons()};if(nx)nx.onclick=()=>{M.page++;renderCons()};
+  document.querySelectorAll("#cTable th[data-k]").forEach(th=>th.onclick=()=>{const k=th.dataset.k;M.sort=M.sort.k===k?{k,d:-M.sort.d}:{k,d:["n","s"].includes(k)?1:-1};M.page=0;renderCons()});
+  document.querySelectorAll("#cTable tbody tr[data-t]").forEach(tr=>{const go=()=>openStock(tr.dataset.t);tr.onclick=go;tr.onkeydown=e=>{if(e.key==="Enter")go()}});
+}
+document.getElementById("cSearch").addEventListener("input",e=>{M.q=e.target.value;M.page=0;renderCons()});
+document.getElementById("cSector").addEventListener("change",e=>{M.sec=e.target.value;M.page=0;renderCons()});
+document.querySelectorAll('[data-per]').forEach(b=>b.onclick=()=>{M.per=b.dataset.per;document.querySelectorAll('[data-per]').forEach(x=>x.setAttribute("aria-pressed",x===b));drawIdx()});
+async function openStock(t){
+  const d=M.rows[M.cur];const x=d.rows.find(r=>r.t===t);if(!x)return;
+  if(!M.hist[M.cur]){try{M.hist[M.cur]=(await getJSON(`data/markets/${M.cur}-hist.json`)).series}catch(e){return}}
+  const ser=M.hist[M.cur][t];
+  M.sel={...x,ser,ix:M.cur};renderCons();
+  const sd=document.getElementById("sd");sd.hidden=false;
+  document.getElementById("sdTitle").textContent="Investment simulation: "+x.n;
+  document.getElementById("sdAsOf").textContent=x.d?"Price as of "+fmtDate(x.d):"";
+  document.getElementById("sQuote").href="https://finance.yahoo.com/quote/"+encodeURIComponent(t);
+  document.getElementById("sAn").href="https://finance.yahoo.com/quote/"+encodeURIComponent(t)+"/analysis";
+  const st=document.getElementById("sStart");
+  if(ser&&ser.length>2){const n=ser.length;const opts=ser.slice(0,-1).map(([m])=>m).reverse();
+    st.innerHTML=opts.map(m=>`<option value="${m}">${mLabel(m)}</option>`).join("");
+    const pick=k=>opts[Math.min(k,opts.length-1)];st.value=pick(11);
+  }else st.innerHTML="";
+  runStock();sd.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+}
+function fxAt(cur,ym){if(cur==="EUR")return 1;const s=M.ix.fx[cur];if(!s)return null;let v=null;for(const [m,r] of s){if(m<=ym)v=r;else break}return v??s[0][1]}
+function fxNow(cur){if(cur==="EUR")return 1;const s=M.ix.fx[cur];return s?s[s.length-1][1]:null}
+function runStock(){
+  const x=M.sel;if(!x||!window.Chart||document.querySelector('[data-v="markets"]').hidden)return;
+  M.charts.filter(c=>c._pc!=="idx").forEach(c=>c.destroy());M.charts=M.charts.filter(c=>c._pc==="idx");base();
+  const amt=Math.max(0,+document.getElementById("sAmt").value||0),cur=x.cur,sym=x.sym,ser=x.ser||[];
+  const ink=css('--ink'),mut=css('--muted'),rule=css('--rule'),acc=css('--accent'),gold=css('--gold');
+  const okFx=fxNow(cur)!=null;
+  let vals=[],labels=[],bvals=null,last=null,start=document.getElementById("sStart").value;
+  if(ser.length>2&&start&&okFx){
+    const i0=ser.findIndex(s=>s[0]===start);const S=ser.slice(i0);labels=S.map(s=>mLabel(s[0]));
+    const sh=amt*fxAt(cur,start)/S[0][1];vals=S.map(([m,p])=>sh*p/fxAt(cur,m));vals[vals.length-1]=sh*S[S.length-1][1]/fxNow(cur);last=vals[vals.length-1];
+    const ix=M.ix.indices.find(i=>i.id===x.ix);const B=new Map(ix.monthly);const b0=B.get(start);const icur=ix.currency;
+    if(b0)bvals=S.map(([m])=>{const b=B.get(m);return b?amt*fxAt(icur,start)/b0*b/fxAt(icur,m):null});
+  }
+  const g=last!=null?last-amt:null,bl=bvals?bvals[bvals.length-1]:null;
+  document.getElementById("sInv").textContent=eur(amt);
+  document.getElementById("sVal").textContent=last!=null?eur(last):"–";
+  const sg=document.getElementById("sGain");sg.textContent=g!=null?eur(g)+" ("+pct(g/amt)+")":"–";sg.className=g==null?"":g>=0?"up":"dn";
+  document.getElementById("sBench").textContent=bl!=null?eur(bl)+" ("+pct(bl/amt-1)+")":"–";
+  document.getElementById("sNote").textContent=`${x.n} is quoted in ${cur}. ${cur==="EUR"?"No currency conversion is needed.":`Euros are converted at the month-end EUR/${cur} rate; today €1 = ${fxNow(cur)?.toFixed(cur==="JPY"?1:4)} ${cur}.`} Prices include reinvested dividends.`;
+  document.getElementById("srcStock").textContent="Month-end total-return prices and EUR exchange rates: Yahoo Finance. Last point: latest close. Index comparison uses the price index in euros.";
+  if(vals.length)M.charts.push(new Chart(document.getElementById("cStock"),{type:"line",data:{labels,datasets:[
+    {label:x.n,data:vals,borderColor:acc,backgroundColor:acc+"1a",fill:true,pointRadius:0,borderWidth:2,tension:0},
+    ...(bvals?[{label:M.ix.indices.find(i=>i.id===x.ix).name,data:bvals,borderColor:mut,borderDash:[5,4],pointRadius:0,borderWidth:1.5,spanGaps:true}]:[]),
+    {label:"Invested",data:labels.map(()=>amt),borderColor:rule,pointRadius:0,borderWidth:1}]},
+    options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},plugins:{legend:{labels:{color:ink,boxWidth:12,filter:l=>l.text!=="Invested"}},tooltip:{callbacks:{label:c=>c.dataset.label+": "+eur(c.raw)}}},
+      scales:{y:{grid:{color:rule,drawTicks:false},ticks:{callback:v=>eur(v)}},x:{grid:{display:false},ticks:{color:ink,maxRotation:0,autoSkip:true,maxTicksLimit:8}}}}}));
+  // 12-month scenarios
+  const today=last!=null?last:amt,shNow=x.p&&okFx?today*fxNow(cur)/x.p:null;
+  const scn=x.tm&&shNow?[["Lowest target",x.tl],["Median target",x.tm],["Highest target",x.th]].filter(s=>s[1]):[];
+  document.getElementById("scnTable").innerHTML=scn.length?`<thead><tr><th>Scenario</th><th class="n">Target price</th><th class="n">Share move</th><th class="n">Value in 12 months</th><th class="n">vs invested</th></tr></thead><tbody>`+
+    scn.map(([l,t])=>{const v=shNow*t/fxNow(cur);return `<tr class="${l.startsWith("Median")?"b":""}"><td>${l}</td><td class="n">${money(t,sym)}</td><td class="n ${cls(t/x.p-1)}">${pct(t/x.p-1)}</td><td class="n"><b>${eur(v)}</b></td><td class="n ${cls(v/amt-1)}">${pct(v/amt-1)}</td></tr>`}).join("")+`</tbody>`
+    :`<tbody><tr><td class="empty">No analyst price targets are available for this company yet.</td></tr></tbody>`;
+  const REC={strong_buy:"strong buy",buy:"buy",hold:"hold",underperform:"underperform",sell:"sell"};
+  document.getElementById("srcScn").textContent=scn.length?`${x.na} analysts, consensus "${REC[x.rec]||x.rec||"n/a"}", targets as of ${fmtDate(x.tAsOf)} (Yahoo Finance). Starting from today's value of ${eur(today)}; exchange rate held at today's level; dividends over the next year not included.`:"";
+  // fan chart
+  if(ser.length>2&&x.tm){
+    const raw=ser.slice(-25).map(s=>s[1]),labs=ser.slice(-25).map(s=>mLabel(s[0]));
+    // raw history is dividend-adjusted; rescale so the last point equals today's price for comparability with targets
+    const k=x.p/raw[raw.length-1],hist=raw.map(v=>v*k);
+    const [ly,lm]=ser[ser.length-1][0].split("-").map(Number);const fut=[];for(let q=3;q<=12;q+=3){const mm=((lm-1+q)%12)+1,yy=ly+Math.floor((lm-1+q)/12);fut.push(MONTHS[mm-1]+" "+String(yy).slice(2))}
+    const n=hist.length,lp=hist[n-1],pad=Array(n-1).fill(null),lerp=(f,v)=>lp+(v-lp)*f;
+    const mk=v=>[...pad,lp,...fut.map((_,i)=>lerp((i+1)/4,v))];
+    M.charts.push(new Chart(document.getElementById("cFan"),{type:"line",data:{labels:[...labs,...fut],datasets:[
+      {label:"Share price",data:[...hist,...fut.map(()=>null)],borderColor:ink,borderWidth:2,pointRadius:0,tension:0},
+      {label:"Highest target",data:mk(x.th||x.tm),borderColor:acc+"66",backgroundColor:acc+"22",fill:"+1",pointRadius:0,borderWidth:1},
+      {label:"Lowest target",data:mk(x.tl||x.tm),borderColor:acc+"66",pointRadius:0,borderWidth:1},
+      {label:"Median target",data:mk(x.tm),borderColor:acc,borderDash:[5,4],pointRadius:0,borderWidth:1.6}]},
+      options:{maintainAspectRatio:false,plugins:{legend:{labels:{color:ink,boxWidth:12,filter:l=>l.text!=="Lowest target"}},tooltip:{filter:c=>c.raw!=null,callbacks:{label:c=>c.dataset.label+": "+money(c.raw,sym)}}},
+        scales:{y:{grid:{color:rule,drawTicks:false},ticks:{callback:v=>money(v,sym,0)}},x:{grid:{display:false},ticks:{color:ink,maxRotation:0,autoSkip:true,maxTicksLimit:7}}}}}));
+  }
+  // narrative
+  const med=scn.find(s=>s[0].startsWith("Median"));
+  document.getElementById("sText").innerHTML=last!=null?`An investment of <b>${eur(amt)}</b> in ${esc(x.n)} at the end of ${mLabel(start)} would be worth <b>${eur(last)}</b> today (${pct(g/amt)}), currency effect and reinvested dividends included.${bl!=null?` The same amount in the ${esc(M.ix.indices.find(i=>i.id===x.ix).name)} would be worth ${eur(bl)} (${pct(bl/amt-1)}).`:""}${med?` If the share reached the median analyst target of ${money(med[1],sym)} in twelve months, today's ${eur(today)} would become about <b>${eur(shNow*med[1]/fxNow(cur))}</b>; the range across analysts is ${eur(shNow*(x.tl||med[1])/fxNow(cur))} to ${eur(shNow*(x.th||med[1])/fxNow(cur))}.`:""}`:"Price history is not available for this company yet.";
+}
+document.getElementById("sAmt").addEventListener("input",runStock);
+document.getElementById("sStart").addEventListener("change",runStock);
+
 /* ---------- misc ---------- */
 document.addEventListener("click",e=>{
   const j=e.target.closest("[data-jump]");if(j){e.preventDefault();const t=document.getElementById(j.dataset.jump);t&&t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});return}
@@ -759,7 +1034,7 @@ document.getElementById("installBtn").onclick=async()=>{if(!deferred)return;defe
 if("serviceWorker" in navigator&&location.protocol==="https:"&&!location.hostname.endsWith("claude.ai")&&!location.hostname.includes("claudeusercontent")){navigator.serviceWorker.register("sw.js").catch(()=>{})}
 addEventListener("hashchange",route);
 loadAll().then(route);
-const redraw=()=>{drawNote();runDemo();runPriv()};
+const redraw=()=>{drawNote();runDemo();runPriv();drawIdx();runStock()};
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',redraw);
 new MutationObserver(redraw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 document.fonts&&document.fonts.ready.then(redraw);
