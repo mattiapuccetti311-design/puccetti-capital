@@ -279,6 +279,41 @@ def refresh_targets(tickers, cache):
     return cache
 
 
+def refresh_esg(tickers, cache):
+    """Sustainalytics ESG risk scores as published on Yahoo Finance (refreshed monthly)."""
+    now = time.time()
+    due = sorted(tickers, key=lambda t: cache.get(t, {}).get("ts", 0))
+    due = [t for t in due if now - cache.get(t, {}).get("ts", 0) > 30 * 86400][:TARGETS_PER_RUN]
+    log(f"ESG data: refreshing {len(due)} of {len(tickers)} tickers")
+    fails = found = 0
+    for k, t in enumerate(due):
+        try:
+            df = yf.Ticker(t).sustainability
+            rec = {"ts": now}
+            if df is not None and len(df):
+                col0 = df.columns[0]
+                g = lambda key: df.loc[key, col0] if key in df.index else None
+                rec.update({"tot": clean(g("totalEsg"), 1), "e": clean(g("environmentScore"), 1), "s": clean(g("socialScore"), 1),
+                            "g": clean(g("governanceScore"), 1), "cont": clean(g("highestControversy"), 0), "pct": clean(g("percentile"), 0),
+                            "peer": str(g("peerGroup")) if g("peerGroup") is not None else None})
+                if rec.get("tot") is not None:
+                    found += 1
+            cache[t] = rec
+            fails = 0
+        except Exception as e:
+            fails += 1
+            cache[t] = {"ts": now}
+            if fails >= 25:
+                log("  too many ESG failures in a row, stopping for this run")
+                break
+            time.sleep(2)
+        if k % 100 == 99:
+            log(f"  {k + 1} done, {found} with scores")
+        time.sleep(0.3)
+    log(f"ESG data: {found} scores found this run")
+    return cache
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -307,6 +342,9 @@ def main():
     # 3. analyst targets, in rotation
     cache = refresh_targets(all_t, cache)
     save(cache_path, cache)
+    esg_path = os.path.join(OUT, "esg-cache.json")
+    esg = refresh_esg(all_t, load(esg_path, {}))
+    save(esg_path, esg)
 
     fx = {cur: monthly(idx_px[t]) for cur, t in FX.items() if t in idx_px}
     out_ix = []
@@ -347,6 +385,9 @@ def main():
             if c.get("n"):
                 row.update({"tl": c.get("low"), "tm": c.get("med") or c.get("mean"), "th": c.get("high"), "na": c.get("n"), "rec": c.get("rec"),
                             "tAsOf": datetime.fromtimestamp(c["ts"], timezone.utc).strftime("%Y-%m-%d")})
+            e = esg.get(t, {})
+            if e.get("tot") is not None:
+                row.update({"esg": e["tot"], "esgE": e.get("e"), "esgS": e.get("s"), "esgG": e.get("g"), "cont": e.get("cont"), "esgPct": e.get("pct")})
             rows.append(row)
         rows.sort(key=lambda r: -(r.get("mcap") or 0))
         if not rows:
