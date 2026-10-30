@@ -432,6 +432,28 @@ def covered_history(today):
     log(f"covered companies: 5-year history for {len(out['series'])} of {len(want)}")
 
 
+def monthly_ranking(today, rows):
+    """Top and bottom 10 over the last month, fixed once per calendar month (first run of the month)."""
+    path = os.path.join(OUT, "rankings.json")
+    data = load(path, {"history": []})
+    month = today[:7]
+    if data.get("month") == month:
+        return
+    pool = [r for r in rows if r.get("r1m") is not None and (r.get("mcapE") or 0) >= 1e9 and r.get("p")]
+    if len(pool) < 50:
+        log("ranking: not enough data, skipped")
+        return
+    pool.sort(key=lambda r: r["r1m"])
+    keep = ("t", "n", "s", "ix", "sym", "p", "r1m", "rytd", "r1y", "mcapE", "revE", "niE", "tm", "na")
+    pick = lambda rs: [{k: r.get(k) for k in keep if r.get(k) is not None} for rs_ in [rs] for r in rs_]
+    if data.get("month"):
+        data["history"] = ([{k: data[k] for k in ("month", "asof", "top", "bottom")}] + data.get("history", []))[:12]
+    data.update({"month": month, "asof": today, "universe": len(pool), "top": pick(pool[::-1][:10]), "bottom": pick(pool[:10]),
+                 "rule": "Share-price total return over the previous 30 days, companies above €1bn market value, one entry per company."})
+    save(path, data)
+    log(f"ranking for {month}: top {data['top'][0]['n']} {data['top'][0]['r1m']:+.1%}, bottom {data['bottom'][0]['n']} {data['bottom'][0]['r1m']:+.1%}")
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -513,7 +535,7 @@ def main():
             row = {"t": t, "n": m["n"] if m["n"] and m["n"] != "nan" else (c.get("name") or t), "s": m.get("s") or c.get("sector") or "",
                    "cur": cur, "sym": SYM.get(cur, cur + " "), "mcap": c.get("mcap")}
             if s is not None and len(s) > 1:
-                row.update({"p": clean(s.iloc[-1]), "d": s.index[-1].strftime("%Y-%m-%d"), "r1d": clean(s.iloc[-1] / s.iloc[-2] - 1, 5),
+                row.update({"p": clean(s.iloc[-1]), "d": s.index[-1].strftime("%Y-%m-%d"), "r1d": clean(s.iloc[-1] / s.iloc[-2] - 1, 5), "r1m": ret(s, 30),
                             "rytd": ret(s, ytd=True), "r1y": ret(s, 365), "r5y": ret(s, 5 * 365)})
                 hist[t] = monthly(s[s.index > s.index[-1] - pd.Timedelta(days=5 * 366)])
             if c.get("n"):
@@ -532,7 +554,7 @@ def main():
             if r["t"] in screener:
                 screener[r["t"]]["ix"].append(ix["id"])
             else:
-                screener[r["t"]] = {k: r.get(k) for k in ("t", "n", "s", "sym", "cur", "p", "r1d", "rytd", "r1y", "r5y", "mcapE", "revE", "cashE", "niE", "tm", "na")} | {"ix": [ix["id"]]}
+                screener[r["t"]] = {k: r.get(k) for k in ("t", "n", "s", "sym", "cur", "p", "r1d", "r1m", "rytd", "r1y", "r5y", "mcapE", "revE", "cashE", "niE", "emp", "tm", "na")} | {"ix": [ix["id"]]}
         DIAG.setdefault(ix["id"], {}).update({"rows": len(rows), "priced": sum(1 for r in rows if r.get("p")), "targets": sum(1 for r in rows if r.get("tm")), "revenue": sum(1 for r in rows if r.get("revE"))})
         save(os.path.join(OUT, ix["id"] + ".json"), {"id": ix["id"], "name": ix["name"], "updated": today, "source": ix["wiki"], "rows": rows})
         save(os.path.join(OUT, ix["id"] + "-hist.json"), {"id": ix["id"], "updated": today, "series": hist})
@@ -544,6 +566,7 @@ def main():
         log("covered history failed:", e)
     save(os.path.join(OUT, "screener.json"), {"updated": today, "fields": "revE, cashE, niE, mcapE in euros at today's rates; returns as decimals",
                                               "rows": [{k: v for k, v in r.items() if v is not None} for r in screener.values()]})
+    monthly_ranking(today, list(screener.values()))
     save(os.path.join(OUT, "build-log.json"), {"updated": today, "indices": DIAG})
     save(os.path.join(OUT, "indices.json"), {"updated": today, "fx": fx, "fxNote": "Month-end euro reference rates from Yahoo Finance (local currency per €1).", "indices": out_ix})
     if not out_ix:
