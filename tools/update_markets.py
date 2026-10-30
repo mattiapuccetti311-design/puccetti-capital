@@ -541,7 +541,8 @@ def main():
             if c.get("n"):
                 row.update({"tl": c.get("low"), "tm": c.get("med") or c.get("mean"), "th": c.get("high"), "na": c.get("n"), "rec": c.get("rec"),
                             "tAsOf": datetime.fromtimestamp(c["ts"], timezone.utc).strftime("%Y-%m-%d")})
-            row.update({"mcapE": clean(to_eur(c.get("mcap"), cur), 0), "revE": clean(to_eur(c.get("rev"), c.get("fcur") or cur), 0),
+            # Yahoo quotes London prices in pence (GBp) but market cap in pounds
+            row.update({"mcapE": clean(to_eur(c.get("mcap"), "GBP" if cur == "GBp" else cur), 0), "revE": clean(to_eur(c.get("rev"), c.get("fcur") or cur), 0),
                         "cashE": clean(to_eur(c.get("cash"), c.get("fcur") or cur), 0), "niE": clean(to_eur(c.get("ni"), c.get("fcur") or cur), 0), "emp": c.get("emp")})
             e = esg.get(t, {})
             if e.get("tot") is not None:
