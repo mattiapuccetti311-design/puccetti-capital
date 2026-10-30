@@ -229,6 +229,22 @@ td.e,th.e{background:color-mix(in srgb,var(--soft) 80%,transparent)}
 .srclist{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:14px}
 .scn td.n b{font-family:var(--display);font-size:18px}
 
+.dir{display:flex;flex-direction:column;gap:0;margin-top:12px;background:var(--paper);border:1px solid var(--rule)}
+.dir details{border-bottom:1px solid var(--rule)}
+.dir details:last-child{border-bottom:0}
+.dir summary{cursor:pointer;padding:13px 18px;font-family:var(--display);font-size:20px;font-weight:600;display:flex;justify-content:space-between;gap:12px;align-items:baseline;list-style:none}
+.dir summary::-webkit-details-marker{display:none}
+.dir summary::before{content:"+";font-family:var(--mono);color:var(--accent);margin-right:10px}
+.dir details[open] summary::before{content:"−"}
+.dir summary span{font-family:var(--mono);font-size:12px;color:var(--muted);font-weight:400;margin-left:auto}
+.dir ol{list-style:none;margin:0;padding:4px 18px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:0 18px}
+.dir li{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px dashed var(--rule);font-size:14px;min-width:0}
+.dir li a{color:var(--ink);text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dir li a:hover{color:var(--accent);text-decoration:underline}
+.dir li span{font-family:var(--mono);font-size:11.5px;white-space:nowrap}
+.rk{font-family:var(--mono);font-size:11px;letter-spacing:.04em;padding:2px 7px;border:1px solid currentColor;white-space:nowrap}
+.rk.Negligible,.rk.Low{color:var(--pos)} .rk.Medium{color:var(--hold)} .rk.High,.rk.Severe{color:var(--neg)}
+#eTable{min-width:860px} #eTable th[data-k]{cursor:pointer} #eTable th[aria-sort="ascending"]::after{content:" ▲"} #eTable th[aria-sort="descending"]::after{content:" ▼"}
 /* calendar & news */
 .cal{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--rule)}
 .cal .row{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:16px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--rule)}
@@ -353,6 +369,16 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
   <div class="pubs" id="pubsHome"></div>
   <div class="sectionhead"><h2>Latest news on covered companies</h2><a class="kick" href="#news">All news →</a></div>
   <div class="news" id="newsHome" style="margin-top:14px"></div>
+  <div class="sectionhead"><h2>World markets today</h2><a class="kick" href="#markets">All markets →</a></div>
+  <div class="ixcards" id="ixHome"><p class="empty">Loading market data…</p></div>
+  <div class="grid2">
+    <div class="panel"><h3>Biggest rises, last session</h3><ul class="list-plain" id="movUp"><li><span>Loading…</span><span></span></li></ul></div>
+    <div class="panel"><h3>Biggest falls, last session</h3><ul class="list-plain" id="movDn"><li><span>Loading…</span><span></span></li></ul></div>
+  </div>
+  <div class="sectionhead"><h2>Every company in the five markets</h2><span class="kick" id="dirCount"></span></div>
+  <p class="lead" style="margin:10px 0 12px;font-size:15px">All the companies in the S&amp;P 500, Nasdaq-100, CSI 300, Nikkei 225 and Euronext 100, one by one. Select a name to see its figures, what analysts expect and an investment simulation.</p>
+  <div class="toolbar" style="border:1px solid var(--rule);background:var(--paper)"><input type="search" id="dirSearch" placeholder="Search among all companies" aria-label="Search among all companies"><span class="cnt" id="dirHits"></span></div>
+  <div id="dirList" class="dir"></div>
 </section>
 
 <!-- RESEARCH -->
@@ -572,6 +598,19 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
     <div class="src">Score out of 100. Listed: average of MSCI, Sustainalytics and CDP Climate, minus a controversy deduction. Start-ups: Puccetti Capital Research assessment.</div>
   </section>
   <div class="esgcards" id="esgCards"></div>
+  <div class="sectionhead"><h2>ESG risk of every company in the five markets</h2><span class="kick" id="esgMAsOf"></span></div>
+  <p class="lead" style="margin:10px 0 12px;font-size:15px">Beyond the companies we cover in our notes, every constituent of the five indices is listed here with its Sustainalytics ESG Risk Rating, as published on Yahoo Finance. The risk score measures the ESG risk a company leaves unmanaged: lower is better. We convert it to our 0-100 scale with the same rule as above (100 − 2 × risk score), then deduct points for controversies of level 3 (−5), 4 (−10) and 5 (−15).</p>
+  <section class="ex">
+    <div class="toolbar">
+      <input type="search" id="eSearch" placeholder="Search a company or ticker" aria-label="Search a company or ticker">
+      <select id="eIx" aria-label="Filter by index"><option value="all">All five indices</option></select>
+      <select id="eLvl" aria-label="Filter by risk level"><option value="all">All risk levels</option><option>Negligible</option><option>Low</option><option>Medium</option><option>High</option><option>Severe</option></select>
+      <span class="cnt" id="eCount"></span>
+    </div>
+    <div class="scroll"><table id="eTable"></table></div>
+    <div class="pager" id="ePager"></div>
+    <div class="src" id="eSrc">Source: Sustainalytics ESG Risk Ratings via <a href="https://finance.yahoo.com" target="_blank" rel="noopener">Yahoo Finance</a>, refreshed monthly. Risk levels: Negligible below 10, Low 10-20, Medium 20-30, High 30-40, Severe 40 and above. Controversy level from 0 (none) to 5 (severe). Many Chinese and Japanese companies have no published score.</div>
+  </section>
   <div class="panel" style="margin-top:24px">
     <h3>Method</h3>
     <p style="font-size:14.5px"><b>Listed companies.</b> Three public ratings are converted to a 0-100 scale and averaged. MSCI ESG Rating: AAA = 100, AA = 85, A = 70, BBB = 55, BB = 40, B = 25, CCC = 10. Sustainalytics ESG Risk Rating (lower is better): 100 − 2 × risk score. CDP Climate: A = 100, A- = 90, B = 75, B- = 65, C = 50, C- = 40, D = 25, D- = 15. We then deduct 5 points for a moderate controversy and 10 for a significant one (15 for severe). Other ratings, such as ISS or S&amp;P Global, are shown for information.</p>
@@ -766,7 +805,8 @@ async function openNote(slug){
   drawNote();
 }
 function route(){
-  let h=location.hash.slice(1)||"home";
+  let h=decodeURIComponent(location.hash.slice(1))||"home";let sub=null;
+  if(h.startsWith("markets/")){sub=h.slice(8).split("/");h="markets"}
   const isNote=!FIXED.includes(h)&&REG.some(e=>e.slug===h&&!e.external);
   const view=FIXED.includes(h)?h:isNote?"note":"home";
   document.querySelectorAll("[data-v]").forEach(s=>s.hidden=s.dataset.v!==view);
@@ -774,7 +814,9 @@ function route(){
   window.scrollTo(0,0);
   if(isNote)openNote(h);
   if(view==="demo")setTimeout(()=>{runDemo();runPriv()},0);
-  if(view==="markets")setTimeout(()=>{loadMarkets();runStock()},0);
+  if(view==="markets")setTimeout(()=>{loadMarkets(sub);runStock()},0);
+  if(view==="home")renderHomeMarkets();
+  if(view==="esg")renderMarketESG();
 }
 function drawNote(){
   if(!window.Chart||typeof window.NOTE_DRAW!=="function"||document.getElementById("noteView").hidden)return;
@@ -869,20 +911,22 @@ const cls=v=>v==null?"":v>=0?"up":"dn";
 function money(v,sym,dp){if(v==null)return"–";const a=Math.abs(v);dp=dp??(a>=1000?0:a>=10?2:3);return(v<0?"−":"")+sym+a.toLocaleString("en-GB",{minimumFractionDigits:dp,maximumFractionDigits:dp})}
 function big(v,sym){if(v==null)return"–";const u=[[1e12,"tn"],[1e9,"bn"],[1e6,"m"]];for(const [d,s] of u)if(v>=d)return sym+(v/d).toLocaleString("en-GB",{maximumFractionDigits:v/d>=100?0:1})+s;return sym+Math.round(v).toLocaleString("en-GB")}
 async function getJSON(u){const r=await fetch(u,{cache:"no-store"});if(!r.ok)throw new Error(u+" "+r.status);return r.json()}
-async function loadMarkets(){
-  if(M.ix||M.loading){if(M.ix)drawIdx();return}
+async function loadMarkets(sub){
+  if(M.loading)return;
+  if(M.ix&&document.querySelector(".ixcard[data-ix]")){drawIdx();if(sub&&sub[0]){await selectIndex(sub[0]);if(sub[1])openStock(sub[1])}return}
   M.loading=true;
-  try{M.ix=await getJSON("data/markets/indices.json")}catch(e){M.loading=false;document.getElementById("ixCards").innerHTML='<p class="empty">Market data is being prepared and will appear after the next automatic update (every weekday evening). Refresh the page later.</p>';return}
+  try{if(!M.ix)M.ix=await getJSON("data/markets/indices.json")}catch(e){M.loading=false;document.getElementById("ixCards").innerHTML='<p class="empty">Market data is being prepared and will appear after the next automatic update (every weekday evening). Refresh the page later.</p>';return}
   M.loading=false;
   renderSources();renderIxCards();drawIdx();
-  selectIndex(M.ix.indices[0].id);
+  const first=sub&&M.ix.indices.some(i=>i.id===sub[0])?sub[0]:M.ix.indices[0].id;
+  await selectIndex(first);if(sub&&sub[1])openStock(sub[1]);
 }
 function renderSources(){
   const L=M.ix.indices.map(i=>`<li><b>${esc(i.name)}</b>: <a href="${esc(i.official)}" target="_blank" rel="noopener">index provider</a> · <a href="${esc(i.wiki)}" target="_blank" rel="noopener">constituent list</a> · <a href="${esc(i.quote)}" target="_blank" rel="noopener">prices</a></li>`).join("");
   document.getElementById("mSources").innerHTML=L+`<li>Share prices, analyst targets, market capitalisation and exchange rates: <a href="https://finance.yahoo.com" target="_blank" rel="noopener">Yahoo Finance</a>, retrieved with the open-source <a href="https://github.com/ranaroussi/yfinance" target="_blank" rel="noopener">yfinance</a> library.</li><li>Update script: <a href="https://github.com/mattiapuccetti311-design/puccetti-capital/blob/main/tools/update_markets.py" target="_blank" rel="noopener">tools/update_markets.py</a>, run every weekday by GitHub Actions.</li>`;
 }
 function renderIxCards(){
-  document.getElementById("ixCards").innerHTML=M.ix.indices.map(i=>`<button type="button" class="ixcard" data-ix="${esc(i.id)}" aria-pressed="false"><span class="kick">${i.count} companies</span><span class="nm">${esc(i.name)}</span><span class="mk">${esc(i.market)}</span><span class="lv">${i.note?'<small class="muted">ETF </small>':''}${i.last.toLocaleString("en-GB",{maximumFractionDigits:2})} <small class="${cls(i.r1d)}">${pc(i.r1d)}</small></span><span class="rs"><span>YTD</span><span>1Y</span><span>5Y</span><b class="${cls(i.rytd)}">${pc(i.rytd)}</b><b class="${cls(i.r1y)}">${pc(i.r1y)}</b><b class="${cls(i.r5y)}">${pc(i.r5y)}</b></span></button>`).join("");
+  document.getElementById("ixCards").innerHTML=M.ix.indices.map(i=>ixCardHTML(i,false)).join("");
   document.querySelectorAll(".ixcard").forEach(b=>b.onclick=()=>selectIndex(b.dataset.ix));
 }
 const IXCOL=()=>[css('--accent'),css('--gold'),css('--neg'),css('--pos'),css('--muted')];
@@ -1019,6 +1063,67 @@ function runStock(){
 }
 document.getElementById("sAmt").addEventListener("input",runStock);
 document.getElementById("sStart").addEventListener("change",runStock);
+
+/* ---------- all constituents: home directory, movers, market ESG ---------- */
+const IXIDS=["sp500","ndx","csi300","nikkei225","euronext100"];
+let ALLP=null;
+function loadAllRows(){
+  if(!ALLP)ALLP=(async()=>{
+    if(!M.ix)M.ix=await getJSON("data/markets/indices.json");
+    await Promise.all(IXIDS.map(async id=>{if(!M.rows[id])try{M.rows[id]=await getJSON(`data/markets/${id}.json`)}catch(e){}}));
+    return M;
+  })().catch(e=>{ALLP=null;throw e});
+  return ALLP;
+}
+function ixCardHTML(i,link){return `${link?`<a class="ixcard" href="#markets/${esc(i.id)}">`:`<button type="button" class="ixcard" data-ix="${esc(i.id)}" aria-pressed="false">`}<span class="kick">${i.count} companies</span><span class="nm">${esc(i.name)}</span><span class="mk">${esc(i.market)}</span><span class="lv">${i.note?'<small class="muted">ETF </small>':''}${i.last.toLocaleString("en-GB",{maximumFractionDigits:2})} <small class="${cls(i.r1d)}">${pc(i.r1d)}</small></span><span class="rs"><span>YTD</span><span>1Y</span><span>5Y</span><b class="${cls(i.rytd)}">${pc(i.rytd)}</b><b class="${cls(i.r1y)}">${pc(i.r1y)}</b><b class="${cls(i.r5y)}">${pc(i.r5y)}</b></span>${link?"</a>":"</button>"}`}
+async function renderHomeMarkets(){
+  try{await loadAllRows()}catch(e){document.getElementById("ixHome").innerHTML='<p class="empty">Market data is not available yet. It is refreshed every weekday evening.</p>';return}
+  document.getElementById("ixHome").innerHTML=M.ix.indices.map(i=>ixCardHTML(i,true)).join("");
+  // one entry per company (a company in two indices, e.g. S&P 500 and Nasdaq-100, appears once in the movers)
+  const seen=new Map();IXIDS.forEach(id=>(M.rows[id]?.rows||[]).forEach(r=>{if(!seen.has(r.t)&&r.r1d!=null)seen.set(r.t,{...r,ix:id})}));
+  const all=[...seen.values()].filter(r=>r.mcap&&r.mcap>2e9);
+  const li=r=>`<li><a href="#markets/${esc(r.ix)}/${encodeURIComponent(r.t)}">${esc(r.n)}</a><span class="${cls(r.r1d)}">${pc(r.r1d)} · ${esc(M.ix.indices.find(i=>i.id===r.ix).name)}</span></li>`;
+  const srt=[...all].sort((a,b)=>b.r1d-a.r1d);
+  document.getElementById("movUp").innerHTML=srt.slice(0,6).map(li).join("");
+  document.getElementById("movDn").innerHTML=srt.slice(-6).reverse().map(li).join("");
+  renderDir();
+}
+function renderDir(){
+  const q=(document.getElementById("dirSearch").value||"").trim().toLowerCase();let tot=0,hits=0;
+  document.getElementById("dirList").innerHTML=M.ix.indices.map(i=>{const rows=[...(M.rows[i.id]?.rows||[])].sort((a,b)=>a.n.localeCompare(b.n));tot+=rows.length;
+    const f=rows.filter(r=>!q||r.n.toLowerCase().includes(q)||r.t.toLowerCase().includes(q));hits+=f.length;if(q&&!f.length)return"";
+    return `<details open><summary>${esc(i.name)}<span>${f.length}${q?" of "+rows.length:""} companies · ${esc(i.market)}</span></summary><ol>${f.map(r=>`<li><a href="#markets/${esc(i.id)}/${encodeURIComponent(r.t)}" title="${esc(r.n)}">${esc(r.n)}</a><span class="${cls(r.rytd)}">${pc(r.rytd)}</span></li>`).join("")}</ol></details>`}).join("")||'<p class="empty">No company matches this search.</p>';
+  document.getElementById("dirCount").textContent=tot+" listings";
+  document.getElementById("dirHits").textContent=q?hits+" found":"Year-to-date return next to each name";
+}
+document.getElementById("dirSearch").addEventListener("input",()=>{if(M.ix)renderDir()});
+/* market ESG table */
+const E={q:"",ix:"all",lvl:"all",sort:{k:"pcr",d:-1},page:0};
+const riskLvl=v=>v==null?null:v<10?"Negligible":v<20?"Low":v<30?"Medium":v<40?"High":"Severe";
+const pcrScore=r=>r.esg==null?null:Math.max(0,Math.round(100-2*r.esg-({3:5,4:10,5:15}[r.cont]||0)));
+const gradeOf=v=>v==null?null:v>=80?"Leader":v>=65?"Strong":v>=50?"Average":v>=35?"Weak":"Laggard";
+async function renderMarketESG(){
+  try{await loadAllRows()}catch(e){document.getElementById("eTable").innerHTML='<tbody><tr><td class="empty">Market data is not available yet.</td></tr></tbody>';return}
+  const sel=document.getElementById("eIx");if(sel.options.length<2)sel.innerHTML+=M.ix.indices.map(i=>`<option value="${i.id}">${esc(i.name)}</option>`).join("");
+  const seen=new Map();IXIDS.forEach(id=>(M.rows[id]?.rows||[]).forEach(r=>{const x=seen.get(r.t);if(x)x.ixs.push(id);else seen.set(r.t,{...r,ixs:[id],pcr:pcrScore(r),lvl:riskLvl(r.esg)})}));
+  const all=[...seen.values()],withE=all.filter(r=>r.esg!=null);
+  const q=E.q.trim().toLowerCase();
+  let f=all.filter(r=>(E.ix==="all"||r.ixs.includes(E.ix))&&(E.lvl==="all"||r.lvl===E.lvl)&&(!q||r.n.toLowerCase().includes(q)||r.t.toLowerCase().includes(q)));
+  const {k,d}=E.sort;f.sort((a,b)=>{const va=a[k],vb=b[k];if(va==null&&vb==null)return(b.mcap||0)-(a.mcap||0);if(va==null)return 1;if(vb==null)return -1;return typeof va==="string"?va.localeCompare(vb)*d:(va-vb)*d});
+  const pages=Math.max(1,Math.ceil(f.length/PAGE));E.page=Math.min(E.page,pages-1);
+  const ixName=id=>M.ix.indices.find(i=>i.id===id)?.name||id;
+  const cols=[["n","Company"],["ix","Index"],["s","Sector"],["esg","Risk score","n"],["lvl","Risk level"],["esgE","E","n"],["esgS","S","n"],["esgG","G","n"],["cont","Controversy","n"],["pcr","Our score","n"]];
+  document.getElementById("eTable").innerHTML=`<thead><tr>${cols.map(([kk,l,c])=>`<th class="${c||""}" ${kk!=="ix"?`data-k="${kk}"`:""} ${E.sort.k===kk?`aria-sort="${E.sort.d>0?"ascending":"descending"}"`:""}>${l}</th>`).join("")}<th>Grade</th></tr></thead><tbody>`+
+    (f.slice(E.page*PAGE,(E.page+1)*PAGE).map(r=>`<tr><td><a href="#markets/${esc(r.ixs[0])}/${encodeURIComponent(r.t)}"><b>${esc(r.n)}</b></a> <span class="muted mono" style="font-size:11.5px">${esc(r.t)}</span></td><td>${r.ixs.map(ixName).join(", ")}</td><td>${esc(r.s)}</td><td class="n">${r.esg??"–"}</td><td>${r.lvl?`<span class="rk ${r.lvl}">${r.lvl}</span>`:'<span class="muted">No score</span>'}</td><td class="n">${r.esgE??"–"}</td><td class="n">${r.esgS??"–"}</td><td class="n">${r.esgG??"–"}</td><td class="n">${r.cont??"–"}</td><td class="n"><b>${r.pcr??"–"}</b></td><td>${r.pcr!=null?`<span class="grade ${gradeOf(r.pcr)}">${gradeOf(r.pcr)}</span>`:""}</td></tr>`).join("")||'<tr><td colspan="11" class="empty">No company matches this search.</td></tr>')+"</tbody>";
+  document.getElementById("eCount").textContent=`${f.length} companies · ${withE.length} of ${all.length} with a score`;
+  document.getElementById("esgMAsOf").textContent="Data as of "+fmtDate(M.ix.updated);
+  document.getElementById("ePager").innerHTML=pages>1?`<button type="button" id="ePrev" ${E.page?"":"disabled"}>← Previous</button><span>Page ${E.page+1} of ${pages}</span><button type="button" id="eNext" ${E.page<pages-1?"":"disabled"}>Next →</button>`:"";
+  const pv=document.getElementById("ePrev"),nx=document.getElementById("eNext");if(pv)pv.onclick=()=>{E.page--;renderMarketESG()};if(nx)nx.onclick=()=>{E.page++;renderMarketESG()};
+  document.querySelectorAll("#eTable th[data-k]").forEach(th=>th.onclick=()=>{const kk=th.dataset.k;E.sort=E.sort.k===kk?{k:kk,d:-E.sort.d}:{k:kk,d:["n","s","lvl","esg","cont"].includes(kk)?1:-1};E.page=0;renderMarketESG()});
+}
+document.getElementById("eSearch").addEventListener("input",e=>{E.q=e.target.value;E.page=0;renderMarketESG()});
+document.getElementById("eIx").addEventListener("change",e=>{E.ix=e.target.value;E.page=0;renderMarketESG()});
+document.getElementById("eLvl").addEventListener("change",e=>{E.lvl=e.target.value;E.page=0;renderMarketESG()});
 
 /* ---------- misc ---------- */
 document.addEventListener("click",e=>{
