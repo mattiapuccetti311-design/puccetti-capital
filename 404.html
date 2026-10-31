@@ -1194,12 +1194,23 @@ function renderCoveredESG(){
   document.getElementById("eLead").textContent="Every company covered in a note, with the ratings behind its score. Listed companies are scored from MSCI, Sustainalytics and CDP Climate, minus a deduction for controversies. Start-ups have no public rating, so we score five pillars out of 20 ourselves. A row is added with each new note.";
   const cos=esgCos();document.getElementById("esgMAsOf").textContent=MKT?"Data as of "+fmtDate(MKT.updated):"";
   const prov=(e,key)=>{const p=(e.providers||[]).find(x=>x[0].startsWith(key));return p?`<span style="white-space:nowrap">${esc(p[1])} <span class="muted">(${p[2]})</span></span>`:"–"};
-  const pil=(e,name)=>{const p=(e.pillars||[]).find(x=>x[0]===name);return p?p[1]+"/20":"–"};
+  const pil=(e,name)=>{const p=(e.pillars||[]).find(x=>x[0]===name);return p?p[1]:"–"};
   const ded=e=>{const v=(e.controversies||[]).reduce((a,x)=>a+x[1],0);return v?`<span class="dn">${v}</span>`:"0"};
-  document.getElementById("eTable").innerHTML=`<thead><tr><th>Company</th><th>Basis</th><th>MSCI</th><th>Sustainalytics risk</th><th>CDP Climate</th><th class="n">Controversies</th><th class="n">Pillars D·E·S·G·C</th><th class="n">Our score</th><th>Grade</th></tr></thead><tbody>`+
-    cos.map(([s,c])=>{const e=c.esg,own=e.method==="own";return `<tr><td style="white-space:nowrap"><a href="#esg-${esc(s)}" data-esg="${esc(s)}"><b>${esc(c.name)}</b></a></td><td>${own?"Own assessment (start-up)":"Public ratings"}</td><td>${own?"–":prov(e,"MSCI")}</td><td>${own?"–":prov(e,"Sustainalytics")}</td><td>${own?"–":prov(e,"CDP")}</td><td class="n">${own?"–":ded(e)}</td><td class="n">${own?["Disclosure","Environment","Social","Governance","Controversies"].map(n=>pil(e,n).replace("/20","")).join(" · "):"–"}</td><td class="n"><b>${e.score}</b></td><td><span class="grade ${e.grade}">${e.grade}</span></td></tr>`}).join("")+"</tbody>";
-  document.getElementById("eSrc").textContent="Sources: each company's ESG card above links to its ratings. Brackets: rating converted to our 0-100 scale. Pillars, each out of 20: Disclosure, Environment, Social, Governance, Controversies (20 = none). A table of every index constituent will return when a reliable free source of ESG ratings is available: Yahoo Finance stopped publishing Sustainalytics scores in 2026.";
-  document.querySelectorAll("#eTable [data-esg]").forEach(a=>a.onclick=ev=>{ev.preventDefault();const el=document.getElementById("esg-"+a.dataset.esg);el&&el.scrollIntoView({behavior:"smooth"})});
+  const name=s=>`<td style="white-space:nowrap"><a href="#esg-${esc(s)}" data-esg="${esc(s)}"><b>${esc(MKT.companies[s].name)}</b></a></td>`;
+  const tail=e=>`<td class="n"><b>${e.score}</b></td><td><span class="grade ${e.grade}">${e.grade}</span></td>`;
+  const PIL=["Disclosure","Environment","Social","Governance","Controversies"];
+  const listed=cos.filter(([,c])=>c.esg.method!=="own"),own=cos.filter(([,c])=>c.esg.method==="own");
+  const wrap=document.getElementById("eTable").parentElement;
+  if(!document.getElementById("eH1")){
+    wrap.insertAdjacentHTML("beforebegin",`<header id="eH1"><i>Listed companies</i><b>Public ratings, minus a deduction for controversies</b></header>`);
+    wrap.insertAdjacentHTML("afterend",`<header id="eH2" style="border-top:1px solid var(--rule)"><i>Start-ups</i><b>Our assessment: five pillars, each out of 20</b></header><div class="scroll"><table id="eTable2"></table></div>`);
+  }
+  document.getElementById("eTable").innerHTML=`<thead><tr><th>Company</th><th>MSCI</th><th>Sustainalytics risk</th><th>CDP Climate</th><th class="n">Controversies</th><th class="n">Our score</th><th>Grade</th></tr></thead><tbody>`+
+    listed.map(([s,c])=>{const e=c.esg;return `<tr>${name(s)}<td>${prov(e,"MSCI")}</td><td>${prov(e,"Sustainalytics")}</td><td>${prov(e,"CDP")}</td><td class="n">${ded(e)}</td>${tail(e)}</tr>`}).join("")+"</tbody>";
+  document.getElementById("eTable2").innerHTML=`<thead><tr><th>Company</th>${PIL.map(p=>`<th class="n">${p}</th>`).join("")}<th class="n">Our score</th><th>Grade</th></tr></thead><tbody>`+
+    own.map(([s,c])=>{const e=c.esg;return `<tr>${name(s)}${PIL.map(p=>`<td class="n">${pil(e,p)}</td>`).join("")}${tail(e)}</tr>`}).join("")+"</tbody>";
+  document.getElementById("eSrc").textContent="Sources: each company's ESG card above links to its ratings. Brackets: rating converted to our 0-100 scale. Start-up pillars are each out of 20; for Controversies, 20 means none. A table of every index constituent will return when a reliable free source of ESG ratings is available: Yahoo Finance stopped publishing Sustainalytics scores in 2026.";
+  document.querySelectorAll("#eTable [data-esg],#eTable2 [data-esg]").forEach(a=>a.onclick=ev=>{ev.preventDefault();const el=document.getElementById("esg-"+a.dataset.esg);el&&el.scrollIntoView({behavior:"smooth"})});
 }
 /* market ESG table */
 const E={q:"",ix:"all",lvl:"all",sort:{k:"pcr",d:-1},page:0};
