@@ -656,8 +656,8 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
     <div class="src">Score out of 100. Listed: average of MSCI, Sustainalytics and CDP Climate, minus a controversy deduction. Start-ups: Puccetti Capital Research assessment.</div>
   </section>
   <div class="esgcards" id="esgCards"></div>
-  <div class="sectionhead"><h2>ESG risk of every company in the five markets</h2><span class="kick" id="esgMAsOf"></span></div>
-  <p class="lead" style="margin:10px 0 12px;font-size:15px">Beyond the companies we cover in our notes, every constituent of the five indices is listed here with its Sustainalytics ESG Risk Rating, as published on Yahoo Finance. The risk score measures the ESG risk a company leaves unmanaged: lower is better. We convert it to our 0-100 scale with the same rule as above (100 − 2 × risk score), then deduct points for controversies of level 3 (−5), 4 (−10) and 5 (−15).</p>
+  <div class="sectionhead"><h2 id="eHead">ESG risk of every company in the five markets</h2><span class="kick" id="esgMAsOf"></span></div>
+  <p class="lead" id="eLead" style="margin:10px 0 12px;font-size:15px">Beyond the companies we cover in our notes, every constituent of the five indices is listed here with its Sustainalytics ESG Risk Rating, as published on Yahoo Finance. The risk score measures the ESG risk a company leaves unmanaged: lower is better. We convert it to our 0-100 scale with the same rule as above (100 − 2 × risk score), then deduct points for controversies of level 3 (−5), 4 (−10) and 5 (−15).</p>
   <section class="ex">
     <div class="toolbar">
       <input type="search" id="eSearch" placeholder="Search a company or ticker" aria-label="Search a company or ticker">
@@ -1186,6 +1186,21 @@ document.getElementById("scrIx").addEventListener("change",e=>{Q.ix=e.target.val
 document.getElementById("scrSec").addEventListener("change",e=>{Q.sec=e.target.value;Q.page=0;renderScreener()});
 document.getElementById("scrSort").addEventListener("change",e=>{Q.sort=e.target.value;Q.page=0;renderScreener()});
 document.getElementById("scrPer").addEventListener("change",e=>{Q.per=e.target.value;Q.page=0;renderScreener()});
+/* covered-companies ESG detail: used while no market-wide ESG source is available */
+function renderCoveredESG(){
+  const sec=document.querySelector("#eTable").closest("section");sec.querySelector(".toolbar").style.display="none";
+  document.getElementById("ePager").innerHTML="";document.getElementById("eCount").textContent="";
+  document.getElementById("eHead").textContent="ESG ratings of the companies we cover";
+  document.getElementById("eLead").textContent="Every company covered in a note, with the ratings behind its score. Listed companies are scored from MSCI, Sustainalytics and CDP Climate, minus a deduction for controversies. Start-ups have no public rating, so we score five pillars out of 20 ourselves. A row is added with each new note.";
+  const cos=esgCos();document.getElementById("esgMAsOf").textContent=MKT?"Data as of "+fmtDate(MKT.updated):"";
+  const prov=(e,key)=>{const p=(e.providers||[]).find(x=>x[0].startsWith(key));return p?`<span style="white-space:nowrap">${esc(p[1])} <span class="muted">(${p[2]})</span></span>`:"–"};
+  const pil=(e,name)=>{const p=(e.pillars||[]).find(x=>x[0]===name);return p?p[1]+"/20":"–"};
+  const ded=e=>{const v=(e.controversies||[]).reduce((a,x)=>a+x[1],0);return v?`<span class="dn">${v}</span>`:"0"};
+  document.getElementById("eTable").innerHTML=`<thead><tr><th>Company</th><th>Basis</th><th>MSCI</th><th>Sustainalytics risk</th><th>CDP Climate</th><th class="n">Controversies</th><th class="n">Pillars D·E·S·G·C</th><th class="n">Our score</th><th>Grade</th></tr></thead><tbody>`+
+    cos.map(([s,c])=>{const e=c.esg,own=e.method==="own";return `<tr><td style="white-space:nowrap"><a href="#esg-${esc(s)}" data-esg="${esc(s)}"><b>${esc(c.name)}</b></a></td><td>${own?"Own assessment (start-up)":"Public ratings"}</td><td>${own?"–":prov(e,"MSCI")}</td><td>${own?"–":prov(e,"Sustainalytics")}</td><td>${own?"–":prov(e,"CDP")}</td><td class="n">${own?"–":ded(e)}</td><td class="n">${own?["Disclosure","Environment","Social","Governance","Controversies"].map(n=>pil(e,n).replace("/20","")).join(" · "):"–"}</td><td class="n"><b>${e.score}</b></td><td><span class="grade ${e.grade}">${e.grade}</span></td></tr>`}).join("")+"</tbody>";
+  document.getElementById("eSrc").textContent="Sources: each company's ESG card above links to its ratings. Brackets: rating converted to our 0-100 scale. Pillars, each out of 20: Disclosure, Environment, Social, Governance, Controversies (20 = none). A table of every index constituent will return when a reliable free source of ESG ratings is available: Yahoo Finance stopped publishing Sustainalytics scores in 2026.";
+  document.querySelectorAll("#eTable [data-esg]").forEach(a=>a.onclick=ev=>{ev.preventDefault();const el=document.getElementById("esg-"+a.dataset.esg);el&&el.scrollIntoView({behavior:"smooth"})});
+}
 /* market ESG table */
 const E={q:"",ix:"all",lvl:"all",sort:{k:"pcr",d:-1},page:0};
 const riskLvl=v=>v==null?null:v<10?"Negligible":v<20?"Low":v<30?"Medium":v<40?"High":"Severe";
@@ -1196,9 +1211,7 @@ async function renderMarketESG(){
   const sel=document.getElementById("eIx");if(sel.options.length<2)sel.innerHTML+=M.ix.indices.map(i=>`<option value="${i.id}">${esc(i.name)}</option>`).join("");
   const seen=new Map();SCR.rows.forEach(r=>seen.set(r.t,{...r,ixs:r.ix,pcr:pcrScore(r),lvl:riskLvl(r.esg)}));
   const all=[...seen.values()],withE=all.filter(r=>r.esg!=null);
-  if(!withE.length){document.querySelector("#eTable").closest("section").querySelector(".toolbar").hidden=true;document.getElementById("ePager").innerHTML="";
-    document.getElementById("eCount").textContent="";document.getElementById("esgMAsOf").textContent="";
-    document.getElementById("eTable").innerHTML='<tbody><tr><td class="empty">No free source currently publishes ESG ratings for all 1,231 companies: Yahoo Finance stopped showing Sustainalytics scores in 2026. Companies we cover in our notes are rated above, with MSCI, Sustainalytics and CDP. This table will fill as soon as a reliable source is connected.</td></tr></tbody>';return}
+  if(!withE.length){renderCoveredESG();return}
   const q=E.q.trim().toLowerCase();
   let f=all.filter(r=>(E.ix==="all"||r.ixs.includes(E.ix))&&(E.lvl==="all"||r.lvl===E.lvl)&&(!q||r.n.toLowerCase().includes(q)||r.t.toLowerCase().includes(q)));
   const {k,d}=E.sort;f.sort((a,b)=>{const va=a[k],vb=b[k];if(va==null&&vb==null)return(b.mcap||0)-(a.mcap||0);if(va==null)return 1;if(vb==null)return -1;return typeof va==="string"?va.localeCompare(vb)*d:(va-vb)*d});
