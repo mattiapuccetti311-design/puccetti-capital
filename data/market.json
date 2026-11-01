@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-31",
+ "updated": "2026-11-01",
  "benchmark": {
   "name": "CAC 40",
   "series": [
@@ -1096,6 +1096,255 @@
     "score": 64,
     "grade": "Average",
     "summary": "Legora has a light direct footprint and strong security certifications, but it has published no sustainability information yet and its compute footprint is unmeasured."
+   }
+  },
+  "universal-music-group": {
+   "name": "Universal Music Group",
+   "type": "listed",
+   "ticker": "UMG NA",
+   "currency": "€",
+   "series": [
+    [
+     "2025-10",
+     23.27
+    ],
+    [
+     "2025-11",
+     22.08
+    ],
+    [
+     "2025-12",
+     22.23
+    ],
+    [
+     "2026-01",
+     20.68
+    ],
+    [
+     "2026-02",
+     19.11
+    ],
+    [
+     "2026-03",
+     16.64
+    ],
+    [
+     "2026-04",
+     17.82
+    ],
+    [
+     "2026-05",
+     19.5
+    ],
+    [
+     "2026-06",
+     18.33
+    ],
+    [
+     "2026-07",
+     14.44
+    ],
+    [
+     "2026-08",
+     14.65
+    ],
+    [
+     "2026-09",
+     14.27
+    ],
+    [
+     "2026-10",
+     17.09
+    ]
+   ],
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October. Dividends not included.",
+   "dividends": [
+    [
+     "2025-10",
+     0.24
+    ],
+    [
+     "2026-05",
+     0.28
+    ],
+    [
+     "2026-10",
+     0.24
+    ]
+   ],
+   "ourTarget": 21,
+   "rating": "BUY",
+   "analysts": {
+    "asof": "StockAnalysis consensus, 30 October 2026",
+    "n": 21,
+    "low": 12,
+    "median": 20,
+    "avg": 21.32,
+    "high": 39,
+    "consensus": "Buy",
+    "ratings": [
+     [
+      "Strong buy",
+      9
+     ],
+     [
+      "Buy",
+      3
+     ],
+     [
+      "Hold",
+      6
+     ],
+     [
+      "Sell",
+      1
+     ],
+     [
+      "Strong sell",
+      2
+     ]
+    ],
+    "estimates": [
+     {
+      "year": "2026E",
+      "rev": 13.44,
+      "eps": 1.0,
+      "ourRev": 13.45,
+      "ourEps": 1.02
+     },
+     {
+      "year": "2027E",
+      "rev": 14.38,
+      "eps": 1.1,
+      "ourRev": 14.32,
+      "ourEps": 1.1
+     }
+    ],
+    "estUnit": "Revenue €bn, adjusted EPS €",
+    "actions": [
+     [
+      "2026-10-30",
+      "J.P. Morgan",
+      "Buy",
+      "€39 → €40"
+     ],
+     [
+      "2026-10-30",
+      "Guggenheim",
+      "Buy",
+      "€20 → €21"
+     ],
+     [
+      "2026-10-30",
+      "Barclays",
+      "Buy",
+      "€20"
+     ],
+     [
+      "2026-09-01",
+      "Deutsche Bank",
+      "Buy",
+      "€29 → €26.5"
+     ],
+     [
+      "2026-08-17",
+      "Citi",
+      "Initiate at Buy",
+      "€20"
+     ]
+    ],
+    "source": "https://stockanalysis.com/quote/ams/UMG/forecast/"
+   },
+   "nextResults": {
+    "date": "2027-03-04",
+    "event": "Full-year 2026 results (date estimated, not yet announced)",
+    "confirmed": false,
+    "source": "https://www.tipranks.com/stocks/nl:umg"
+   },
+   "news": [
+    {
+     "date": "2026-10-30",
+     "title": "Universal Music stock jumps as streaming revenue beat eases growth fears",
+     "source": "Quartz",
+     "url": "https://qz.com/universal-music-group-stock-streaming-revenue-beat-103026"
+    },
+    {
+     "date": "2026-10-30",
+     "title": "Shares jump 7.9% after strong Q3 streaming results",
+     "source": "RouteNote",
+     "url": "https://routenote.com/radar/universal-music-group-shares-jump-7-9-after-strong-q3-streaming-results/"
+    },
+    {
+     "date": "2026-10-29",
+     "title": "Q3 2026 slides: streaming drives 12% revenue growth",
+     "source": "Investing.com",
+     "url": "https://uk.investing.com/news/stock-market-news/universal-music-q3-2026-slides-streaming-drives-12-revenue-growth-93CH-4947325"
+    },
+    {
+     "date": "2026-10-29",
+     "title": "Universal Music posts Q3 2026 results and eyes new DSP deals",
+     "source": "Digital Music News",
+     "url": "https://www.digitalmusicnews.com/2026/10/29/universal-music-earnings-q3-2026/"
+    },
+    {
+     "date": "2026-10-27",
+     "title": "Apollo, Blackstone and TPG discuss taking Universal Music Group private",
+     "source": "MarketScreener",
+     "url": "https://www.marketscreener.com/news/apollo-global-management-blackstone-and-tpg-discuss-taking-universal-music-group-private-ce785cdddb88f02d"
+    }
+   ],
+   "esg": {
+    "asof": "2026-11-01",
+    "method": "providers",
+    "providers": [
+     [
+      "MSCI ESG Rating",
+      "AA",
+      85,
+      "https://in.marketscreener.com/quote/stock/UNIVERSAL-MUSIC-GROUP-N-V-127080831/ratings/"
+     ],
+     [
+      "Sustainalytics ESG Risk",
+      "12.4 (low risk)",
+      75.2,
+      "https://www.sustainalytics.com/esg-rating/universal-music-group-nv/2009093880"
+     ],
+     [
+      "CDP Climate",
+      "B-",
+      65,
+      "https://www.data.illuminem.com/company/041ec82f_universal-music-group"
+     ]
+    ],
+    "base": 75.1,
+    "controversies": [
+     [
+      "Royalty disputes with artists, including a $200m claim by Limp Bizkit (partly dismissed)",
+      -5,
+      "https://businessday.ng/life-arts/article/umg-faces-mounting-legal-battles-over-unpaid-royalties/"
+     ]
+    ],
+    "memo": [
+     [
+      "S&P Global ESG Score",
+      "40 (January 2026)"
+     ],
+     [
+      "Emissions 2025 (third-party aggregator)",
+      "About 557,000 tCO2e, 99% of it Scope 3"
+     ],
+     [
+      "Climate targets",
+      "Reduction targets approved by SBTi, including −58% in Scope 1 and 2 (age of approval to verify)"
+     ],
+     [
+      "Data caveat",
+      "CDP grade comes from a secondary source; MSCI grade from MarketScreener; Sustainalytics 12.4 from its own page, other sites show 9.7 to 11.8"
+     ]
+    ],
+    "score": 70,
+    "grade": "Strong",
+    "summary": "UMG has a low Sustainalytics risk score and an AA from MSCI, helped by a business with small direct emissions. The weak points are Scope 3 (almost all of its footprint), a CDP grade only in the B range, and artist royalty disputes."
    }
   }
  }

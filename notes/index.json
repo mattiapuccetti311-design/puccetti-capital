@@ -1,5 +1,18 @@
 [
  {
+  "slug": "universal-music-group",
+  "date": "2026-11-01",
+  "sector": "Media & music",
+  "country": "Netherlands",
+  "company": "Universal Music Group",
+  "ticker": "UMG NA",
+  "headline": "Subscription growth is back, and the price still assumes it is not",
+  "rating": "BUY",
+  "target": "€21",
+  "price": "€17.09",
+  "potential": "+23%"
+ },
+ {
   "slug": "legora",
   "date": "2026-10-31",
   "sector": "Start-ups",
