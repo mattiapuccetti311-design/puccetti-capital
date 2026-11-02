@@ -1,12 +1,8 @@
 {
- "updated": "2026-11-01",
+ "updated": "2026-11-02",
  "benchmark": {
   "name": "CAC 40",
   "series": [
-   [
-    "2025-10",
-    8121.07
-   ],
    [
     "2025-11",
     8122.71
@@ -54,9 +50,13 @@
    [
     "2026-10",
     7969.42
+   ],
+   [
+    "2026-11",
+    8046.21
    ]
   ],
-  "note": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October (Zonebourse)."
+  "note": "Month-end closes (Yahoo Finance). November 2026 = close of 2 November."
  },
  "companies": {
   "bnp-paribas": {
@@ -112,9 +112,13 @@
     [
      "2026-10",
      85.65
+    ],
+    [
+     "2026-11",
+     87.11
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October (MarketScreener).",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 2 November.",
    "dividends": [
     [
      "2026-05",
@@ -303,10 +307,6 @@
    "currency": "€",
    "series": [
     [
-     "2025-10",
-     2149.0
-    ],
-    [
      "2025-11",
      2100.0
     ],
@@ -353,9 +353,13 @@
     [
      "2026-10",
      1293.5
+    ],
+    [
+     "2026-11",
+     1325.5
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October (MarketScreener). Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 2 November. Dividends not included.",
    "dividends": [],
    "ourTarget": 871,
    "rating": "REDUCE",
@@ -811,9 +815,13 @@
     [
      "2026-10",
      37.74
+    ],
+    [
+     "2026-11",
+     37.88
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = Xetra close of 30 October (MarketScreener). No dividend paid.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 2 November.",
    "dividends": [],
    "ourTarget": 47,
    "rating": "BUY",
@@ -1105,10 +1113,6 @@
    "currency": "€",
    "series": [
     [
-     "2025-10",
-     23.27
-    ],
-    [
      "2025-11",
      22.08
     ],
@@ -1155,9 +1159,13 @@
     [
      "2026-10",
      17.09
+    ],
+    [
+     "2026-11",
+     17.06
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 2 November. Dividends not included.",
    "dividends": [
     [
      "2025-10",
@@ -1345,6 +1353,230 @@
     "score": 70,
     "grade": "Strong",
     "summary": "UMG has a low Sustainalytics risk score and an AA from MSCI, helped by a business with small direct emissions. The weak points are Scope 3 (almost all of its footprint), a CDP grade only in the B range, and artist royalty disputes."
+   }
+  },
+  "adyen": {
+   "name": "Adyen",
+   "type": "listed",
+   "ticker": "ADYEN NA",
+   "currency": "€",
+   "series": [
+    [
+     "2025-11",
+     1340.6
+    ],
+    [
+     "2025-12",
+     1375.0
+    ],
+    [
+     "2026-01",
+     1253.4
+    ],
+    [
+     "2026-02",
+     994.8
+    ],
+    [
+     "2026-03",
+     850.6
+    ],
+    [
+     "2026-04",
+     958.5
+    ],
+    [
+     "2026-05",
+     939.3
+    ],
+    [
+     "2026-06",
+     820.4
+    ],
+    [
+     "2026-07",
+     876.9
+    ],
+    [
+     "2026-08",
+     1047.4
+    ],
+    [
+     "2026-09",
+     876.6
+    ],
+    [
+     "2026-10",
+     826.9
+    ],
+    [
+     "2026-11",
+     855.2
+    ]
+   ],
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 2 November. No dividends.",
+   "dividends": [],
+   "ourTarget": 890,
+   "rating": "HOLD",
+   "analysts": {
+    "asof": "StockAnalysis consensus, 2 November 2026",
+    "n": 34,
+    "low": 863,
+    "median": 1200,
+    "avg": 1262,
+    "high": 1800,
+    "consensus": "Strong buy",
+    "ratings": [
+     [
+      "Strong buy",
+      23
+     ],
+     [
+      "Buy",
+      6
+     ],
+     [
+      "Hold",
+      5
+     ],
+     [
+      "Sell",
+      0
+     ],
+     [
+      "Strong sell",
+      0
+     ]
+    ],
+    "estimates": [
+     {
+      "year": "2026E",
+      "rev": 2.87,
+      "eps": 38.04,
+      "ourRev": 2.87,
+      "ourEps": 37.5
+     },
+     {
+      "year": "2027E",
+      "rev": 3.5,
+      "eps": 45.62,
+      "ourRev": 3.45,
+      "ourEps": 44.7
+     }
+    ],
+    "estUnit": "Net revenue €bn, EPS €",
+    "actions": [
+     [
+      "2026-11-02",
+      "Goldman Sachs",
+      "Buy",
+      "€1,750 → €1,600"
+     ],
+     [
+      "2026-10-29",
+      "Monness",
+      "Buy",
+      "€1,800 → €1,700"
+     ],
+     [
+      "2026-10-29",
+      "Susquehanna",
+      "Hold",
+      "€1,200 → €900"
+     ],
+     [
+      "2026-10-29",
+      "UBS",
+      "Buy",
+      "€1,450 → €1,300"
+     ],
+     [
+      "2026-10-29",
+      "KBW",
+      "Buy",
+      "€1,250 → €1,150"
+     ]
+    ],
+    "source": "https://stockanalysis.com/quote/ams/ADYEN/forecast/"
+   },
+   "nextResults": {
+    "date": "2027-02-11",
+    "event": "H2 2026 results and 2027 objectives (date estimated; the company says February 2027)",
+    "confirmed": false,
+    "source": "https://www.adyen.com/press-and-media/adyen-publishes-q3-2026-business-update-6r9vz0"
+   },
+   "news": [
+    {
+     "date": "2026-10-28",
+     "title": "Adyen publishes Q3 2026 business update: net revenue +23%, 2026 EBITDA margin guided to 50%",
+     "source": "Adyen",
+     "url": "https://www.adyen.com/press-and-media/adyen-publishes-q3-2026-business-update-6r9vz0"
+    },
+    {
+     "date": "2026-10-28",
+     "title": "Adyen beats Q3 revenue estimates but shares sink 10% on margin outlook cut",
+     "source": "Yahoo Finance",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/adyen-beats-q3-revenue-estimates-075404475.html"
+    },
+    {
+     "date": "2026-10-28",
+     "title": "Earnings call: Adyen Q3 2026 growth holds, but margin cut hits stock",
+     "source": "Investing.com",
+     "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-adyen-q3-2026-growth-holds-but-margin-cut-hits-stock-93CH-4979938"
+    },
+    {
+     "date": "2026-10-28",
+     "title": "Adyen N publishes Q3 2026 Business Update",
+     "source": "MarketScreener",
+     "url": "https://www.marketscreener.com/news/adyen-n-publishes-q3-2026-business-update-ce785cd2d88dfe23"
+    },
+    {
+     "date": "2026-08-13",
+     "title": "Adyen lifts 2026 revenue outlook to 21-23% as volume hits €804 billion",
+     "source": "Finance Magnates",
+     "url": "https://www.financemagnates.com/fintech/payments/adyen-lifts-2026-revenue-outlook-to-2123-as-volume-hits-804-billion/"
+    }
+   ],
+   "esg": {
+    "asof": "2026-11-02",
+    "method": "providers",
+    "providers": [
+     [
+      "MSCI ESG Rating",
+      "A",
+      70,
+      "https://www.marketscreener.com/news/adyen-n-publishes-2025-annual-report-ce7e5fdade8df127"
+     ],
+     [
+      "Sustainalytics ESG Risk",
+      "19.3 (low risk)",
+      61.4,
+      "https://pitchbook.com/profiles/company/54275-77"
+     ]
+    ],
+    "base": 65.7,
+    "controversies": [],
+    "memo": [
+     [
+      "CDP Climate",
+      "No score found, so the average uses two providers"
+     ],
+     [
+      "S&P Global ESG Score",
+      "47 (modelled from public data, January 2026)"
+     ],
+     [
+      "Reporting",
+      "2025 annual report prepared under CSRD and ESRS"
+     ],
+     [
+      "Data caveat",
+      "MSCI grade from MarketScreener; the 19.3 risk score is from PitchBook (provider not named on the page), other sites show 18.1; emissions and targets not verified"
+     ]
+    ],
+    "score": 66,
+    "grade": "Strong",
+    "summary": "Adyen has an A from MSCI and a low risk score, in a business with small direct emissions and no significant controversy in the last two years. We found no CDP score and could not verify climate targets, so the score rests on two providers."
    }
   }
  }
