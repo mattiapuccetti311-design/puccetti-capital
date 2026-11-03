@@ -318,6 +318,18 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
 .panel.esgcard h3{font-family:var(--serif);font-size:23px;text-transform:none;letter-spacing:0;color:var(--ink);font-weight:700;margin:0;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
 .esgcard .big{font-family:var(--serif);font-size:34px;font-weight:700;line-height:1}
 .esgcard table{font-size:13.5px} .esgcard td{padding:6px 8px;vertical-align:top} .esgcard .small{font-size:12.5px;color:var(--muted)}
+
+/* live layer: TradingView widgets (quotes stream in the browser; nothing is stored on this site) */
+.tvtape{margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px))) calc(-1*max(16px,env(safe-area-inset-right,0px)));background:var(--paper);border-bottom:1px solid var(--rule);min-height:46px}
+.tvbox{position:relative;width:100%;min-height:120px;background:var(--paper)}
+.tvbox .tradingview-widget-container,.tvbox .tradingview-widget-container__widget{height:100%;width:100%}
+.tvbox .tvwait{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.tvlive{margin:18px 0}
+.tvlive header .dot,.livebadge .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--pos);margin-right:6px;vertical-align:1px;animation:tvp 1.6s ease-in-out infinite}
+.livebadge{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--pos)}
+@keyframes tvp{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.tvlive header .dot,.livebadge .dot{animation:none}}
+@media print{.tvtape,.tvlive{display:none!important}}
 @media print{
   @page{size:A4;margin:12mm}
   html,body{background:#fff!important}
@@ -351,6 +363,7 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
     </nav>
   </div>
 </header>
+<div class="tvtape" id="tvTape" aria-label="Live market quotes"></div>
 
 <main class="wrap">
 
@@ -538,10 +551,17 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
 <!-- MARKETS -->
 <section data-v="markets" hidden>
   <div class="page">
-    <span class="kick">World markets · updated every weekday</span>
+    <span class="kick">World markets · live quotes and end-of-day data</span>
     <h1>Twenty of the world's largest stock markets</h1>
     <p class="lead">The United States, China, Japan, Europe and the main markets of Asia-Pacific and the Americas hold most of the world's listed value. Each market is followed through its benchmark index, with every company in it: share price, returns, size and what analysts expect over the next twelve months. Select a company to simulate an investment.</p>
   </div>
+  <div class="sectionhead"><h2>Live markets</h2><span class="livebadge"><span class="dot"></span>Streaming now</span></div>
+  <section class="ex tvlive" style="margin-top:14px">
+    <header><i>Live</i><b>The twenty benchmark indices, quoted as they trade</b></header>
+    <div class="tvbox" id="tvMarkets" style="height:560px"></div>
+    <div class="src">Live quotes: <a href="https://www.tradingview.com/" target="_blank" rel="noopener">TradingView</a>. Prices update on screen while the market is open; a few exchanges are shown with their standard delay (about 15 minutes), and the S&amp;P 500, Nasdaq-100, DAX, FTSE 100 and Nikkei 225 are followed through contracts that trade close to the index. Everything below this panel is end-of-day data, refreshed after the European and after the US close.</div>
+  </section>
+  <div class="sectionhead"><h2>Choose a market</h2><span class="kick">End-of-day data</span></div>
   <div class="ixcards" id="ixCards" role="group" aria-label="Choose an index"><p class="empty">Loading market data…</p></div>
 
   <div class="sectionhead"><h2>How the indices performed</h2><div class="seg" role="group" aria-label="Period"><button type="button" data-per="1y" aria-pressed="true">1 year</button><button type="button" data-per="5y" aria-pressed="false">5 years</button></div></div>
@@ -565,6 +585,11 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
 
   <div id="sd" hidden>
     <div class="sectionhead"><h2 id="sdTitle">Investment simulation</h2><span class="kick" id="sdAsOf"></span></div>
+    <section class="ex tvlive" id="sdLiveBox" hidden>
+      <header><i><span class="dot"></span>Live</i><b id="sdLiveTitle">Share price now</b></header>
+      <div class="tvbox" id="sdLive" style="height:300px"></div>
+      <div class="src">Live quote and intraday chart: <a href="https://www.tradingview.com/" target="_blank" rel="noopener">TradingView</a> (some exchanges are delayed by about 15 minutes). The simulation below uses end-of-day prices.</div>
+    </section>
     <div class="demo-grid" style="margin-top:14px">
       <div class="panel form">
         <div class="field"><label for="sAmt">Amount invested (€)</label><input id="sAmt" type="number" min="100" step="100" value="1000"></div>
@@ -866,7 +891,7 @@ async function openNote(slug){
       v.querySelectorAll("script").forEach(old=>{const s=document.createElement("script");s.textContent=old.textContent;old.replaceWith(s)});current=slug;}
     catch(e){v.innerHTML='<p style="padding:40px 0">This note could not be loaded. <a href="#research">Back to all notes</a>.</p>';current=null;return}
   }
-  drawNote();
+  drawNote();liveNote(slug);
 }
 function route(){
   let h=decodeURIComponent(location.hash.slice(1))||"home";let sub=null;
@@ -878,7 +903,7 @@ function route(){
   window.scrollTo(0,0);
   if(isNote)openNote(h);
   if(view==="demo")setTimeout(()=>{runDemo();runPriv()},0);
-  if(view==="markets")setTimeout(()=>{loadMarkets(sub);runStock()},0);
+  if(view==="markets")setTimeout(()=>{loadMarkets(sub);runStock();liveMarkets()},0);
   if(view==="research")renderRanking();
   if(view==="home"||view==="research"){const box=document.getElementById("scrBox"),slot=document.getElementById(view==="home"?"scrSlotHome":"scrSlotResearch");slot.after(box);renderHomeMarkets()}
   if(view==="esg")renderMarketESG();
@@ -1057,7 +1082,7 @@ async function openStock(t){
   const d=M.rows[M.cur];const x=d.rows.find(r=>r.t===t);if(!x)return;
   if(!M.hist[M.cur]){try{M.hist[M.cur]=(await getJSON(`data/markets/${M.cur}-hist.json`)).series}catch(e){return}}
   const ser=M.hist[M.cur][t];
-  M.sel={...x,ser,ix:M.cur};renderCons();renderSnap(M.sel);
+  M.sel={...x,ser,ix:M.cur};renderCons();renderSnap(M.sel);liveStock(x);
   const sd=document.getElementById("sd");sd.hidden=false;
   document.getElementById("sdTitle").textContent="Investment simulation: "+x.n;
   document.getElementById("sdAsOf").textContent=x.d?"Price as of "+fmtDate(x.d):"";
@@ -1294,8 +1319,70 @@ let deferred=null;
 addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;document.getElementById("installBtn").hidden=false});
 document.getElementById("installBtn").onclick=async()=>{if(!deferred)return;deferred.prompt();try{await deferred.userChoice}catch(_){}deferred=null;document.getElementById("installBtn").hidden=true};
 if("serviceWorker" in navigator&&location.protocol==="https:"&&!location.hostname.endsWith("claude.ai")&&!location.hostname.includes("claudeusercontent")){navigator.serviceWorker.register("sw.js").catch(()=>{})}
+
+/* ---------- live layer (TradingView embeds) ---------- */
+const TV_IX={sp500:"FOREXCOM:SPXUSD",ndx:"FOREXCOM:NSXUSD",csi300:"SSE:000300",nikkei225:"INDEX:NKY",euronext100:"EURONEXT:N100",
+  ftse100:"FOREXCOM:UKXGBP",dax:"INDEX:DEU40",cac40:"EURONEXT:PX1",ftsemib:"INDEX:FTSEMIB",ibex35:"BME:IBC",smi:"SIX:SMI",aex:"EURONEXT:AEX",
+  omxs30:"OMXSTO:OMXS30",hsi:"HSI:HSI",asx200:"ASX:XJO",nifty50:"NSE:NIFTY",sti:"TVC:STI",tsx60:"TSX:TX60",ibovespa:"BMFBOVESPA:IBOV",ipc:"BMV:ME"};
+const TV_IXNAME={sp500:"S&P 500",ndx:"Nasdaq-100",csi300:"CSI 300",nikkei225:"Nikkei 225",euronext100:"Euronext 100",ftse100:"FTSE 100",dax:"DAX 40",
+  cac40:"CAC 40",ftsemib:"FTSE MIB",ibex35:"IBEX 35",smi:"SMI",aex:"AEX",omxs30:"OMX Stockholm 30",hsi:"Hang Seng",asx200:"S&P/ASX 200",
+  nifty50:"Nifty 50",sti:"Straits Times",tsx60:"S&P/TSX 60",ibovespa:"Ibovespa",ipc:"S&P/BMV IPC"};
+const TV_REG={Americas:["sp500","ndx","tsx60","ibovespa","ipc"],Europe:["euronext100","cac40","dax","ftse100","ftsemib","ibex35","smi","aex","omxs30"],"Asia-Pacific":["nikkei225","csi300","hsi","asx200","nifty50","sti"]};
+const TV_EX={PA:"EURONEXT",AS:"EURONEXT",BR:"EURONEXT",LS:"EURONEXT",IR:"EURONEXT",MI:"MIL",DE:"XETR",F:"FWB",L:"LSE",MC:"BME",SW:"SIX",ST:"OMXSTO",
+  CO:"OMXCOP",HE:"OMXHEX",OL:"OSL",HK:"HKEX",AX:"ASX",NS:"NSE",BO:"BSE",SI:"SGX",TO:"TSX",SA:"BMFBOVESPA",MX:"BMV",T:"TSE",SS:"SSE",SZ:"SZSE",KS:"KRX",TW:"TWSE"};
+const TV_BBG={NA:"EURONEXT",FP:"EURONEXT",BB:"EURONEXT",IM:"MIL",GY:"XETR",LN:"LSE",SM:"BME",SW:"SIX",SS:"OMXSTO",DC:"OMXCOP",FH:"OMXHEX",NO:"OSL",US:""};
+function tvSym(t){                       // Yahoo ticker -> TradingView symbol
+  if(!t)return null;const m=String(t).match(/^(.+)\.([A-Z]{1,2})$/);
+  if(!m)return t.replace(/-/g,".");     // United States: BRK-B -> BRK.B
+  let b=m[1];const ex=TV_EX[m[2]];if(!ex)return null;
+  if(m[2]==="HK")b=String(parseInt(b,10));
+  if(m[2]==="ST")b=b.replace(/-/g,"_");
+  if(m[2]==="L"||m[2]==="TO")b=b.replace(/-/g,".").replace(/\.$/,"");
+  if(m[2]==="MX")b=b.replace(/\*$/,"");
+  return ex+":"+b;
+}
+function tvBBG(t){                       // "ADYEN NA" -> EURONEXT:ADYEN
+  const p=String(t||"").trim().split(/\s+/);if(p.length<2||!(p[1] in TV_BBG))return null;
+  return TV_BBG[p[1]]?TV_BBG[p[1]]+":"+p[0]:p[0];
+}
+const tvTheme=()=>{const a=document.documentElement.dataset.theme;return a==="dark"||(!a&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light"};
+function tvMount(el,kind,cfg){
+  if(!el)return;const key=kind+JSON.stringify(cfg);if(el.dataset.tv===key)return;el.dataset.tv=key;
+  el.innerHTML='<span class="tvwait">Connecting to live quotes…</span><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div></div>';
+  const s=document.createElement("script");s.src=`https://s3.tradingview.com/external-embedding/embed-widget-${kind}.js`;s.async=true;
+  s.textContent=JSON.stringify({colorTheme:tvTheme(),locale:"en",isTransparent:true,...cfg});
+  s.onload=()=>setTimeout(()=>{const w=el.querySelector(".tvwait");w&&w.remove()},1500);
+  el.querySelector(".tradingview-widget-container").appendChild(s);
+}
+function liveTape(){
+  const ix=["sp500","ndx","euronext100","cac40","dax","ftsemib","ftse100","nikkei225","hsi"].map(i=>({proName:TV_IX[i],title:TV_IXNAME[i]}));
+  const cos=REG.filter(e=>!e.private&&!e.external&&tvBBG(e.ticker)).map(e=>({proName:tvBBG(e.ticker),title:e.company}));
+  tvMount(document.getElementById("tvTape"),"ticker-tape",{symbols:[...ix,{proName:"FX_IDC:EURUSD",title:"EUR/USD"},...cos],showSymbolLogo:true,displayMode:"adaptive"});
+}
+function liveMarkets(){
+  const groups=Object.entries(TV_REG).map(([name,ids])=>({name,symbols:ids.map(i=>({name:TV_IX[i],displayName:TV_IXNAME[i]}))}));
+  const cos=REG.filter(e=>!e.private&&!e.external&&tvBBG(e.ticker)).map(e=>({name:tvBBG(e.ticker),displayName:e.company}));
+  if(cos.length)groups.push({name:"Our coverage",symbols:cos});
+  tvMount(document.getElementById("tvMarkets"),"market-quotes",{width:"100%",height:560,symbolsGroups:groups,showSymbolLogo:true});
+}
+function liveChart(el,sym,name){
+  tvMount(el,"symbol-overview",{symbols:[[name,sym+"|1D"]],chartOnly:false,width:"100%",height:300,autosize:true,showVolume:false,hideDateRanges:false,
+    scalePosition:"right",scaleMode:"Normal",fontFamily:"IBM Plex Sans, system-ui, sans-serif",lineWidth:2,lineType:0,chartType:"area",
+    dateRanges:["1d|1","5d|5","1m|30","3m|60","12m|1D","60m|1W"],noTimeScale:false,valuesTracking:"1",changeMode:"price-and-percent"});
+}
+function liveStock(x){
+  const box=document.getElementById("sdLiveBox"),sym=tvSym(x.t);box.hidden=!sym;if(!sym)return;
+  document.getElementById("sdLiveTitle").textContent=x.n+": share price now";
+  liveChart(document.getElementById("sdLive"),sym,x.n);
+}
+function liveNote(slug){
+  const e=REG.find(r=>r.slug===slug),sym=e&&!e.private&&tvBBG(e.ticker);const v=document.getElementById("noteView");
+  if(!sym||v.querySelector(".tvlive"))return;const head=v.querySelector(".notehead");if(!head)return;
+  head.insertAdjacentHTML("afterend",`<section class="ex tvlive"><header><i><span class="dot"></span>Live</i><b>${esc(e.company)}: share price now, against our ${esc(e.target||"")} target</b></header><div class="tvbox" style="height:300px"></div><div class="src">Live quote and intraday chart: <a href="https://www.tradingview.com/" target="_blank" rel="noopener">TradingView</a>. The price in the note is the one on the publication date; this panel shows where it trades now.</div></section>`);
+  liveChart(v.querySelector(".tvlive .tvbox"),sym,e.company);
+}
 addEventListener("hashchange",route);
-loadAll().then(route);
+loadAll().then(()=>{route();liveTape()});
 const redraw=()=>{drawNote();runDemo();runPriv();drawIdx();runStock()};
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',redraw);
 new MutationObserver(redraw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
