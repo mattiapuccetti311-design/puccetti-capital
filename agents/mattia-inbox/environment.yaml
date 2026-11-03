@@ -1,0 +1,11 @@
+# Sandbox for mattia-inbox. Only Google's token, Gmail and Calendar hosts are reachable.
+name: mattia-inbox-env
+config:
+  type: cloud
+  networking:
+    type: limited
+    allow_package_managers: true
+    allowed_hosts:
+      - oauth2.googleapis.com
+      - gmail.googleapis.com
+      - www.googleapis.com

@@ -1,0 +1,3 @@
+# The container for the Google credentials. Secrets are added separately (see README) and never live in this file.
+type: vault
+display_name: mattia-inbox

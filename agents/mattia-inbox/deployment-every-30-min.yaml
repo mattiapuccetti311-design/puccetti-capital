@@ -1,0 +1,19 @@
+# Runs the inbox agent every 30 minutes, 07:00-22:30 Paris time.
+agent: ./agent.md
+environment_id: ./environment.yaml
+vault_ids: []          # replace with ["vlt_..."] after the first `ant apply` (see README step 4)
+resources:
+  - ./memory_store-inbox.yaml
+budget:
+  type: limit
+  max_list_cost: {amount: "100", currency: USD}   # hard cap of $1.00 per run
+schedule:
+  type: cron
+  expression: "0,30 7-22 * * *"
+  timezone: Europe/Paris
+initial_events:
+  - type: user.message
+    content:
+      - type: text
+        text: |
+          Run your inbox check now: handle Mattia's replies to earlier summaries, then the new mail since the last run, then send the summary if there is anything to report.

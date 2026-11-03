@@ -1,0 +1,5 @@
+name: mattia-inbox-memory
+description: >-
+  What the inbox agent has learned about Mattia across runs: approved rules (rules.md), contacts and the
+  tone to use with each (contacts.md), his writing style (style.md), a log of handled messages (log.md),
+  and run state (state.md). Never store credentials or tokens here.
