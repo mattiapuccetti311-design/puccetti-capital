@@ -18,7 +18,7 @@ You reply to the summary to answer its questions and approve new rules. It learn
 | `deployment-every-30-min.yaml` | The 30-minute schedule, with a $1 cap per run |
 | `scripts/` | Token helper, credential upload, test run, safety net for paused actions |
 
-Not included yet: **WhatsApp** (personal accounts have no official API), and **Teams + EDHEC Outlook** (EDHEC IT has to approve the app).
+**EDHEC Outlook and Teams come in through Gmail** (setup step 1b). The agent summarizes them and writes a suggested reply for you to paste into Outlook or Teams. It never replies to them from Gmail. **WhatsApp is not included**, because personal accounts have no official API.
 
 ## Setup (once, on your computer)
 
@@ -28,6 +28,11 @@ Not included yet: **WhatsApp** (personal accounts have no official API), and **T
 - Create a project and enable the **Gmail API** and the **Google Calendar API**.
 - Under *OAuth consent screen*, choose External and add yourself as a test user.
 - Under *Credentials*, create an **OAuth client ID** of type *Desktop app* and download it as `client_secret.json`.
+
+**1b. Bring EDHEC into Gmail.** All three are optional, and EDHEC may block any of them. Test each one.
+- **EDHEC mail:** in Outlook on the web, go to Settings → Mail → Forwarding (or Rules → "Redirect to"), forward to mattiapuccetti311@gmail.com and keep a copy. Send yourself a test email at your EDHEC address and check that it reaches Gmail.
+- **Teams:** in Teams, go to Settings → Notifications → **Email**, and turn on emails for missed chats and mentions. They go to Outlook, then on to Gmail.
+- **EDHEC calendar:** in Outlook calendar settings, go to Shared calendars → **Publish a calendar**, choose "Can view all details", and copy the **ICS** link. In Google Calendar, add it under Other calendars → **From URL**. The agent then checks it for clashes; it can only read it.
 
 **2. Refresh token.** Run `python scripts/get_google_token.py client_secret.json > tokens.json` and sign in with your Gmail account.
 

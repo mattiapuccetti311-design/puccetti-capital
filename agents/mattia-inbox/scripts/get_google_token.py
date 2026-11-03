@@ -16,6 +16,7 @@ SCOPES = [
     "https://www.googleapis.com/auth/gmail.modify",          # read, label, draft, send, move to spam
     "https://www.googleapis.com/auth/gmail.settings.basic",  # create "block sender" filters
     "https://www.googleapis.com/auth/calendar.events",       # create tentative events
+    "https://www.googleapis.com/auth/calendar.readonly",     # see all calendars (incl. subscribed EDHEC) for clashes
 ]
 
 
