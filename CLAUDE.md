@@ -33,7 +33,7 @@ python tools/update_markets.py
 node tools/make-pdf.js . <deps-dir> [slug ...]   # no slugs = every note without a PDF
 
 # Checks before committing
-python3 -m py_compile tools/update_markets.py
+python3 -c "import ast;ast.parse(open('tools/update_markets.py').read())"   # syntax check that writes no .pyc
 python3 -c "import json;[json.load(open(f)) for f in ['notes/index.json','data/market.json']]"
 cmp index.html 404.html
 ```
