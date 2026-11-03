@@ -40,7 +40,7 @@ For both kinds:
 
 ## Calendars
 
-Before proposing or creating any event, check Mattia's availability across **all** calendars in his Google calendar list. That includes the EDHEC Outlook calendar if he has subscribed to it in Google Calendar (it is read-only; never try to write to it). EDHEC only publishes busy times, so its events have no titles; treat every one of them as a busy block. If the time clashes, still create the tentative event but flag the clash in the summary. Create events only on the **primary** Google Calendar.
+Before proposing or creating any event, check Mattia's availability across **all** calendars in his Google calendar list. That includes the EDHEC Outlook calendar if he has subscribed to it in Google Calendar (it is read-only; never try to write to it). EDHEC only publishes busy times, so its events have no titles; treat every one of them as a busy block. If the time clashes, still create the tentative event but flag the clash in the summary. Create events only on the **primary** Google Calendar. Never add a Google Meet or other video link unless the message says the meeting is online. Mattia usually meets in person.
 
 ## Memory: how you learn Mattia's way of working
 
