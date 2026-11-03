@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02",
+ "updated": "2026-11-03",
  "benchmark": {
   "name": "CAC 40",
   "series": [
@@ -53,10 +53,10 @@
    ],
    [
     "2026-11",
-    8046.21
+    8027.85
    ]
   ],
-  "note": "Month-end closes (Yahoo Finance). November 2026 = close of 2 November."
+  "note": "Month-end closes (Yahoo Finance). November 2026 = close of 3 November."
  },
  "companies": {
   "bnp-paribas": {
@@ -115,10 +115,10 @@
     ],
     [
      "2026-11",
-     87.11
+     87.86
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 2 November.",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 3 November.",
    "dividends": [
     [
      "2026-05",
@@ -356,10 +356,10 @@
     ],
     [
      "2026-11",
-     1325.5
+     1315.5
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 2 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 3 November. Dividends not included.",
    "dividends": [],
    "ourTarget": 871,
    "rating": "REDUCE",
@@ -818,10 +818,10 @@
     ],
     [
      "2026-11",
-     37.88
+     38.72
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 2 November.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 3 November.",
    "dividends": [],
    "ourTarget": 47,
    "rating": "BUY",
@@ -1165,7 +1165,7 @@
      17.06
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 2 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 3 November. Dividends not included.",
    "dividends": [
     [
      "2025-10",
@@ -1411,10 +1411,10 @@
     ],
     [
      "2026-11",
-     855.2
+     824.9
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 2 November. No dividends.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 3 November. No dividends.",
    "dividends": [],
    "ourTarget": 890,
    "rating": "HOLD",
@@ -1577,6 +1577,101 @@
     "score": 66,
     "grade": "Strong",
     "summary": "Adyen has an A from MSCI and a low risk score, in a business with small direct emissions and no significant controversy in the last two years. We found no CDP score and could not verify climate targets, so the score rests on two providers."
+   }
+  },
+  "pigment": {
+   "name": "Pigment",
+   "type": "private",
+   "currency": "$",
+   "unit": "bn",
+   "valuations": [
+    [
+     "2023-06",
+     0.85,
+     "Series C"
+    ],
+    [
+     "2024-04",
+     1.0,
+     "Series D"
+    ],
+    [
+     "2026-10",
+     2.3,
+     "Series E"
+    ]
+   ],
+   "fairValue": 1.5,
+   "rating": "STRETCHED",
+   "nextResults": {
+    "date": null,
+    "event": "No scheduled disclosure: private company. Watch for a year-end 2026 ARR update (company says above $100m in October; CEO targets near $200m next year).",
+    "confirmed": false
+   },
+   "news": [
+    {
+     "date": "2026-10-21",
+     "title": "Pigment raises $250m at a $2.3bn valuation in a round led by EQT's Scaleup Europe Fund",
+     "source": "The Next Web",
+     "url": "https://thenextweb.com/news/pigment-250m-series-e-scaleup-europe-fund"
+    },
+    {
+     "date": "2026-10-21",
+     "title": "Pigment crosses $100m ARR; CEO expects ARR to near $200m next year",
+     "source": "ARR Club",
+     "url": "https://www.arr.club/signal/pigment-crossed-100m-arr-raised-250m"
+    },
+    {
+     "date": "2026-10-21",
+     "title": "Pigment hits $2.3bn valuation in $250m Series E; 85% of new metrics now created by AI agents",
+     "source": "Value Add VC",
+     "url": "https://valueaddvc.com/pulse/pigment-250m-series-e-2-3b-valuation-2026"
+    },
+    {
+     "date": "2026-10-21",
+     "title": "Pigment Series E: Nvidia and Scaleup Europe Fund back the Paris planning software maker",
+     "source": "Sifted",
+     "url": "https://sifted.eu/articles/pigment-series-e-nvidia-scaleup-europe-fund"
+    }
+   ],
+   "esg": {
+    "asof": "2026-11-03",
+    "method": "own",
+    "pillars": [
+     [
+      "Disclosure",
+      9,
+      "No sustainability report or emissions figures are published; Pigment says it completed a carbon footprint assessment for the French Tech Next40 programme, but gives no results.",
+      "https://pigment.com/newsroom/pigment-recognized-in-the-french-tech-next40-class-of-2024"
+     ],
+     [
+      "Environment",
+      13,
+      "Light direct footprint (offices, travel, cloud hosting in Frankfurt or Oregon); the compute used by its AI agents is not measured.",
+      "https://www.pigment.com/security"
+     ],
+     [
+      "Social",
+      13,
+      "About 500 staff; employee reviews are positive but anecdotal and no diversity or turnover data are public.",
+      "https://www.glassdoor.it/Recensioni/Recensione-dipendente-Pigment-E5907351-RVW100531129.htm"
+     ],
+     [
+      "Governance",
+      14,
+      "SOC 2 Type 2 and ISO 27001 certified, a dedicated security team under a CISO and an AI framework aligned with the EU AI Act; founder co-CEOs, venture-dominated shareholders and no public accounts.",
+      "https://www.pigment.com/security"
+     ],
+     [
+      "Controversies",
+      18,
+      "No fines, lawsuits or data incidents found; industry-wide risk that AI agents make errors in financial planning.",
+      "https://www.pigment.com/security"
+     ]
+    ],
+    "score": 67,
+    "grade": "Strong",
+    "summary": "Pigment has strong security and AI governance and a light direct footprint, but it has published no sustainability report or emissions data."
    }
   }
  }

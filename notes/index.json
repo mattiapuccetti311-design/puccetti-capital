@@ -1,5 +1,19 @@
 [
   {
+    "slug": "pigment",
+    "date": "2026-11-03",
+    "sector": "Start-ups",
+    "country": "France",
+    "company": "Pigment",
+    "ticker": "Private",
+    "headline": "Europe's planning-software leader, priced at 23 times revenue in a market that pays 5",
+    "rating": "STRETCHED",
+    "target": "$1.5bn",
+    "price": "$2.3bn (Series E)",
+    "potential": "−35%",
+    "private": true
+  },
+  {
     "slug": "adyen",
     "date": "2026-11-02",
     "sector": "Payments",
