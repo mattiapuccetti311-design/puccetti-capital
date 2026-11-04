@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03",
+ "updated": "2026-11-04",
  "benchmark": {
   "name": "CAC 40",
   "series": [
@@ -53,10 +53,10 @@
    ],
    [
     "2026-11",
-    8027.85
+    8195.3
    ]
   ],
-  "note": "Month-end closes (Yahoo Finance). November 2026 = close of 3 November."
+  "note": "Month-end closes (Yahoo Finance). November 2026 = close of 4 November."
  },
  "companies": {
   "bnp-paribas": {
@@ -115,10 +115,10 @@
     ],
     [
      "2026-11",
-     87.86
+     92.0
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 3 November.",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 4 November.",
    "dividends": [
     [
      "2026-05",
@@ -356,10 +356,10 @@
     ],
     [
      "2026-11",
-     1315.5
+     1380.5
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 3 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 4 November. Dividends not included.",
    "dividends": [],
    "ourTarget": 871,
    "rating": "REDUCE",
@@ -818,10 +818,10 @@
     ],
     [
      "2026-11",
-     38.72
+     41.02
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 3 November.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 4 November.",
    "dividends": [],
    "ourTarget": 47,
    "rating": "BUY",
@@ -1162,10 +1162,10 @@
     ],
     [
      "2026-11",
-     17.06
+     17.65
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 3 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 4 November. Dividends not included.",
    "dividends": [
     [
      "2025-10",
@@ -1411,10 +1411,10 @@
     ],
     [
      "2026-11",
-     824.9
+     857.0
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 3 November. No dividends.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 4 November. No dividends.",
    "dividends": [],
    "ourTarget": 890,
    "rating": "HOLD",
@@ -1672,6 +1672,225 @@
     "score": 67,
     "grade": "Strong",
     "summary": "Pigment has strong security and AI governance and a light direct footprint, but it has published no sustainability report or emissions data."
+   }
+  },
+  "pandora": {
+   "name": "Pandora",
+   "type": "listed",
+   "ticker": "PNDORA DC",
+   "currency": "DKK ",
+   "series": [
+    [
+     "2025-11",
+     769.2
+    ],
+    [
+     "2025-12",
+     707.6
+    ],
+    [
+     "2026-01",
+     509.0
+    ],
+    [
+     "2026-02",
+     500.0
+    ],
+    [
+     "2026-03",
+     453.7
+    ],
+    [
+     "2026-04",
+     483.8
+    ],
+    [
+     "2026-05",
+     601.0
+    ],
+    [
+     "2026-06",
+     750.6
+    ],
+    [
+     "2026-07",
+     812.0
+    ],
+    [
+     "2026-08",
+     850.2
+    ],
+    [
+     "2026-09",
+     830.6
+    ],
+    [
+     "2026-10",
+     811.8
+    ],
+    [
+     "2026-11",
+     919.8
+    ]
+   ],
+   "seriesNote": "Month-end closes (Yahoo Finance, Nasdaq Copenhagen). November 2026 = close of 4 November. Dividend of DKK 22 paid in March 2026 (not adjusted in the prices).",
+   "dividends": [
+    [
+     "2026-03",
+     22.0
+    ]
+   ],
+   "ourTarget": 925,
+   "rating": "HOLD",
+   "analysts": {
+    "asof": "StockAnalysis consensus, 4 November 2026",
+    "n": 19,
+    "low": 440,
+    "median": 850,
+    "avg": 858,
+    "high": 1300,
+    "consensus": "Hold",
+    "ratings": [
+     [
+      "Strong buy",
+      5
+     ],
+     [
+      "Buy",
+      0
+     ],
+     [
+      "Hold",
+      13
+     ],
+     [
+      "Sell",
+      1
+     ],
+     [
+      "Strong sell",
+      0
+     ]
+    ],
+    "estimates": [
+     {
+      "year": "2026E",
+      "rev": 33.44,
+      "eps": 64.86,
+      "ourRev": 33.35,
+      "ourEps": 69.4
+     },
+     {
+      "year": "2027E",
+      "rev": 35.03,
+      "eps": 48.32,
+      "ourRev": 34.52,
+      "ourEps": 42.0
+     }
+    ],
+    "estUnit": "Revenue DKKbn, EPS DKK",
+    "actions": [
+     [
+      "2026-10-14",
+      "HSBC",
+      "Hold",
+      "DKK 880 → DKK 890"
+     ],
+     [
+      "2026-10-12",
+      "RBC",
+      "n/a",
+      "Target DKK 875"
+     ],
+     [
+      "2026-10-05",
+      "UBS",
+      "n/a",
+      "Target DKK 839"
+     ]
+    ],
+    "source": "https://stockanalysis.com/quote/cph/PNDORA/forecast/"
+   },
+   "nextResults": {
+    "date": "2027-02-04",
+    "event": "Full-year 2026 results (date estimated from past years, early February; not yet published)",
+    "confirmed": false,
+    "source": "https://www.pandoragroup.com/investor/financial-calendar"
+   },
+   "news": [
+    {
+     "date": "2026-11-04",
+     "title": "Pandora delivers 6% organic growth in Q3, guidance narrowed towards upper end",
+     "source": "GlobeNewswire",
+     "url": "https://www.manilatimes.net/2026/11/04/tmt-newswire/globenewswire/pandora-delivers-6-organic-growth-in-q3-guidance-narrowed-towards-upper-end/2461350"
+    },
+    {
+     "date": "2026-11-04",
+     "title": "Earnings call: Pandora lifts 2026 outlook as shares jump on Q3 growth",
+     "source": "Investing.com",
+     "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-pandora-lifts-2026-outlook-as-shares-jump-on-q3-growth-93CH-4998560"
+    },
+    {
+     "date": "2026-11-04",
+     "title": "Pandora reports 6% Q3 organic growth and raises guidance floor",
+     "source": "Retail Boss",
+     "url": "https://retailboss.co/pandora-reports-6-q3-organic-growth-and-raises-guidance-floor/"
+    },
+    {
+     "date": "2026-11-04",
+     "title": "Pandora Q3 2026: global growth points to reacceleration",
+     "source": "WWD",
+     "url": "https://wwd.com/business-news/financial/pandora-q3-results-2026-guidance-update-high-end-1239399708/"
+    },
+    {
+     "date": "2026-10-14",
+     "title": "HSBC raises target to DKK 890 for Pandora stock",
+     "source": "ad-hoc-news",
+     "url": "https://www.ad-hoc-news.de/boerse/news/nebenwerte/hsbc-raises-target-to-dkk-890-for-pandora-stock/70353506"
+    }
+   ],
+   "esg": {
+    "asof": "2026-11-04",
+    "method": "providers",
+    "providers": [
+     [
+      "MSCI ESG Rating",
+      "AAA",
+      100,
+      "https://www.pandoragroup.com/about-us/brand-recognitions"
+     ],
+     [
+      "Sustainalytics ESG Risk",
+      "12.6 (low risk)",
+      74.8,
+      "https://sustainalytics.com/esg-rating/pandora-as/1050032039"
+     ],
+     [
+      "CDP Climate",
+      "A",
+      100,
+      "https://www.pandoragroup.com/about-us/brand-recognitions"
+     ]
+    ],
+    "base": 91.6,
+    "controversies": [],
+    "memo": [
+     [
+      "Litigation",
+      "FoundRae copyright suit over the Talisman designs (New York, filed February 2026); not an ESG controversy, so no deduction"
+     ],
+     [
+      "Other recognition",
+      "Ranked second most sustainable company in the 2026 Corporate Knights list (reported by aggregators)"
+     ],
+     [
+      "Data caveat",
+      "MSCI and CDP grades are company-reported (brand recognitions page); an aggregator shows a Sustainalytics score of 12.1 against 12.6 on Sustainalytics' own page; climate targets not verified"
+     ]
+    ],
+    "score": 92,
+    "grade": "Leader",
+    "summary": "Pandora reports an MSCI AAA, a CDP Climate A and a low Sustainalytics risk score of 12.6. We found no significant ESG controversy in the last two years, only a copyright suit that is not an ESG matter, so the score is 92."
    }
   }
  }

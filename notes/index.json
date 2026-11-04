@@ -1,5 +1,18 @@
 [
   {
+    "slug": "pandora",
+    "date": "2026-11-04",
+    "sector": "Jewellery",
+    "country": "Denmark",
+    "company": "Pandora",
+    "ticker": "PNDORA DC",
+    "headline": "Shares up 11% on a guidance upgrade, but a tariff refund flatters the quarter and 2027 is the margin trough",
+    "rating": "HOLD",
+    "target": "DKK 925",
+    "price": "DKK 919.80",
+    "potential": "+1%"
+  },
+  {
     "slug": "pigment",
     "date": "2026-11-03",
     "sector": "Start-ups",
