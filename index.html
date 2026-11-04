@@ -209,6 +209,7 @@ td.e,th.e{background:color-mix(in srgb,var(--soft) 80%,transparent)}
 .ixcard .lv{font-family:var(--mono);font-size:16px;font-variant-numeric:tabular-nums}
 .ixcard .rs{display:grid;grid-template-columns:repeat(3,auto);gap:2px 10px;font-family:var(--mono);font-size:11.5px;justify-content:start}
 .ixcard .rs span{color:var(--muted)}
+.ixcard.mac{cursor:default}.ixcard.mac .nm{font-size:15px;min-height:35px}.ixcard.mac .lv{font-size:18px}.ixcard.mac .stale{color:var(--neg)}
 .scrbar select{flex:1 1 170px}
 #scrTable{min-width:940px} #scrTable tbody tr{cursor:pointer} #scrTable tbody tr:hover td{background:var(--soft)}
 #scrTable td .tk{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-left:6px}
@@ -571,6 +572,14 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
     <div class="src" id="srcIdx"></div>
   </section>
 
+  <div class="sectionhead"><h2>Rates, inflation and crypto</h2><div class="seg" id="macSeg" role="group" aria-label="Group shown in the chart"></div></div>
+  <div class="ixcards" id="macCards"><p class="empty">Loading rates and inflation…</p></div>
+  <section class="ex" style="margin-top:14px">
+    <header><i>Chart M5</i><b id="macTitle">Policy rates over five years</b></header>
+    <div class="cv" style="height:300px"><canvas id="cMac" aria-label="Rates, inflation or crypto over time"></canvas></div>
+    <div class="src" id="srcMac"></div>
+  </section>
+
   <div class="sectionhead"><h2 id="consTitle">Constituents</h2><span class="kick" id="consAsOf"></span></div>
   <section class="ex" style="margin-top:14px">
     <div class="toolbar">
@@ -903,7 +912,7 @@ function route(){
   window.scrollTo(0,0);
   if(isNote)openNote(h);
   if(view==="demo")setTimeout(()=>{runDemo();runPriv()},0);
-  if(view==="markets")setTimeout(()=>{loadMarkets(sub);runStock();liveMarkets()},0);
+  if(view==="markets")setTimeout(()=>{loadMarkets(sub);runStock();liveMarkets();loadMacro()},0);
   if(view==="research")renderRanking();
   if(view==="home"||view==="research"){const box=document.getElementById("scrBox"),slot=document.getElementById(view==="home"?"scrSlotHome":"scrSlotResearch");slot.after(box);renderHomeMarkets()}
   if(view==="esg")renderMarketESG();
@@ -1013,7 +1022,7 @@ async function loadMarkets(sub){
 }
 function renderSources(){
   const L=M.ix.indices.map(i=>`<li><b>${esc(i.name)}</b>: <a href="${esc(i.official)}" target="_blank" rel="noopener">index provider</a> · <a href="${esc(i.wiki)}" target="_blank" rel="noopener">constituent list</a> · <a href="${esc(i.quote)}" target="_blank" rel="noopener">prices</a></li>`).join("");
-  document.getElementById("mSources").innerHTML=L+`<li>Share prices, analyst targets, market capitalisation and exchange rates: <a href="https://finance.yahoo.com" target="_blank" rel="noopener">Yahoo Finance</a>, retrieved with the open-source <a href="https://github.com/ranaroussi/yfinance" target="_blank" rel="noopener">yfinance</a> library.</li><li>Update script: <a href="https://github.com/mattiapuccetti311-design/puccetti-capital/blob/main/tools/update_markets.py" target="_blank" rel="noopener">tools/update_markets.py</a>, run every weekday by GitHub Actions.</li>`;
+  document.getElementById("mSources").innerHTML=L+`<li>Share prices, analyst targets, market capitalisation and exchange rates: <a href="https://finance.yahoo.com" target="_blank" rel="noopener">Yahoo Finance</a>, retrieved with the open-source <a href="https://github.com/ranaroussi/yfinance" target="_blank" rel="noopener">yfinance</a> library.</li><li>Update script: <a href="https://github.com/mattiapuccetti311-design/puccetti-capital/blob/main/tools/update_markets.py" target="_blank" rel="noopener">tools/update_markets.py</a>, run every weekday by GitHub Actions.</li><li>Rates, inflation and crypto: <a href="https://data.ecb.europa.eu/" target="_blank" rel="noopener">ECB Data Portal</a>, <a href="https://ec.europa.eu/eurostat/web/hicp" target="_blank" rel="noopener">Eurostat</a>, <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a> and <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a>, free public APIs (see <a href="https://github.com/public-apis/public-apis" target="_blank" rel="noopener">public-apis</a>), fetched by <a href="https://github.com/mattiapuccetti311-design/puccetti-capital/blob/main/tools/update_macro.py" target="_blank" rel="noopener">tools/update_macro.py</a>.</li>`;
 }
 function renderIxCards(){
   document.getElementById("ixCards").innerHTML=M.ix.indices.map(i=>ixCardHTML(i,false)).join("");
@@ -1383,7 +1392,39 @@ function liveNote(slug){
 }
 addEventListener("hashchange",route);
 loadAll().then(()=>{route();liveTape()});
-const redraw=()=>{drawNote();runDemo();runPriv();drawIdx();runStock()};
+/* ---------- rates, inflation and crypto (data/markets/macro.json, built by tools/update_macro.py) ---------- */
+const MAC={d:null,g:"Policy rates",chart:null};
+const macVal=(x,v)=>v==null?"–":x.unit==="%"?v.toFixed(2)+"%":x.unit==="bp"?Math.round(v)+" bp":money(v,"€",v>=1000?0:2);
+const macCh=(x,v)=>{if(v==null)return"–";const s=v>0?"+":v<0?"−":"±",a=Math.abs(v);return x.unit==="bp"?s+Math.round(a)+" bp":s+a.toFixed(2)+" pt"};
+const macDate=x=>x.freq==="monthly"?mLabel(x.lastDate):fmtDate(x.lastDate);
+async function loadMacro(){
+  if(!MAC.d){try{MAC.d=await getJSON("data/markets/macro.json")}catch(e){document.getElementById("macCards").innerHTML='<p class="empty">Rates and inflation data will appear after the next automatic update. Refresh the page later.</p>';return}
+    const groups=[...new Set(MAC.d.series.map(x=>x.group))];
+    document.getElementById("macSeg").innerHTML=groups.map(g=>`<button type="button" data-mg="${esc(g)}" aria-pressed="${g===MAC.g}">${esc(g)}</button>`).join("");
+    document.querySelectorAll("[data-mg]").forEach(b=>b.onclick=()=>{MAC.g=b.dataset.mg;document.querySelectorAll("[data-mg]").forEach(y=>y.setAttribute("aria-pressed",y===b));drawMacro()});
+    document.getElementById("macCards").innerHTML=MAC.d.series.map(x=>{const pr=x.unit==="€";
+      return `<a class="ixcard mac" href="${esc(x.url)}" target="_blank" rel="noopener" title="Source: ${esc(x.source)}"><span class="kick">${esc(x.group)} · ${macDate(x)}${x.stale?' · <span class="stale">not updated</span>':""}</span><span class="nm">${esc(x.name)}</span><span class="lv">${macVal(x,x.last)}${pr?` <small class="${cls(x.r1d)}">${pc(x.r1d)}</small>`:""}</span><span class="rs" style="grid-template-columns:repeat(2,auto)"><span>${x.freq==="monthly"?"Prev. month":"1M"}</span><span>1Y</span>${pr?`<b class="${cls(x.r1m)}">${pc(x.r1m)}</b><b class="${cls(x.r1y)}">${pc(x.r1y)}</b>`:`<b>${macCh(x,x.ch1m)}</b><b>${macCh(x,x.ch1y)}</b>`}</span></a>`}).join("");
+  }
+  drawMacro();
+}
+function drawMacro(){
+  if(!MAC.d||!window.Chart||document.querySelector('[data-v="markets"]').hidden)return;
+  if(MAC.chart){MAC.chart.destroy();MAC.chart=null}base();
+  const S=MAC.d.series.filter(x=>x.group===MAC.g&&x.monthly&&x.monthly.length),crypto=S.some(x=>x.unit==="€"),bp=S.some(x=>x.unit==="bp");
+  const rows=S.map(x=>crypto?x.daily:x.monthly);const labels=[...new Set(rows.flatMap(r=>r.map(p=>p[0])))].sort();
+  const P=IXCOL(),ink=css('--ink'),rule=css('--rule');
+  const ds=S.map((x,k)=>{const m=new Map(crypto?x.daily:x.monthly);const b0=crypto?x.daily[0][1]:1;
+    return {label:x.name,data:labels.map(l=>{const v=m.get(l);return v==null?null:crypto?+(v/b0*100).toFixed(2):v}),borderColor:P[k%P.length],borderWidth:1.8,pointRadius:0,spanGaps:true,tension:0,yAxisID:x.unit==="bp"?"y2":"y"}});
+  const fmtY=v=>crypto?v.toFixed(0):v.toFixed(1)+"%";
+  MAC.chart=new Chart(document.getElementById("cMac"),{type:"line",data:{labels,datasets:ds},options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+    plugins:{legend:{labels:{color:ink,boxWidth:12}},tooltip:{callbacks:{title:x=>crypto?fmtDate(x[0].label):mLabel(x[0].label),label:x=>{const s=S[x.datasetIndex];return s.name+": "+(x.raw==null?"–":crypto?x.raw.toFixed(1):macVal(s,x.raw))}}}},
+    scales:{y:{grid:{color:rule,drawTicks:false},ticks:{callback:fmtY}},...(bp?{y2:{position:"right",grid:{display:false},ticks:{callback:v=>v+" bp"}}}:{}),
+      x:{grid:{display:false},ticks:{color:ink,maxRotation:0,autoSkip:true,maxTicksLimit:8,callback:function(v){const l=this.getLabelForValue(v);return crypto?fmtDate(l).slice(3):mLabel(l)}}}}}});
+  document.getElementById("macTitle").textContent=crypto?"Bitcoin and ether over one year, rebased to 100 (euros)":MAC.g+" over five years";
+  const src=[...new Set(S.map(x=>x.source))].map(n=>{const s=MAC.d.sources.find(y=>y.name===n);return s?`<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(n)}</a>`:esc(n)}).join(", ");
+  document.getElementById("srcMac").innerHTML=`${crypto?"Daily prices in euros, rebased to 100 one year ago":"Month-end values in per cent"+(bp?"; the spread is in basis points, right axis":"")}. Source: ${src}. Updated ${fmtDate(MAC.d.updated)}. Tap a card above to open the source series. Changes on the cards are in percentage points (pt) for rates and in per cent for crypto.`;
+}
+const redraw=()=>{drawNote();runDemo();runPriv();drawIdx();runStock();drawMacro()};
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',redraw);
 new MutationObserver(redraw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 document.fonts&&document.fonts.ready.then(redraw);

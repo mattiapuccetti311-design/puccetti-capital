@@ -9,6 +9,7 @@ on:
     branches: [main]
     paths:
       - tools/update_markets.py
+      - tools/update_macro.py
       - .github/workflows/update-markets.yml
 
 permissions:
@@ -30,6 +31,9 @@ jobs:
       - run: pip install yfinance pandas lxml requests
       - name: Fetch indices, constituents, prices and analyst targets
         run: python tools/update_markets.py
+      - name: Fetch rates, inflation and crypto (ECB, Eurostat, FRED, CoinGecko)
+        continue-on-error: true
+        run: python tools/update_macro.py
       - name: Commit the new data
         run: |
           git config user.name "puccetti-capital-bot"
