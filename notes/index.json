@@ -1,5 +1,18 @@
 [
   {
+    "slug": "legrand",
+    "date": "2026-11-05",
+    "sector": "Electrical equipment",
+    "country": "France",
+    "company": "Legrand",
+    "ticker": "LR FP",
+    "headline": "A 10% beat and higher guidance, but the shares ended flat: the quality is real and the price already pays for it",
+    "rating": "REDUCE",
+    "target": "€114",
+    "price": "€127.50",
+    "potential": "−11%"
+  },
+  {
     "slug": "pandora",
     "date": "2026-11-04",
     "sector": "Jewellery",

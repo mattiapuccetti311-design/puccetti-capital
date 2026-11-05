@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04",
+ "updated": "2026-11-05",
  "benchmark": {
   "name": "CAC 40",
   "series": [
@@ -53,10 +53,10 @@
    ],
    [
     "2026-11",
-    8195.3
+    8207.38
    ]
   ],
-  "note": "Month-end closes (Yahoo Finance). November 2026 = close of 4 November."
+  "note": "Month-end closes (Yahoo Finance). November 2026 = close of 5 November."
  },
  "companies": {
   "bnp-paribas": {
@@ -115,10 +115,10 @@
     ],
     [
      "2026-11",
-     92.0
+     92.14
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 4 November.",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 5 November.",
    "dividends": [
     [
      "2026-05",
@@ -356,10 +356,10 @@
     ],
     [
      "2026-11",
-     1380.5
+     1378.0
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 4 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 5 November. Dividends not included.",
    "dividends": [],
    "ourTarget": 871,
    "rating": "REDUCE",
@@ -818,10 +818,10 @@
     ],
     [
      "2026-11",
-     41.02
+     41.04
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 4 November.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 5 November.",
    "dividends": [],
    "ourTarget": 47,
    "rating": "BUY",
@@ -907,9 +907,9 @@
     "source": "https://stockanalysis.com/quote/etr/NDX1/forecast/"
    },
    "nextResults": {
-    "date": "2026-11-05",
-    "event": "Q3 2026 results (full report)",
-    "confirmed": true,
+    "date": "2027-02-26",
+    "event": "Full-year 2026 results (date estimated from past years, late February; Q3 full report published 5 November)",
+    "confirmed": false,
     "source": "https://www.nordex-online.com/en/2026/10/nordex-group-reports-strong-preliminary-q3-2026-results-and-raises-ebitda-margin-guidance-for-full-year-2026/"
    },
    "news": [
@@ -1162,10 +1162,10 @@
     ],
     [
      "2026-11",
-     17.65
+     17.75
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 4 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 5 November. Dividends not included.",
    "dividends": [
     [
      "2025-10",
@@ -1411,10 +1411,10 @@
     ],
     [
      "2026-11",
-     857.0
+     893.1
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 4 November. No dividends.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 5 November. No dividends.",
    "dividends": [],
    "ourTarget": 890,
    "rating": "HOLD",
@@ -1730,10 +1730,10 @@
     ],
     [
      "2026-11",
-     919.8
+     894.2
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Nasdaq Copenhagen). November 2026 = close of 4 November. Dividend of DKK 22 paid in March 2026 (not adjusted in the prices).",
+   "seriesNote": "Month-end closes (Yahoo Finance, Nasdaq Copenhagen). November 2026 = close of 5 November. Dividend of DKK 22 paid in March 2026 (not adjusted in the prices).",
    "dividends": [
     [
      "2026-03",
@@ -1891,6 +1891,247 @@
     "score": 92,
     "grade": "Leader",
     "summary": "Pandora reports an MSCI AAA, a CDP Climate A and a low Sustainalytics risk score of 12.6. We found no significant ESG controversy in the last two years, only a copyright suit that is not an ESG matter, so the score is 92."
+   }
+  },
+  "legrand": {
+   "name": "Legrand",
+   "type": "listed",
+   "ticker": "LR FP",
+   "currency": "€",
+   "series": [
+    [
+     "2025-12",
+     127.25
+    ],
+    [
+     "2026-01",
+     135.0
+    ],
+    [
+     "2026-02",
+     153.85
+    ],
+    [
+     "2026-03",
+     131.7
+    ],
+    [
+     "2026-04",
+     151.8
+    ],
+    [
+     "2026-05",
+     147.65
+    ],
+    [
+     "2026-06",
+     147.7
+    ],
+    [
+     "2026-07",
+     131.4
+    ],
+    [
+     "2026-08",
+     136.55
+    ],
+    [
+     "2026-09",
+     141.6
+    ],
+    [
+     "2026-10",
+     131.0
+    ],
+    [
+     "2026-11",
+     127.5
+    ]
+   ],
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Paris). November 2026 = close of 5 November. Dividends not included.",
+   "dividends": [
+    [
+     "2026-05",
+     2.38
+    ]
+   ],
+   "ourTarget": 114,
+   "rating": "REDUCE",
+   "analysts": {
+    "asof": "S&P Global consensus via StockAnalysis, 5 November 2026",
+    "n": 18,
+    "low": 120,
+    "median": 170,
+    "avg": 171,
+    "high": 200,
+    "consensus": "Buy",
+    "ratings": [
+     [
+      "Strong buy",
+      9
+     ],
+     [
+      "Buy",
+      5
+     ],
+     [
+      "Hold",
+      2
+     ],
+     [
+      "Sell",
+      2
+     ],
+     [
+      "Strong sell",
+      0
+     ]
+    ],
+    "estimates": [
+     {
+      "year": "2026E",
+      "rev": 11.1,
+      "eps": 5.96,
+      "ourRev": 11.3,
+      "ourEps": 5.48
+     },
+     {
+      "year": "2027E",
+      "rev": 12.37,
+      "eps": 6.87,
+      "ourRev": 12.2,
+      "ourEps": 5.95
+     }
+    ],
+    "estUnit": "Revenue €bn, EPS €. Our EPS uses reported net income, consensus EPS may use another definition.",
+    "actions": [
+     [
+      "2026-11-02",
+      "Bernstein",
+      "Buy",
+      "Target €170"
+     ],
+     [
+      "2026-10-21",
+      "Goldman Sachs",
+      "Upgrade to Buy",
+      "Target €172"
+     ],
+     [
+      "2026-10-09",
+      "RBC Capital",
+      "Buy",
+      "€160 → €170"
+     ],
+     [
+      "2026-10-08",
+      "Jefferies",
+      "Buy",
+      "€168 → €170"
+     ],
+     [
+      "2026-10-05",
+      "Barclays",
+      "Buy (reiterated)",
+      "Target €188"
+     ]
+    ],
+    "source": "https://stockanalysis.com/quote/epa/LR/forecast/"
+   },
+   "nextResults": {
+    "date": "2027-02-10",
+    "event": "Full-year 2026 results",
+    "confirmed": true,
+    "source": "https://www.businesswire.com/news/home/20260728607299/en/"
+   },
+   "news": [
+    {
+     "date": "2026-11-05",
+     "title": "Legrand: Results for the first nine months of 2026",
+     "source": "Yahoo Finance (company release)",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/legrand-results-first-nine-months-063000808.html"
+    },
+    {
+     "date": "2026-11-05",
+     "title": "Why is Legrand stock surging today?",
+     "source": "Investing.com",
+     "url": "https://www.investing.com/news/stock-market-news/why-is-legrand-stock-surging-today-93CH-5003250"
+    },
+    {
+     "date": "2026-11-05",
+     "title": "Legrand shares soar on raised guidance and strong Q3 beat",
+     "source": "Investing.com",
+     "url": "https://in.investing.com/news/earnings/legrand-shares-soar-on-raised-guidance-and-strong-q3-beat-5682327"
+    },
+    {
+     "date": "2026-11-05",
+     "title": "Legrand raises 2026 organic growth target as sales rise 19.5%",
+     "source": "securities.io",
+     "url": "https://www.securities.io/legrand-raises-2026-organic-growth-target-as-sales-rise-19-5/"
+    },
+    {
+     "date": "2026-11-05",
+     "title": "Legrand 9-month profit rises, organic sales growth at 12.7%; raises 2026 targets",
+     "source": "RTTNews",
+     "url": "https://www.rttnews.com/story.aspx?Id=3710089"
+    }
+   ],
+   "esg": {
+    "asof": "2026-11-05",
+    "method": "providers",
+    "providers": [
+     [
+      "MSCI ESG Rating",
+      "AA",
+      85,
+      "https://www.legrand.com/sites/default/files/Documents_PDF_Legrand/RSE/2025/2025%20non-financial%20results_1770968667.pdf"
+     ],
+     [
+      "Sustainalytics ESG Risk",
+      "15 (low risk)",
+      70.0,
+      "https://sustainalytics.com/esg-rating/legrand-sa/1013478901"
+     ],
+     [
+      "CDP Climate",
+      "A",
+      100,
+      "https://www.legrand.com/sites/default/files/Documents_PDF_Legrand/RSE/2025/2025%20non-financial%20results_1770968667.pdf"
+     ]
+    ],
+    "base": 85.0,
+    "controversies": [
+     [
+      "Antitrust: €43m fine from the French competition authority (October 2024) for price practices in 2012-2015, under appeal; a criminal investigation of a French entity continues",
+      -5,
+      "https://www.businesswire.com/news/home/20241029444107/en"
+     ]
+    ],
+    "memo": [
+     [
+      "ISS ESG",
+      "Prime status since 2011 (company-reported)"
+     ],
+     [
+      "DJSI",
+      "World and Europe, S&P Global ESG score 66 (company-reported)"
+     ],
+     [
+      "EcoVadis",
+      "Platinum, top 1% of companies (company-reported)"
+     ],
+     [
+      "Scope 1 and 2 emissions",
+      "−18.7% in 2025 against a target of −3.5% (company-reported)"
+     ],
+     [
+      "Data caveat",
+      "MSCI AA and CDP A are company-reported. Sustainalytics: 15 on its own page, undated; other sources show 11.8 to 13.7, and Legrand reports 4th of 304 in its industry"
+     ]
+    ],
+    "score": 80,
+    "grade": "Leader",
+    "summary": "Legrand has an MSCI AA, a CDP Climate A list and a low Sustainalytics risk score of 15. The only deduction is five points for the antitrust fine of 2024 and the related criminal case, which gives a score of 80, just inside the Leader band."
    }
   }
  }
