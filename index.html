@@ -559,7 +559,7 @@ footer.site h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;tex
   <section class="ex tvlive" style="margin-top:14px">
     <header><i>Live</i><b>The twenty benchmark indices, quoted as they trade</b></header>
     <div class="tvbox" id="tvMarkets" style="height:560px"></div>
-    <div class="src">Live quotes: <a href="https://www.tradingview.com/" target="_blank" rel="noopener">TradingView</a>. Prices update on screen while the market is open; a few exchanges are shown with their standard delay (about 15 minutes), and the S&amp;P 500, Nasdaq-100, DAX, FTSE 100 and Nikkei 225 are followed through contracts that trade close to the index. Everything below this panel is end-of-day data, refreshed after the European and after the US close.</div>
+    <div class="src">Live quotes: <a href="https://www.tradingview.com/" target="_blank" rel="noopener">TradingView</a>. Prices update on screen while the market is open; the S&amp;P 500, Nasdaq-100, CAC 40, DAX, FTSE 100, FTSE MIB, Nikkei 225 and Hang Seng are followed in real time through FOREX.com index contracts (CFDs), which track the official index closely but can differ from it by a few points; the other indices and individual shares are shown with the exchange's standard delay (about 15 minutes). Everything below this panel is end-of-day data, refreshed after the European and after the US close.</div>
   </section>
   <div class="sectionhead"><h2>Choose a market</h2><span class="kick">End-of-day data</span></div>
   <div class="ixcards" id="ixCards" role="group" aria-label="Choose an index"><p class="empty">Loading market data…</p></div>
@@ -1321,9 +1321,9 @@ document.getElementById("installBtn").onclick=async()=>{if(!deferred)return;defe
 if("serviceWorker" in navigator&&location.protocol==="https:"&&!location.hostname.endsWith("claude.ai")&&!location.hostname.includes("claudeusercontent")){navigator.serviceWorker.register("sw.js").catch(()=>{})}
 
 /* ---------- live layer (TradingView embeds) ---------- */
-const TV_IX={sp500:"FOREXCOM:SPXUSD",ndx:"FOREXCOM:NSXUSD",csi300:"SSE:000300",nikkei225:"INDEX:NKY",euronext100:"EURONEXT:N100",
-  ftse100:"FOREXCOM:UKXGBP",dax:"INDEX:DEU40",cac40:"EURONEXT:PX1",ftsemib:"INDEX:FTSEMIB",ibex35:"BME:IBC",smi:"SIX:SMI",aex:"EURONEXT:AEX",
-  omxs30:"OMXSTO:OMXS30",hsi:"HSI:HSI",asx200:"ASX:XJO",nifty50:"NSE:NIFTY",sti:"TVC:STI",tsx60:"TSX:TX60",ibovespa:"BMFBOVESPA:IBOV",ipc:"BMV:ME"};
+const TV_IX={sp500:"FOREXCOM:SPXUSD",ndx:"FOREXCOM:NSXUSD",csi300:"SSE:000300",nikkei225:"FOREXCOM:JP225",euronext100:"EURONEXT:N100",
+  ftse100:"FOREXCOM:UKXGBP",dax:"FOREXCOM:GER40",cac40:"FOREXCOM:FRA40",ftsemib:"FOREXCOM:IT40",ibex35:"BME:IBC",smi:"SIX:SMI",aex:"EURONEXT:AEX",
+  omxs30:"OMXSTO:OMXS30",hsi:"FOREXCOM:HK50",asx200:"ASX:XJO",nifty50:"NSE:NIFTY",sti:"TVC:STI",tsx60:"TSX:TX60",ibovespa:"BMFBOVESPA:IBOV",ipc:"BMV:ME"};
 const TV_IXNAME={sp500:"S&P 500",ndx:"Nasdaq-100",csi300:"CSI 300",nikkei225:"Nikkei 225",euronext100:"Euronext 100",ftse100:"FTSE 100",dax:"DAX 40",
   cac40:"CAC 40",ftsemib:"FTSE MIB",ibex35:"IBEX 35",smi:"SMI",aex:"AEX",omxs30:"OMX Stockholm 30",hsi:"Hang Seng",asx200:"S&P/ASX 200",
   nifty50:"Nifty 50",sti:"Straits Times",tsx60:"S&P/TSX 60",ibovespa:"Ibovespa",ipc:"S&P/BMV IPC"};
