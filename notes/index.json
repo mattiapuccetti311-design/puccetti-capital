@@ -1,5 +1,19 @@
 [
   {
+    "slug": "lovable",
+    "date": "2026-11-06",
+    "sector": "Start-ups",
+    "country": "Sweden",
+    "company": "Lovable",
+    "ticker": "Private",
+    "headline": "The fastest-growing European software company, priced at 22 times run-rate after doubling in eight months",
+    "rating": "STRETCHED",
+    "target": "$11.1bn",
+    "price": "$13.3bn (Series C)",
+    "potential": "−17%",
+    "private": true
+  },
+  {
     "slug": "legrand",
     "date": "2026-11-05",
     "sector": "Electrical equipment",

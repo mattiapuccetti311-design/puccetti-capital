@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05",
+ "updated": "2026-11-06",
  "benchmark": {
   "name": "CAC 40",
   "series": [
@@ -53,7 +53,7 @@
    ],
    [
     "2026-11",
-    8207.38
+    8205.37
    ]
   ],
   "note": "Month-end closes (Yahoo Finance). November 2026 = close of 5 November."
@@ -115,7 +115,7 @@
     ],
     [
      "2026-11",
-     92.14
+     91.94
     ]
    ],
    "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 5 November.",
@@ -356,7 +356,7 @@
     ],
     [
      "2026-11",
-     1378.0
+     1387.0
     ]
    ],
    "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 5 November. Dividends not included.",
@@ -818,7 +818,7 @@
     ],
     [
      "2026-11",
-     41.04
+     40.94
     ]
    ],
    "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 5 November.",
@@ -1162,7 +1162,7 @@
     ],
     [
      "2026-11",
-     17.75
+     17.78
     ]
    ],
    "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 5 November. Dividends not included.",
@@ -1411,7 +1411,7 @@
     ],
     [
      "2026-11",
-     893.1
+     892.5
     ]
    ],
    "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 5 November. No dividends.",
@@ -1945,7 +1945,7 @@
     ],
     [
      "2026-11",
-     127.5
+     127.55
     ]
    ],
    "seriesNote": "Month-end closes (Yahoo Finance, Euronext Paris). November 2026 = close of 5 November. Dividends not included.",
@@ -2132,6 +2132,107 @@
     "score": 80,
     "grade": "Leader",
     "summary": "Legrand has an MSCI AA, a CDP Climate A list and a low Sustainalytics risk score of 15. The only deduction is five points for the antitrust fine of 2024 and the related criminal case, which gives a score of 80, just inside the Leader band."
+   }
+  },
+  "lovable": {
+   "name": "Lovable",
+   "type": "private",
+   "currency": "$",
+   "unit": "bn",
+   "valuations": [
+    [
+     "2025-07",
+     1.8,
+     "Series A"
+    ],
+    [
+     "2025-12",
+     6.6,
+     "Series B"
+    ],
+    [
+     "2026-08",
+     13.3,
+     "Series C"
+    ]
+   ],
+   "fairValue": 11.1,
+   "rating": "STRETCHED",
+   "nextResults": {
+    "date": null,
+    "event": "No scheduled disclosure: private company. Watch for a year-end 2026 run-rate update (company says above $600m in September; our estimate is $750m).",
+    "confirmed": false
+   },
+   "news": [
+    {
+     "date": "2026-09-25",
+     "title": "Lovable passes $600m in annualised revenue, up from about $500m in June",
+     "source": "Siècle Digital",
+     "url": "https://siecledigital.fr/2026/09/25/le-phenomene-lovable-prend-encore-de-lampleur-et-depasse-les-600-millions-de-dollars/"
+    },
+    {
+     "date": "2026-09-24",
+     "title": "Lovable says two-thirds of the Fortune 500 use it and revenue hit $600m",
+     "source": "The Next Web",
+     "url": "https://thenextweb.com/news/lovable-fabian-hedin-fortune-500-600m-revenue-humanx"
+    },
+    {
+     "date": "2026-08-12",
+     "title": "Lovable's valuation doubles to $13.3bn as it raises $400m",
+     "source": "Tech.eu",
+     "url": "https://tech.eu/2026/08/12/lovables-valuation-doubles-to-13bn-as-raises-400m/"
+    },
+    {
+     "date": "2026-08-12",
+     "title": "Lovable is worth $13.3bn, and the EU just became a shareholder",
+     "source": "The Next Web",
+     "url": "https://thenextweb.com/news/lovable-400m-series-c-13-3bn-scaleup-europe-fund"
+    },
+    {
+     "date": "2026-04-20",
+     "title": "Lovable denies data leak, cites 'intentional behavior', then blames HackerOne",
+     "source": "The Register",
+     "url": "https://www.theregister.com/2026/04/20/lovable_denies_data_leak/"
+    }
+   ],
+   "esg": {
+    "asof": "2026-11-06",
+    "method": "own",
+    "pillars": [
+     [
+      "Disclosure",
+      9,
+      "Certifications (SOC 2 Type II, ISO 27001) are claimed on a trust centre and the reports are shared only under NDA; there is no sustainability report or emissions figure.",
+      "https://trust.lovable.dev"
+     ],
+     [
+      "Environment",
+      12,
+      "Light direct footprint, but the AI models and cloud hosting behind each project use energy that the company does not measure or report.",
+      "https://lovable.dev/en/security"
+     ],
+     [
+      "Social",
+      13,
+      "About 300 staff growing to 450; no diversity, turnover or pay data are public.",
+      "https://tech.eu/2026/08/12/lovables-valuation-doubles-to-13bn-as-raises-400m/"
+     ],
+     [
+      "Governance",
+      12,
+      "Security programme and EU data residency are in place, and the company is founder-led with venture investors; the first answer to the April 2026 report was to deny a breach and blame its bug-bounty partner.",
+      "https://www.theregister.com/2026/04/20/lovable_denies_data_leak/"
+     ],
+     [
+      "Controversies",
+      10,
+      "Two data-exposure episodes in 2026: a Lovable-hosted app exposing about 18,000 user records (February) and a flaw giving free accounts access to other users' projects (April).",
+      "https://theregister.com/2026/02/27/lovable_app_vulnerabilities"
+     ]
+    ],
+    "score": 56,
+    "grade": "Average",
+    "summary": "Lovable has certified security controls and EU data hosting, but it publishes no sustainability data and had two data-exposure incidents in 2026, the second handled poorly at first."
    }
   }
  }
