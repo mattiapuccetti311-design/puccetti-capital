@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-06",
+ "updated": "2026-11-07",
  "benchmark": {
   "name": "CAC 40",
   "series": [
@@ -53,10 +53,10 @@
    ],
    [
     "2026-11",
-    8205.37
+    8139.0
    ]
   ],
-  "note": "Month-end closes (Yahoo Finance). November 2026 = close of 5 November."
+  "note": "Month-end closes (Yahoo Finance). November 2026 = close of 6 November."
  },
  "companies": {
   "bnp-paribas": {
@@ -115,10 +115,10 @@
     ],
     [
      "2026-11",
-     91.94
+     91.93
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 5 November.",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 6 November.",
    "dividends": [
     [
      "2026-05",
@@ -356,10 +356,10 @@
     ],
     [
      "2026-11",
-     1387.0
+     1362.5
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 5 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 6 November. Dividends not included.",
    "dividends": [],
    "ourTarget": 871,
    "rating": "REDUCE",
@@ -818,10 +818,10 @@
     ],
     [
      "2026-11",
-     40.94
+     42.98
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 5 November.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 6 November.",
    "dividends": [],
    "ourTarget": 47,
    "rating": "BUY",
@@ -1162,10 +1162,10 @@
     ],
     [
      "2026-11",
-     17.78
+     17.09
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 5 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 6 November. Dividends not included.",
    "dividends": [
     [
      "2025-10",
@@ -1411,10 +1411,10 @@
     ],
     [
      "2026-11",
-     892.5
+     901.2
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 5 November. No dividends.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 6 November. No dividends.",
    "dividends": [],
    "ourTarget": 890,
    "rating": "HOLD",
@@ -1730,10 +1730,10 @@
     ],
     [
      "2026-11",
-     894.2
+     901.6
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Nasdaq Copenhagen). November 2026 = close of 5 November. Dividend of DKK 22 paid in March 2026 (not adjusted in the prices).",
+   "seriesNote": "Month-end closes (Yahoo Finance, Nasdaq Copenhagen). November 2026 = close of 6 November. Dividend of DKK 22 paid in March 2026 (not adjusted in the prices).",
    "dividends": [
     [
      "2026-03",
@@ -1945,10 +1945,10 @@
     ],
     [
      "2026-11",
-     127.55
+     129.65
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Paris). November 2026 = close of 5 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Paris). November 2026 = close of 6 November. Dividends not included.",
    "dividends": [
     [
      "2026-05",
@@ -2233,6 +2233,239 @@
     "score": 56,
     "grade": "Average",
     "summary": "Lovable has certified security controls and EU data hosting, but it publishes no sustainability data and had two data-exposure incidents in 2026, the second handled poorly at first."
+   }
+  },
+  "rheinmetall": {
+   "name": "Rheinmetall",
+   "type": "listed",
+   "ticker": "RHM GY",
+   "currency": "€",
+   "series": [
+    [
+     "2025-11",
+     1480.5
+    ],
+    [
+     "2025-12",
+     1561.0
+    ],
+    [
+     "2026-01",
+     1781.5
+    ],
+    [
+     "2026-02",
+     1663.5
+    ],
+    [
+     "2026-03",
+     1444.5
+    ],
+    [
+     "2026-04",
+     1355.8
+    ],
+    [
+     "2026-05",
+     1293.4
+    ],
+    [
+     "2026-06",
+     990.5
+    ],
+    [
+     "2026-07",
+     1140.0
+    ],
+    [
+     "2026-08",
+     1110.8
+    ],
+    [
+     "2026-09",
+     956.4
+    ],
+    [
+     "2026-10",
+     1037.6
+    ],
+    [
+     "2026-11",
+     812.7
+    ]
+   ],
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2026 = close of 6 November. Dividends not included.",
+   "dividends": [
+    [
+     "2026-05",
+     11.5
+    ]
+   ],
+   "ourTarget": 1350,
+   "rating": "BUY",
+   "analysts": {
+    "asof": "S&P Global consensus via StockAnalysis, 6 November 2026",
+    "n": 21,
+    "low": 1000,
+    "median": 1500,
+    "avg": 1519,
+    "high": 2380,
+    "consensus": "Buy",
+    "ratings": [
+     [
+      "Strong buy",
+      12
+     ],
+     [
+      "Buy",
+      4
+     ],
+     [
+      "Hold",
+      5
+     ],
+     [
+      "Sell",
+      0
+     ],
+     [
+      "Strong sell",
+      0
+     ]
+    ],
+    "estimates": [
+     {
+      "year": "2026E",
+      "rev": 13.3,
+      "eps": 35.84,
+      "ourRev": 13.2,
+      "ourEps": 30.0
+     },
+     {
+      "year": "2027E",
+      "rev": 18.26,
+      "eps": 51.82,
+      "ourRev": 15.41,
+      "ourEps": 36.4
+     }
+    ],
+    "estUnit": "Revenue €bn, EPS €. Our EPS uses reported net income, consensus EPS may use another definition.",
+    "actions": [
+     [
+      "2026-11-07",
+      "DZ Bank",
+      "Buy (maintained)",
+      "Target n/a"
+     ],
+     [
+      "2026-11-06",
+      "UBS",
+      "Buy (maintained)",
+      "€1,360 → €1,100"
+     ],
+     [
+      "2026-11-06",
+      "Deutsche Bank",
+      "Buy (maintained)",
+      "Target €1,650"
+     ],
+     [
+      "2026-11-06",
+      "Oddo BHF",
+      "Downgrade to Hold",
+      "Target €1,200"
+     ],
+     [
+      "2026-11-05",
+      "J.P. Morgan",
+      "Hold (maintained)",
+      "€1,350 → €1,150"
+     ]
+    ],
+    "source": "https://stockanalysis.com/quote/etr/RHM/forecast/"
+   },
+   "nextResults": {
+    "date": "2027-03-11",
+    "event": "Full-year 2026 report (date from AJ Bell, not confirmed by the company). A capital markets day is reported for 27 November 2026.",
+    "confirmed": false,
+    "source": "https://www.ajbell.co.uk/market-research/sub/XETRA:RHM/company-info"
+   },
+   "news": [
+    {
+     "date": "2026-11-05",
+     "title": "Rheinmetall shares plunge more than 17% after profit warning over order delays",
+     "source": "Euronews",
+     "url": "https://www.euronews.com/2026/11/05/rheinmetall-shares-plunge-more-than-17-after-profit-warning-over-order-delays"
+    },
+    {
+     "date": "2026-11-05",
+     "title": "Financial report for Q3 2026",
+     "source": "Rheinmetall",
+     "url": "https://www.rheinmetall.com/en/media/news-watch/news/2026/11/2026-11-05-rheinmetall-news-quarterly-statement-q3"
+    },
+    {
+     "date": "2026-11-05",
+     "title": "Rheinmetall shares slump 16% after second 2026 outlook cut in Q3 results",
+     "source": "Investing.com",
+     "url": "https://uk.investing.com/news/earnings/rheinmetall-cuts-2026-sales-margin-goals-despite-q3-operating-profit-beat-4959435"
+    },
+    {
+     "date": "2026-11-05",
+     "title": "Rheinmetall shares close 16% lower after second 2026 outlook cut on Boxer and ammunition delays",
+     "source": "MLQ.ai",
+     "url": "https://mlq.ai/news/rheinmetall-shares-close-16-lower-after-second-2026-outlook-cut-on-boxer-and-ammunition-delays/"
+    },
+    {
+     "date": "2026-11-05",
+     "title": "Rheinmetall: Aktie rauscht nach unten, JPMorgan senkt das Kursziel",
+     "source": "Der Aktionär",
+     "url": "https://www.deraktionaer.de/artikel/aktien/rheinmetall-aktie-rauscht-nach-unten-jpmorgan-senkt-das-kursziel-und-nun-20434446.html"
+    }
+   ],
+   "esg": {
+    "asof": "2026-11-07",
+    "method": "providers",
+    "providers": [
+     [
+      "Sustainalytics ESG Risk",
+      "25.5 (medium risk)",
+      49.0,
+      "https://knowesg.com/esg-ratings/rheinmetall-ag"
+     ],
+     [
+      "CDP Climate",
+      "B-",
+      65,
+      "https://www.rheinmetall.com/Rheinmetall%20Group/Verantwortung/ESG%20Reporting/Rheinmetall-ESG%20Factbook%20Reporting%20year%202024-2022-EN.pdf"
+     ]
+    ],
+    "base": 57.0,
+    "controversies": [],
+    "memo": [
+     [
+      "MSCI ESG Rating",
+      "Not found in public sources, so the score averages two providers"
+     ],
+     [
+      "S&P Global ESG score",
+      "42 (CSA score 36), updated 23 February 2026"
+     ],
+     [
+      "Scope 1 emissions",
+      "About 153 kt CO2e in FY2025 (third-party estimate, DitchCarbon)"
+     ],
+     [
+      "Older controversies",
+      "Greek bribery case settled in 2015 (€37m fine) and a €13m Spanish merger-filing fine (date not confirmed); both outside the two-year window, so no deduction"
+     ],
+     [
+      "Data caveat",
+      "Sustainalytics score from KnowESG, undated. CDP B- is from the company's ESG Factbook (reporting year 2024). Weapons exposure is inherent to the business"
+     ]
+    ],
+    "score": 57,
+    "grade": "Average",
+    "summary": "Rheinmetall has a medium Sustainalytics risk score of 25.5 and a CDP Climate grade of B-. No MSCI rating was found, so the score of 57 averages two providers. No controversy from the last two years could be confirmed, so there is no deduction. The score is Average."
    }
   }
  }

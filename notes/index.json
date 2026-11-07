@@ -1,5 +1,18 @@
 [
   {
+    "slug": "rheinmetall",
+    "date": "2026-11-07",
+    "sector": "Defence",
+    "country": "Germany",
+    "company": "Rheinmetall",
+    "ticker": "RHM GY",
+    "headline": "A second guidance cut took the shares down 48% this year, but the €78bn order book is intact and the price equals our bear case.",
+    "rating": "BUY",
+    "target": "€1,350",
+    "price": "€812.70",
+    "potential": "+66%"
+  },
+  {
     "slug": "lovable",
     "date": "2026-11-06",
     "sector": "Start-ups",
