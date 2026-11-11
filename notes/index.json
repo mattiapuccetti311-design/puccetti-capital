@@ -1,5 +1,18 @@
 [
   {
+    "slug": "adidas",
+    "date": "2026-11-11",
+    "sector": "Sportswear",
+    "country": "Germany",
+    "company": "adidas",
+    "ticker": "ADS GY",
+    "headline": "A record quarter beat forecasts by 36%; without the tariff refund it still beat by 9%, and the price assumes little margin recovery",
+    "rating": "BUY",
+    "target": "€230",
+    "price": "€177.10",
+    "potential": "+30%"
+  },
+  {
     "slug": "rheinmetall",
     "date": "2026-11-07",
     "sector": "Defence",

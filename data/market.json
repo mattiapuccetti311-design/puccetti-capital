@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07",
+ "updated": "2026-11-11",
  "benchmark": {
   "name": "CAC 40",
   "series": [
@@ -53,10 +53,10 @@
    ],
    [
     "2026-11",
-    8139.0
+    8329.14
    ]
   ],
-  "note": "Month-end closes (Yahoo Finance). November 2026 = close of 6 November."
+  "note": "Month-end closes (Yahoo Finance). November 2026 = close of 11 November."
  },
  "companies": {
   "bnp-paribas": {
@@ -115,10 +115,10 @@
     ],
     [
      "2026-11",
-     91.93
+     95.85
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 6 November.",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 11 November.",
    "dividends": [
     [
      "2026-05",
@@ -356,10 +356,10 @@
     ],
     [
      "2026-11",
-     1362.5
+     1355.5
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 6 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 11 November. Dividends not included.",
    "dividends": [],
    "ourTarget": 871,
    "rating": "REDUCE",
@@ -818,10 +818,10 @@
     ],
     [
      "2026-11",
-     42.98
+     41.86
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 6 November.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 11 November.",
    "dividends": [],
    "ourTarget": 47,
    "rating": "BUY",
@@ -1162,10 +1162,10 @@
     ],
     [
      "2026-11",
-     17.09
+     17.01
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 6 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 11 November. Dividends not included.",
    "dividends": [
     [
      "2025-10",
@@ -1411,10 +1411,10 @@
     ],
     [
      "2026-11",
-     901.2
+     877.9
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 6 November. No dividends.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 11 November. No dividends.",
    "dividends": [],
    "ourTarget": 890,
    "rating": "HOLD",
@@ -1730,10 +1730,10 @@
     ],
     [
      "2026-11",
-     901.6
+     960.0
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Nasdaq Copenhagen). November 2026 = close of 6 November. Dividend of DKK 22 paid in March 2026 (not adjusted in the prices).",
+   "seriesNote": "Month-end closes (Yahoo Finance, Nasdaq Copenhagen). November 2026 = close of 11 November. Dividend of DKK 22 paid in March 2026 (not adjusted in the prices).",
    "dividends": [
     [
      "2026-03",
@@ -1945,10 +1945,10 @@
     ],
     [
      "2026-11",
-     129.65
+     138.4
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Paris). November 2026 = close of 6 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Paris). November 2026 = close of 11 November. Dividends not included.",
    "dividends": [
     [
      "2026-05",
@@ -2291,10 +2291,10 @@
     ],
     [
      "2026-11",
-     812.7
+     797.7
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2026 = close of 6 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2026 = close of 11 November. Dividends not included.",
    "dividends": [
     [
      "2026-05",
@@ -2466,6 +2466,255 @@
     "score": 57,
     "grade": "Average",
     "summary": "Rheinmetall has a medium Sustainalytics risk score of 25.5 and a CDP Climate grade of B-. No MSCI rating was found, so the score of 57 averages two providers. No controversy from the last two years could be confirmed, so there is no deduction. The score is Average."
+   }
+  },
+  "adidas": {
+   "name": "adidas",
+   "type": "listed",
+   "ticker": "ADS GY",
+   "currency": "€",
+   "series": [
+    [
+     "2025-11",
+     160.4
+    ],
+    [
+     "2025-12",
+     169.05
+    ],
+    [
+     "2026-01",
+     149.15
+    ],
+    [
+     "2026-02",
+     158.2
+    ],
+    [
+     "2026-03",
+     136.65
+    ],
+    [
+     "2026-04",
+     147.4
+    ],
+    [
+     "2026-05",
+     166.6
+    ],
+    [
+     "2026-06",
+     179.4
+    ],
+    [
+     "2026-07",
+     159.4
+    ],
+    [
+     "2026-08",
+     151.4
+    ],
+    [
+     "2026-09",
+     145.3
+    ],
+    [
+     "2026-10",
+     168.55
+    ],
+    [
+     "2026-11",
+     177.1
+    ]
+   ],
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2025 derived from the dividend-adjusted close; November 2026 = close of 11 November. Dividends not included.",
+   "dividends": [
+    [
+     "2026-05",
+     2.8
+    ]
+   ],
+   "ourTarget": 230,
+   "rating": "BUY",
+   "analysts": {
+    "asof": "S&P Global consensus via StockAnalysis, data of 4 November 2026",
+    "n": 32,
+    "low": 156,
+    "median": 197,
+    "avg": 198.47,
+    "high": 245,
+    "consensus": "Buy",
+    "ratings": [
+     [
+      "Strong buy",
+      15
+     ],
+     [
+      "Buy",
+      9
+     ],
+     [
+      "Hold",
+      7
+     ],
+     [
+      "Sell",
+      0
+     ],
+     [
+      "Strong sell",
+      1
+     ]
+    ],
+    "estimates": [
+     {
+      "year": "2026E",
+      "rev": 27.13,
+      "eps": 9.57,
+      "ourRev": 27.0,
+      "ourEps": 9.68
+     },
+     {
+      "year": "2027E",
+      "rev": 29.17,
+      "eps": 11.73,
+      "ourRev": 29.16,
+      "ourEps": 11.18
+     }
+    ],
+    "estUnit": "Revenue €bn, EPS €. Our 2026E includes the one-off US tariff refund of about €200m.",
+    "actions": [
+     [
+      "2026-11-04",
+      "Bernstein",
+      "Buy (maintained)",
+      "Target €245"
+     ],
+     [
+      "2026-11-03",
+      "Barclays",
+      "Buy (maintained)",
+      "€210 → €200"
+     ],
+     [
+      "2026-11-03",
+      "UBS",
+      "Downgrade to Sell",
+      "€160 → €156"
+     ],
+     [
+      "2026-10-30",
+      "Deutsche Bank",
+      "Buy (maintained)",
+      "€205 → €210"
+     ],
+     [
+      "2026-10-30",
+      "Telsey Advisory",
+      "Buy (maintained)",
+      "Target €200"
+     ]
+    ],
+    "source": "https://stockanalysis.com/quote/etr/ADS/forecast/"
+   },
+   "nextResults": {
+    "date": "2027-03-03",
+    "event": "Full-year 2026 results and 2027 guidance (date from MarketScreener, not confirmed by the company)",
+    "confirmed": false,
+    "source": "https://www.marketscreener.com/quote/stock/ADIDAS-435521/calendar/"
+   },
+   "news": [
+    {
+     "date": "2026-10-29",
+     "title": "adidas achieves record results in the third quarter of 2026 and increases full-year profit outlook",
+     "source": "adidas",
+     "url": "https://www.adidas-group.com/en/media/press-releases/adidas-achieves-record-results-in-the-third-quarter-of-2026-and-increases-full-year-profit-outlook"
+    },
+    {
+     "date": "2026-10-29",
+     "title": "Adidas raises full-year profit outlook to 2.5 billion euros after record Q3",
+     "source": "FashionUnited",
+     "url": "https://fashionunited.uk/news/business/adidas-raises-full-year-profit-outlook-to-2-5-billion-euros-after-record-q3/2026102991092"
+    },
+    {
+     "date": "2026-10-29",
+     "title": "Earnings call transcript: adidas tops Q3 2026 estimates and lifts profit outlook",
+     "source": "Investing.com",
+     "url": "https://uk.investing.com/news/stock-market-news/earnings-call-transcript-adidas-tops-q3-2026-estimates-and-lifts-profit-outlook-93CH-4947308"
+    },
+    {
+     "date": "2026-10-21",
+     "title": "adidas shares rise on guidance increase after surprise earnings statement",
+     "source": "Reuters via Euronext",
+     "url": "https://live.euronext.com/en/financial-news/adidas-shares-rise-guidance-increase-after-surprise-earnings-statement"
+    },
+    {
+     "date": "2026-10-20",
+     "title": "adidas reports record results and increases full-year profit outlook (ad hoc)",
+     "source": "adidas",
+     "url": "https://www.adidas-group.com/en/investors/statutory-publications/ad-hoc-news/adidas-reports-record-results-and-increases-full-year-profit-outlook-2026-10-20"
+    }
+   ],
+   "esg": {
+    "asof": "2026-11-11",
+    "method": "providers",
+    "providers": [
+     [
+      "MSCI ESG Rating",
+      "AAA",
+      100,
+      "https://www.marketscreener.com/news/adidas-results-2025-annual-report-adidas-en-ce7e5cd3da8ef52c"
+     ],
+     [
+      "Sustainalytics ESG Risk",
+      "14.8 (low risk)",
+      70.4,
+      "https://finance.yahoo.com/quote/ADDDF/sustainability"
+     ],
+     [
+      "CDP Climate",
+      "A",
+      100,
+      "https://knowesg.com/esg-ratings/adidas-ag"
+     ]
+    ],
+    "base": 90.1,
+    "controversies": [
+     [
+      "March 2025: a Nuremberg-Fürth court banned the claim 'climate neutral by 2050' in adidas advertising after a complaint by Deutsche Umwelthilfe (no fine)",
+      -5,
+      "https://www.duh.de/presse/pressemitteilungen/pressemitteilung/rechtswidriges-zukunftsversprechen-zu-klimaneutralitaet-deutsche-umwelthilfe-gewinnt-klimaklage-gege/"
+     ]
+    ],
+    "memo": [
+     [
+      "Sustainalytics industry rank",
+      "49 of 195 in Textiles & Apparel; management of ESG risk rated Strong"
+     ],
+     [
+      "S&P Global ESG Evaluation",
+      "85/100 (2021)"
+     ],
+     [
+      "Climate targets",
+      "SBTi-validated targets; net zero by 2050"
+     ],
+     [
+      "Scope 3 emissions",
+      "About 6.24 Mt CO2e in 2025, up from 5.25 Mt in 2024 (trade press summary of the annual report)"
+     ],
+     [
+      "Other issue, no deduction",
+      "Internal investigation opened in July 2025 after whistleblower claims of kickbacks in China; no outcome found"
+     ],
+     [
+      "Data caveat",
+      "Sustainalytics score is the last public figure (September 2023); MSCI AAA from the 2025 annual report via MarketScreener; CDP A from KnowESG (2024 cycle)"
+     ]
+    ],
+    "score": 85,
+    "grade": "Leader",
+    "summary": "adidas is rated AAA by MSCI and A by CDP on climate, with a low Sustainalytics risk score of 14.8. A 2025 court ruling against a climate claim in its advertising costs 5 points. The weak point is the supply chain: Scope 3 emissions rose with sales in 2025. The score is 85, a Leader."
    }
   }
  }
