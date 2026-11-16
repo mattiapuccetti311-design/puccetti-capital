@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-11",
+ "updated": "2026-11-16",
  "benchmark": {
   "name": "CAC 40",
   "series": [
@@ -53,7 +53,7 @@
    ],
    [
     "2026-11",
-    8329.14
+    8361.7
    ]
   ],
   "note": "Month-end closes (Yahoo Finance). November 2026 = close of 11 November."
@@ -115,7 +115,7 @@
     ],
     [
      "2026-11",
-     95.85
+     95.53
     ]
    ],
    "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 11 November.",
@@ -356,7 +356,7 @@
     ],
     [
      "2026-11",
-     1355.5
+     1351.5
     ]
    ],
    "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 11 November. Dividends not included.",
@@ -818,7 +818,7 @@
     ],
     [
      "2026-11",
-     41.86
+     40.44
     ]
    ],
    "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 11 November.",
@@ -914,6 +914,12 @@
    },
    "news": [
     {
+     "date": "2026-11-09",
+     "title": "Nordex enters Albania with an 84 MW order from Verbund",
+     "source": "EQS via Webdisclosure",
+     "url": "https://www.webdisclosure.com/press-release/nordex-group-to-enter-albania-with-84-mw-order-from-verbund-crVXWfIQjDZ"
+    },
+    {
      "date": "2026-10-27",
      "title": "DenkerWulf orders turbines for a 51 MW wind farm in Schleswig-Holstein",
      "source": "ad-hoc-news (EQS)",
@@ -936,12 +942,6 @@
      "title": "Shares jump 12% as Q3 EBITDA beats consensus by about 15%",
      "source": "Investing.com",
      "url": "https://www.investing.com/news/earnings/nordex-shares-jump-as-q3-profit-beats-consensus-margin-guidance-raised-4953239"
-    },
-    {
-     "date": "2026-10-15",
-     "title": "Preliminary Q3: EBITDA margin 12.7%, 2026 margin guidance raised to 11.5-12.5%",
-     "source": "Nordex",
-     "url": "https://www.nordex-online.com/en/2026/10/nordex-group-reports-strong-preliminary-q3-2026-results-and-raises-ebitda-margin-guidance-for-full-year-2026/"
     }
    ],
    "esg": {
@@ -1162,7 +1162,7 @@
     ],
     [
      "2026-11",
-     17.01
+     17.55
     ]
    ],
    "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 11 November. Dividends not included.",
@@ -1411,7 +1411,7 @@
     ],
     [
      "2026-11",
-     877.9
+     868.2
     ]
    ],
    "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 11 November. No dividends.",
@@ -1730,7 +1730,7 @@
     ],
     [
      "2026-11",
-     960.0
+     935.0
     ]
    ],
    "seriesNote": "Month-end closes (Yahoo Finance, Nasdaq Copenhagen). November 2026 = close of 11 November. Dividend of DKK 22 paid in March 2026 (not adjusted in the prices).",
@@ -1945,7 +1945,7 @@
     ],
     [
      "2026-11",
-     138.4
+     135.35
     ]
    ],
    "seriesNote": "Month-end closes (Yahoo Finance, Euronext Paris). November 2026 = close of 11 November. Dividends not included.",
@@ -2291,7 +2291,7 @@
     ],
     [
      "2026-11",
-     797.7
+     773.5
     ]
    ],
    "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2026 = close of 11 November. Dividends not included.",
@@ -2392,6 +2392,12 @@
    },
    "news": [
     {
+     "date": "2026-11-08",
+     "title": "Rheinmetall's chief executive buys about €703,000 of shares after the guidance cut, while Bernstein lowers its rating",
+     "source": "Ad-hoc News",
+     "url": "https://www.ad-hoc-news.de/boerse/unternehmensnachrichten/rheinmetall-s-ceo-buys-702-780-of-stock-while-bernstein-cuts-its-rating/70477999"
+    },
+    {
      "date": "2026-11-05",
      "title": "Rheinmetall shares plunge more than 17% after profit warning over order delays",
      "source": "Euronews",
@@ -2414,12 +2420,6 @@
      "title": "Rheinmetall shares close 16% lower after second 2026 outlook cut on Boxer and ammunition delays",
      "source": "MLQ.ai",
      "url": "https://mlq.ai/news/rheinmetall-shares-close-16-lower-after-second-2026-outlook-cut-on-boxer-and-ammunition-delays/"
-    },
-    {
-     "date": "2026-11-05",
-     "title": "Rheinmetall: Aktie rauscht nach unten, JPMorgan senkt das Kursziel",
-     "source": "Der Aktionär",
-     "url": "https://www.deraktionaer.de/artikel/aktien/rheinmetall-aktie-rauscht-nach-unten-jpmorgan-senkt-das-kursziel-und-nun-20434446.html"
     }
    ],
    "esg": {
@@ -2524,7 +2524,7 @@
     ],
     [
      "2026-11",
-     177.1
+     177.6
     ]
    ],
    "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2025 derived from the dividend-adjusted close; November 2026 = close of 11 November. Dividends not included.",
@@ -2715,6 +2715,107 @@
     "score": 85,
     "grade": "Leader",
     "summary": "adidas is rated AAA by MSCI and A by CDP on climate, with a low Sustainalytics risk score of 14.8. A 2025 court ruling against a climate claim in its advertising costs 5 points. The weak point is the supply chain: Scope 3 emissions rose with sales in 2025. The score is 85, a Leader."
+   }
+  },
+  "agile-robots": {
+   "name": "Agile Robots",
+   "type": "private",
+   "currency": "$",
+   "unit": "bn",
+   "valuations": [
+    [
+     "2021-09",
+     1.0,
+     "Series C"
+    ],
+    [
+     "2022-04",
+     1.0,
+     "Series C-II"
+    ],
+    [
+     "2026-11",
+     8.5,
+     "Series F"
+    ]
+   ],
+   "fairValue": 5.3,
+   "rating": "STRETCHED",
+   "nextResults": {
+    "date": null,
+    "event": "No scheduled disclosure: private company. Watch for 2026 revenue against the guidance of about $690m and first humanoid delivery figures in 2027.",
+    "confirmed": false
+   },
+   "news": [
+    {
+     "date": "2026-11-13",
+     "title": "Agile Robots raises $500m Series F: humanoid factory capacity is public, shipment count is not",
+     "source": "Tech Times",
+     "url": "https://www.techtimes.com/articles/330608/20261113/agile-robots-raises-500m-series-f-humanoid-factory-capacity-public-shipment-count-not.htm"
+    },
+    {
+     "date": "2026-11-12",
+     "title": "Germany's Agile Robots raises $500m from SoftBank and Nvidia at an $8.5bn valuation",
+     "source": "Forbes",
+     "url": "https://www.forbes.com/sites/johnkoetsier/2026/11/12/germanys-agile-robots-raises-500-million-from-softbank-nvidia-at-85-billion-valuation/"
+    },
+    {
+     "date": "2026-11-12",
+     "title": "Meet Europe's most valuable robotics start-up: Agile Robots hits $8.5bn valuation",
+     "source": "Tech Funding News",
+     "url": "https://techfundingnews.com/agile-robots-500m-series-f-softbank-8-5b-valuation/"
+    },
+    {
+     "date": "2026-06-04",
+     "title": "SoftBank is reportedly in early talks to back an $800m Agile Robots round",
+     "source": "The Next Web",
+     "url": "https://thenextweb.com/news/softbank-agile-robots-800m-funding-talks"
+    },
+    {
+     "date": "2026-04-01",
+     "title": "Agile Robots closes its acquisition of thyssenkrupp Automation Engineering, renamed Krause Automation",
+     "source": "Agile Robots",
+     "url": "https://www.agile-robots.com/en/news/detail/agile-robots-closes-acquisition-of-thyssenkrupp-automation-engineering/"
+    }
+   ],
+   "esg": {
+    "asof": "2026-11-16",
+    "method": "own",
+    "pillars": [
+     [
+      "Disclosure",
+      8,
+      "No sustainability report, emissions figure or audited accounts are published; revenue data come from a third party.",
+      "https://sacra.com/c/agile-robots/"
+     ],
+     [
+      "Environment",
+      12,
+      "Products help factories automate and the new Bavarian plant is local, but the company reports no energy use or emissions for its manufacturing.",
+      "https://www.techtimes.com/articles/330608/20261113/agile-robots-raises-500m-series-f-humanoid-factory-capacity-public-shipment-count-not.htm"
+     ],
+     [
+      "Social",
+      13,
+      "More than 3,500 staff from about 60 countries and jobs kept at Franka Emika and Krause Automation, but no diversity, turnover or safety data are public.",
+      "https://www.munich-startup.de/en/132294/agile-robots-acquisition-and-humanoid-drive-next-growth-surge/"
+     ],
+     [
+      "Governance",
+      11,
+      "Founder-led with SoftBank as lead investor; the shareholder split is not published and the Series F investor shares are undisclosed.",
+      "https://techfundingnews.com/agile-robots-500m-series-f-softbank-8-5b-valuation/"
+     ],
+     [
+      "Controversies",
+      15,
+      "No fines or lawsuits found; in 2023 rival bidders for Franka Emika claimed Chinese control, which the company rejects, saying Chinese investors hold a single-digit stake.",
+      "https://www.techtimes.com/articles/330608/20261113/agile-robots-raises-500m-series-f-humanoid-factory-capacity-public-shipment-count-not.htm"
+     ]
+    ],
+    "score": 59,
+    "grade": "Average",
+    "summary": "Agile Robots has no record of fines or major incidents and keeps engineering jobs in Germany, but it publishes no sustainability or financial data and its ownership has been questioned."
    }
   }
  }

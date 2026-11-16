@@ -1,5 +1,19 @@
 [
   {
+    "slug": "agile-robots",
+    "date": "2026-11-16",
+    "sector": "Start-ups",
+    "country": "Germany",
+    "company": "Agile Robots",
+    "ticker": "Private",
+    "headline": "Europe's largest robotics start-up, valued by SoftBank at 25 times revenue on a humanoid bet that has no published sales yet",
+    "rating": "STRETCHED",
+    "target": "$5.3bn",
+    "price": "$8.5bn (Series F)",
+    "potential": "−37%",
+    "private": true
+  },
+  {
     "slug": "adidas",
     "date": "2026-11-11",
     "sector": "Sportswear",
