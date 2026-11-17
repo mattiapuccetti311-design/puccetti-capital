@@ -1,5 +1,18 @@
 [
   {
+    "slug": "ucb",
+    "date": "2026-11-17",
+    "sector": "Pharmaceuticals",
+    "country": "Belgium",
+    "company": "UCB",
+    "ticker": "UCB BB",
+    "headline": "Bimzelx turned a mid-teens year into a 20%-plus year; after a 35% rally the shares already price most of the upgrade.",
+    "rating": "HOLD",
+    "target": "€298",
+    "price": "€287.60",
+    "potential": "+3.6%"
+  },
+  {
     "slug": "agile-robots",
     "date": "2026-11-16",
     "sector": "Start-ups",

@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16",
+ "updated": "2026-11-17",
  "benchmark": {
   "name": "CAC 40",
   "series": [
@@ -53,12 +53,247 @@
    ],
    [
     "2026-11",
-    8361.7
+    8227.69
    ]
   ],
-  "note": "Month-end closes (Yahoo Finance). November 2026 = close of 11 November."
+  "note": "Month-end closes (Yahoo Finance). November 2026 = close of 17 November."
  },
  "companies": {
+  "ucb": {
+   "name": "UCB",
+   "type": "listed",
+   "ticker": "UCB BB",
+   "currency": "€",
+   "series": [
+    [
+     "2025-11",
+     240.5
+    ],
+    [
+     "2025-12",
+     238.6
+    ],
+    [
+     "2026-01",
+     255.4
+    ],
+    [
+     "2026-02",
+     252.3
+    ],
+    [
+     "2026-03",
+     258.5
+    ],
+    [
+     "2026-04",
+     229.75
+    ],
+    [
+     "2026-05",
+     251.7
+    ],
+    [
+     "2026-06",
+     262.0
+    ],
+    [
+     "2026-07",
+     222.9
+    ],
+    [
+     "2026-08",
+     215.3
+    ],
+    [
+     "2026-09",
+     205.1
+    ],
+    [
+     "2026-10",
+     281.4
+    ],
+    [
+     "2026-11",
+     287.6
+    ]
+   ],
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Brussels). November 2025 to March 2026 derived from dividend-adjusted closes; November 2026 = close of 17 November (StockAnalysis). Dividends not included.",
+   "dividends": [
+    [
+     "2026-04",
+     1.45
+    ]
+   ],
+   "ourTarget": 298,
+   "rating": "HOLD",
+   "analysts": {
+    "asof": "S&P Global consensus via StockAnalysis, 17 November 2026",
+    "n": 20,
+    "low": 208,
+    "median": 305,
+    "avg": 298.63,
+    "high": 345,
+    "consensus": "Buy",
+    "ratings": [
+     [
+      "Strong buy",
+      12
+     ],
+     [
+      "Buy",
+      3
+     ],
+     [
+      "Hold",
+      5
+     ],
+     [
+      "Sell",
+      0
+     ],
+     [
+      "Strong sell",
+      0
+     ]
+    ],
+    "estimates": [
+     {
+      "year": "2026E",
+      "rev": 9.1,
+      "eps": 13.19,
+      "ourRev": 9.2,
+      "ourEps": 13.5
+     },
+     {
+      "year": "2027E",
+      "rev": 10.1,
+      "eps": 14.96,
+      "ourRev": 10.3,
+      "ourEps": 15.42
+     }
+    ],
+    "estUnit": "Revenue €bn, EPS € (core EPS for our estimates, non-GAAP consensus)",
+    "actions": [
+     [
+      "2026-11-05",
+      "Berenberg",
+      "Buy (maintained)",
+      "€305 → €320"
+     ],
+     [
+      "2026-10-20",
+      "Oddo BHF",
+      "Outperform (maintained)",
+      "€293 → €260"
+     ],
+     [
+      "2026-06-15",
+      "Barclays",
+      "Downgrade to Equal weight",
+      "€310 → €300"
+     ]
+    ],
+    "source": "https://stockanalysis.com/quote/ebr/UCB/forecast/"
+   },
+   "nextResults": {
+    "date": "2027-02-25",
+    "event": "Full-year 2026 results and 2027 guidance",
+    "confirmed": true,
+    "source": "https://pulse2.com/ucb-raises-2026-revenue-growth-guidance-to-low-20-range-and-adjusted-ebitda-growth-outlook-to-low-to-mid-40-range/"
+   },
+   "news": [
+    {
+     "date": "2026-11-09",
+     "title": "UCB and Biogen present new post-hoc lupus analyses for dapirolizumab pegol",
+     "source": "Idéal Investisseur",
+     "url": "https://www.ideal-investisseur.fr/en/stock-news/ucb-and-biogen-new-post-hoc-phase-3-analyses-in-lupus-for-dapirolizumab/28952.html"
+    },
+    {
+     "date": "2026-11-05",
+     "title": "Berenberg raises its UCB target to €320 and stays at Buy",
+     "source": "Option Finance",
+     "url": "https://www.optionfinance.fr/info-financiere-en-continu/d/2026-11-05-berenberg-vise-plus-haut-pour-ucb-et-reste-a-lachat.html"
+    },
+    {
+     "date": "2026-11-04",
+     "title": "UCB partners with Cradle to design antibodies with AI",
+     "source": "Idéal Investisseur",
+     "url": "https://www.ideal-investisseur.fr/en/stock-news/ucb-partners-with-cradle-to-design-its-antibodies-with-artificial-intelligence/28588.html"
+    },
+    {
+     "date": "2026-10-22",
+     "title": "UCB raises 2026 guidance: revenue growth in the low twenties, adjusted EBITDA in the low-to-mid forties",
+     "source": "Pulse 2.0",
+     "url": "https://pulse2.com/ucb-raises-2026-revenue-growth-guidance-to-low-20-range-and-adjusted-ebitda-growth-outlook-to-low-to-mid-40-range/"
+    },
+    {
+     "date": "2026-10-22",
+     "title": "UCB shares surge more than 20% as Bimzelx lifts the outlook",
+     "source": "Business News Today",
+     "url": "https://business-news-today.com/ucb-shares-surge-as-bimzelx-turns-a-mid-teens-outlook-into-20-plus-growth/"
+    }
+   ],
+   "esg": {
+    "asof": "2026-11-17",
+    "method": "providers",
+    "providers": [
+     [
+      "MSCI ESG Rating",
+      "AA",
+      85,
+      "https://www.ucb.com/sites/default/files/2026-02/ucb_fy_25_facts_figures_fy25.pdf"
+     ],
+     [
+      "Sustainalytics ESG Risk",
+      "13.7 (low risk)",
+      72.6,
+      "https://sustainalytics.com/esg-rating/ucb-sa/1008752737"
+     ],
+     [
+      "CDP Climate",
+      "A",
+      100,
+      "https://www.ucb.com/sites/default/files/2026-02/ucb_fy_25_facts_figures_fy25.pdf"
+     ]
+    ],
+    "base": 85.9,
+    "controversies": [],
+    "memo": [
+     [
+      "ISS ESG",
+      "B- (2025)"
+     ],
+     [
+      "CDP Water",
+      "A- (2025)"
+     ],
+     [
+      "Emissions",
+      "−36% CO2e against 2019 (scopes 1, 2 and 3 except category 3.1)"
+     ],
+     [
+      "Climate targets",
+      "2030: −73% scopes 1+2 and −48% scope 3 against 2019; −90% across all scopes by 2045"
+     ],
+     [
+      "Suppliers",
+      "78% of suppliers, by emissions, have SBTi-aligned targets"
+     ],
+     [
+      "Controversies",
+      "No fine or major case found for 2025-2026, so no deduction. The Keppra off-label case dates from about 2013. US drug-pricing scrutiny is a sector issue"
+     ],
+     [
+      "Data caveat",
+      "Ratings as reported by UCB at 31 December 2025 (FY2025 Facts & Figures)"
+     ]
+    ],
+    "score": 86,
+    "grade": "Leader",
+    "summary": "UCB has strong outside ratings: AA from MSCI, a low Sustainalytics risk score of 13.7 and a CDP Climate A. Emissions are down 36% since 2019 with targets to 2045. We found no controversy in the last two years, so there is no deduction. The score is 86, a Leader."
+   }
+  },
   "bnp-paribas": {
    "name": "BNP Paribas",
    "type": "listed",
@@ -115,10 +350,10 @@
     ],
     [
      "2026-11",
-     95.53
+     93.83
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 11 November.",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 17 November.",
    "dividends": [
     [
      "2026-05",
@@ -356,10 +591,10 @@
     ],
     [
      "2026-11",
-     1351.5
+     1285.0
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 11 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 17 November. Dividends not included.",
    "dividends": [],
    "ourTarget": 871,
    "rating": "REDUCE",
@@ -818,10 +1053,10 @@
     ],
     [
      "2026-11",
-     40.44
+     39.34
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 11 November.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 17 November.",
    "dividends": [],
    "ourTarget": 47,
    "rating": "BUY",
@@ -1162,10 +1397,10 @@
     ],
     [
      "2026-11",
-     17.55
+     17.29
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 11 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 17 November. Dividends not included.",
    "dividends": [
     [
      "2025-10",
@@ -1411,10 +1646,10 @@
     ],
     [
      "2026-11",
-     868.2
+     843.0
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 11 November. No dividends.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 17 November. No dividends.",
    "dividends": [],
    "ourTarget": 890,
    "rating": "HOLD",
@@ -1730,10 +1965,10 @@
     ],
     [
      "2026-11",
-     935.0
+     946.4
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Nasdaq Copenhagen). November 2026 = close of 11 November. Dividend of DKK 22 paid in March 2026 (not adjusted in the prices).",
+   "seriesNote": "Month-end closes (Yahoo Finance, Nasdaq Copenhagen). November 2026 = close of 17 November. Dividend of DKK 22 paid in March 2026 (not adjusted in the prices).",
    "dividends": [
     [
      "2026-03",
@@ -1945,10 +2180,10 @@
     ],
     [
      "2026-11",
-     135.35
+     133.35
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Paris). November 2026 = close of 11 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Paris). November 2026 = close of 17 November. Dividends not included.",
    "dividends": [
     [
      "2026-05",
@@ -2291,10 +2526,10 @@
     ],
     [
      "2026-11",
-     773.5
+     762.0
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2026 = close of 11 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2026 = close of 17 November. Dividends not included.",
    "dividends": [
     [
      "2026-05",
@@ -2524,10 +2759,10 @@
     ],
     [
      "2026-11",
-     177.6
+     174.55
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2025 derived from the dividend-adjusted close; November 2026 = close of 11 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2025 derived from the dividend-adjusted close; November 2026 = close of 17 November. Dividends not included.",
    "dividends": [
     [
      "2026-05",
