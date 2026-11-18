@@ -1,5 +1,18 @@
 [
   {
+    "slug": "randstad",
+    "date": "2026-11-18",
+    "sector": "Staffing & HR services",
+    "country": "Netherlands",
+    "company": "Randstad",
+    "ticker": "RAND NA",
+    "headline": "A small beat on growth became a large beat on profit; even after its best day in 24 years, the share prices a weak cycle for a decade.",
+    "rating": "BUY",
+    "target": "€51",
+    "price": "€41.57",
+    "potential": "+22.7%"
+  },
+  {
     "slug": "ucb",
     "date": "2026-11-17",
     "sector": "Pharmaceuticals",

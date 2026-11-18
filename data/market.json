@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17",
+ "updated": "2026-11-18",
  "benchmark": {
   "name": "CAC 40",
   "series": [
@@ -53,12 +53,247 @@
    ],
    [
     "2026-11",
-    8227.69
+    8149.92
    ]
   ],
-  "note": "Month-end closes (Yahoo Finance). November 2026 = close of 17 November."
+  "note": "Month-end closes (Yahoo Finance). November 2026 = close of 18 November."
  },
  "companies": {
+  "randstad": {
+   "name": "Randstad",
+   "type": "listed",
+   "ticker": "RAND NA",
+   "currency": "€",
+   "series": [
+    [
+     "2025-11",
+     33.52
+    ],
+    [
+     "2025-12",
+     32.37
+    ],
+    [
+     "2026-01",
+     30.11
+    ],
+    [
+     "2026-02",
+     27.83
+    ],
+    [
+     "2026-03",
+     22.31
+    ],
+    [
+     "2026-04",
+     25.14
+    ],
+    [
+     "2026-05",
+     26.34
+    ],
+    [
+     "2026-06",
+     25.21
+    ],
+    [
+     "2026-07",
+     36.5
+    ],
+    [
+     "2026-08",
+     40.43
+    ],
+    [
+     "2026-09",
+     35.04
+    ],
+    [
+     "2026-10",
+     40.96
+    ],
+    [
+     "2026-11",
+     41.57
+    ]
+   ],
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2025 derived from the dividend-adjusted close; November 2026 = close of 18 November (Yahoo Finance). Dividends not included.",
+   "dividends": [
+    [
+     "2026-03",
+     1.62
+    ]
+   ],
+   "ourTarget": 51,
+   "rating": "BUY",
+   "analysts": {
+    "asof": "S&P Global consensus via StockAnalysis, 18 November 2026",
+    "n": 18,
+    "low": 24,
+    "median": 37.45,
+    "avg": 38.08,
+    "high": 60,
+    "consensus": "Hold",
+    "ratings": [
+     [
+      "Strong buy",
+      2
+     ],
+     [
+      "Buy",
+      1
+     ],
+     [
+      "Hold",
+      9
+     ],
+     [
+      "Sell",
+      3
+     ],
+     [
+      "Strong sell",
+      3
+     ]
+    ],
+    "estimates": [
+     {
+      "year": "2026E",
+      "rev": 23.6,
+      "eps": 2.64,
+      "ourRev": 23.6,
+      "ourEps": 2.67
+     },
+     {
+      "year": "2027E",
+      "rev": 24.3,
+      "eps": 2.93,
+      "ourRev": 24.1,
+      "ourEps": 3.01
+     }
+    ],
+    "estUnit": "Revenue €bn, EPS € (underlying diluted EPS for our estimates; consensus 2027E from the StockAnalysis next-year summary)",
+    "actions": [
+     [
+      "2026-11-03",
+      "Exane BNP Paribas",
+      "Downgrade to Sell",
+      "€35"
+     ],
+     [
+      "2026-10-26",
+      "Kepler Cheuvreux",
+      "Downgrade to Sell",
+      "€37"
+     ],
+     [
+      "2026-10-22",
+      "RBC Capital",
+      "Sector perform (maintained)",
+      "€35 → €39"
+     ],
+     [
+      "2026-10-21",
+      "Morgan Stanley",
+      "Equal weight (maintained)",
+      "€34.50"
+     ],
+     [
+      "2026-09-25",
+      "Citi",
+      "Neutral (maintained)",
+      "€25 → €36.50"
+     ]
+    ],
+    "source": "https://stockanalysis.com/quote/ams/RAND/forecast/"
+   },
+   "nextResults": {
+    "date": "2027-02-17",
+    "event": "Q4 and full-year 2026 results",
+    "confirmed": false,
+    "source": "https://www.marketscreener.com/quote/stock/RANDSTAD-N-V-6432/calendar/"
+   },
+   "news": [
+    {
+     "date": "2026-11-16",
+     "title": "Randstad unifies its US professional practices, including Tatum and Pareto, under Randstad Professional",
+     "source": "Randstad USA",
+     "url": "https://www.randstadusa.com/about/press-room/press-releases/randstad-rebrands-tatum-pareto-practices-randstad-professional/"
+    },
+    {
+     "date": "2026-11-03",
+     "title": "Exane BNP Paribas downgrades Randstad to Sell with a €35 target",
+     "source": "StockAnalysis",
+     "url": "https://stockanalysis.com/quote/ams/RAND/forecast/"
+    },
+    {
+     "date": "2026-10-21",
+     "title": "Randstad beats expectations and reassures on its sector; the shares jump",
+     "source": "Option Finance",
+     "url": "https://www.optionfinance.fr/info-financiere-en-continu/d/2026-10-21-randstad-bat-les-attentes-et-rassure-sur-son-secteur-le-titre-senvole.html"
+    },
+    {
+     "date": "2026-10-21",
+     "title": "Randstad: organic growth of 3.9% in the third quarter, above expectations",
+     "source": "Idéal Investisseur",
+     "url": "https://www.ideal-investisseur.fr/en/stock-news/randstad-organic-growth-of-3-9-in-third-quarter-above-expectations/27614.html"
+    },
+    {
+     "date": "2026-10-21",
+     "title": "Randstad Q3 2026: underlying EBITA up 10% organically to €211m, margin 3.5%",
+     "source": "Randstad",
+     "url": "https://www.randstad.com/s3fs-media/rscom/public/2026-10/Q3_2026_Press_Release.pdf"
+    }
+   ],
+   "esg": {
+    "asof": "2026-11-18",
+    "method": "providers",
+    "providers": [
+     [
+      "Sustainalytics ESG Risk",
+      "8.4 (negligible risk)",
+      83.2,
+      "https://sustainalytics.com/esg-rating/randstad-nv/1008560341"
+     ]
+    ],
+    "base": 83.2,
+    "controversies": [],
+    "memo": [
+     [
+      "MSCI ESG Rating",
+      "No letter grade published; Randstad says MSCI has rated it an industry leader since 2018. Not used"
+     ],
+     [
+      "CDP Climate",
+      "No public score found for 2025. Not used"
+     ],
+     [
+      "Other ratings",
+      "EcoVadis Gold; member of DJSI World and FTSE4Good"
+     ],
+     [
+      "Emissions",
+      "189,900 t CO2e in 2025, −36% against 2019; scopes 1+2 −59%"
+     ],
+     [
+      "Climate targets",
+      "SBTi-validated (2025): −57% scopes 1+2 and −30% scope 3 by 2030 against 2019"
+     ],
+     [
+      "Controversies",
+      "October 2026: reported $1.55m California wage settlement (Randstad Inhouse Services with XPO). Minor, so no deduction"
+     ],
+     [
+      "Data caveat",
+      "The score rests on one provider because MSCI and CDP grades could not be verified"
+     ]
+    ],
+    "score": 83,
+    "grade": "Leader",
+    "summary": "Randstad has a negligible ESG risk score of 8.4 from Sustainalytics, one of the best in its industry. MSCI and CDP grades are not public, so the score rests on that one provider. Emissions are down 36% since 2019 with SBTi-validated targets, and we found no significant controversy. The score is 83, a Leader."
+   }
+  },
   "ucb": {
    "name": "UCB",
    "type": "listed",
@@ -115,10 +350,10 @@
     ],
     [
      "2026-11",
-     287.6
+     286.3
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Brussels). November 2025 to March 2026 derived from dividend-adjusted closes; November 2026 = close of 17 November (StockAnalysis). Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Brussels). November 2025 to March 2026 derived from dividend-adjusted closes; November 2026 = close of 18 November (Yahoo Finance). Dividends not included.",
    "dividends": [
     [
      "2026-04",
@@ -350,10 +585,10 @@
     ],
     [
      "2026-11",
-     93.83
+     91.9
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 17 November.",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 18 November (Yahoo Finance).",
    "dividends": [
     [
      "2026-05",
@@ -591,10 +826,10 @@
     ],
     [
      "2026-11",
-     1285.0
+     1284.0
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 17 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 18 November (Yahoo Finance). Dividends not included.",
    "dividends": [],
    "ourTarget": 871,
    "rating": "REDUCE",
@@ -1053,10 +1288,10 @@
     ],
     [
      "2026-11",
-     39.34
+     39.14
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 17 November.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 18 November (Yahoo Finance).",
    "dividends": [],
    "ourTarget": 47,
    "rating": "BUY",
@@ -1397,10 +1632,10 @@
     ],
     [
      "2026-11",
-     17.29
+     17.34
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 17 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 18 November (Yahoo Finance). Dividends not included.",
    "dividends": [
     [
      "2025-10",
@@ -1646,10 +1881,10 @@
     ],
     [
      "2026-11",
-     843.0
+     836.8
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 17 November. No dividends.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 18 November (Yahoo Finance). No dividends.",
    "dividends": [],
    "ourTarget": 890,
    "rating": "HOLD",
@@ -1965,10 +2200,10 @@
     ],
     [
      "2026-11",
-     946.4
+     918.6
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Nasdaq Copenhagen). November 2026 = close of 17 November. Dividend of DKK 22 paid in March 2026 (not adjusted in the prices).",
+   "seriesNote": "Month-end closes (Yahoo Finance, Nasdaq Copenhagen). November 2026 = close of 18 November (Yahoo Finance). Dividend of DKK 22 paid in March 2026 (not adjusted in the prices).",
    "dividends": [
     [
      "2026-03",
@@ -2180,10 +2415,10 @@
     ],
     [
      "2026-11",
-     133.35
+     135.1
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Paris). November 2026 = close of 17 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Paris). November 2026 = close of 18 November (Yahoo Finance). Dividends not included.",
    "dividends": [
     [
      "2026-05",
@@ -2526,10 +2761,10 @@
     ],
     [
      "2026-11",
-     762.0
+     744.6
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2026 = close of 17 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2026 = close of 18 November (Yahoo Finance). Dividends not included.",
    "dividends": [
     [
      "2026-05",
@@ -2759,10 +2994,10 @@
     ],
     [
      "2026-11",
-     174.55
+     174.3
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2025 derived from the dividend-adjusted close; November 2026 = close of 17 November. Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2025 derived from the dividend-adjusted close; November 2026 = close of 18 November (Yahoo Finance). Dividends not included.",
    "dividends": [
     [
      "2026-05",
