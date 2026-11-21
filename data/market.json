@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-18",
+ "updated": "2026-11-21",
  "benchmark": {
   "name": "CAC 40",
   "series": [
@@ -53,10 +53,10 @@
    ],
    [
     "2026-11",
-    8149.92
+    7927.75
    ]
   ],
-  "note": "Month-end closes (Yahoo Finance). November 2026 = close of 18 November."
+  "note": "Month-end closes (Yahoo Finance). November 2026 = close of 20 November."
  },
  "companies": {
   "randstad": {
@@ -115,10 +115,10 @@
     ],
     [
      "2026-11",
-     41.57
+     40.96
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2025 derived from the dividend-adjusted close; November 2026 = close of 18 November (Yahoo Finance). Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2025 derived from the dividend-adjusted close; November 2026 = close of 20 November (StockAnalysis). Dividends not included.",
    "dividends": [
     [
      "2026-03",
@@ -350,10 +350,10 @@
     ],
     [
      "2026-11",
-     286.3
+     279.6
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Brussels). November 2025 to March 2026 derived from dividend-adjusted closes; November 2026 = close of 18 November (Yahoo Finance). Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Brussels). November 2025 to March 2026 derived from dividend-adjusted closes; November 2026 = close of 20 November (StockAnalysis). Dividends not included.",
    "dividends": [
     [
      "2026-04",
@@ -585,10 +585,10 @@
     ],
     [
      "2026-11",
-     91.9
+     89.55
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 18 November (Yahoo Finance).",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 20 November (StockAnalysis).",
    "dividends": [
     [
      "2026-05",
@@ -826,10 +826,10 @@
     ],
     [
      "2026-11",
-     1284.0
+     1225.5
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 18 November (Yahoo Finance). Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance). October 2026 = close of 30 October; November 2026 = close of 20 November (StockAnalysis). Dividends not included.",
    "dividends": [],
    "ourTarget": 871,
    "rating": "REDUCE",
@@ -1288,10 +1288,10 @@
     ],
     [
      "2026-11",
-     39.14
+     36.9
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 18 November (Yahoo Finance).",
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). October 2026 = close of 30 October; November 2026 = close of 20 November (StockAnalysis).",
    "dividends": [],
    "ourTarget": 47,
    "rating": "BUY",
@@ -1632,10 +1632,10 @@
     ],
     [
      "2026-11",
-     17.34
+     16.92
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 18 November (Yahoo Finance). Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). October 2026 = close of 30 October; November 2026 = close of 20 November (StockAnalysis). Dividends not included.",
    "dividends": [
     [
      "2025-10",
@@ -1881,10 +1881,10 @@
     ],
     [
      "2026-11",
-     836.8
+     793.5
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 18 November (Yahoo Finance). No dividends.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Amsterdam). November 2026 = close of 20 November (StockAnalysis). No dividends.",
    "dividends": [],
    "ourTarget": 890,
    "rating": "HOLD",
@@ -2200,10 +2200,10 @@
     ],
     [
      "2026-11",
-     918.6
+     907.6
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Nasdaq Copenhagen). November 2026 = close of 18 November (Yahoo Finance). Dividend of DKK 22 paid in March 2026 (not adjusted in the prices).",
+   "seriesNote": "Month-end closes (Yahoo Finance, Nasdaq Copenhagen). November 2026 = close of 20 November (StockAnalysis). Dividend of DKK 22 paid in March 2026 (not adjusted in the prices).",
    "dividends": [
     [
      "2026-03",
@@ -2415,10 +2415,10 @@
     ],
     [
      "2026-11",
-     135.1
+     127.4
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Paris). November 2026 = close of 18 November (Yahoo Finance). Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Euronext Paris). November 2026 = close of 20 November (StockAnalysis). Dividends not included.",
    "dividends": [
     [
      "2026-05",
@@ -2761,10 +2761,10 @@
     ],
     [
      "2026-11",
-     744.6
+     693.4
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2026 = close of 18 November (Yahoo Finance). Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2026 = close of 20 November (StockAnalysis). Dividends not included.",
    "dividends": [
     [
      "2026-05",
@@ -2994,10 +2994,10 @@
     ],
     [
      "2026-11",
-     174.3
+     165.0
     ]
    ],
-   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2025 derived from the dividend-adjusted close; November 2026 = close of 18 November (Yahoo Finance). Dividends not included.",
+   "seriesNote": "Month-end closes (Yahoo Finance, Xetra). November 2025 derived from the dividend-adjusted close; November 2026 = close of 20 November (StockAnalysis). Dividends not included.",
    "dividends": [
     [
      "2026-05",
@@ -3286,6 +3286,102 @@
     "score": 59,
     "grade": "Average",
     "summary": "Agile Robots has no record of fines or major incidents and keeps engineering jobs in Germany, but it publishes no sustainability or financial data and its ownership has been questioned."
+   }
+  },
+  "uforce": {
+   "name": "UFORCE",
+   "type": "private",
+   "currency": "$",
+   "unit": "bn",
+   "valuations": [
+    [
+     "2026-03",
+     1.0,
+     "Seed"
+    ],
+    [
+     "2026-11",
+     6.0,
+     "Series A"
+    ]
+   ],
+   "fairValue": 4.2,
+   "rating": "STRETCHED",
+   "nextResults": {
+    "date": null,
+    "event": "No scheduled disclosure: private company. Watch for the first audited accounts (a Big Four auditor has been hired) and for a first UK or US production contract.",
+    "confirmed": false
+   },
+   "news": [
+    {
+     "date": "2026-11-14",
+     "title": "UFORCE raises $700m: UK wealth fund touts British drone boats, CEO puts Ukraine first",
+     "source": "Tech Times",
+     "url": "https://www.techtimes.com/articles/330604/20261114/uforce-raises-700-million-uk-wealth-fund-touts-british-drone-boats-ceo-puts-ukraine-first.htm"
+    },
+    {
+     "date": "2026-11-13",
+     "title": "Ukraine-founded drone maker UFORCE is now worth $6bn: what now?",
+     "source": "Defense One",
+     "url": "https://www.defenseone.com/business/2026/11/defense-business-brief-ukraine-founded-drone-maker-now-worth-6-billion-what-now/417207"
+    },
+    {
+     "date": "2026-11-12",
+     "title": "UFORCE raises $700m at $6bn with UK and US-backed state funds",
+     "source": "DroneXL",
+     "url": "https://dronexl.co/2026/11/12/uforce-700-million-6-billion-uk-us-government-funds/"
+    },
+    {
+     "date": "2026-09-07",
+     "title": "UFORCE in talks for a $500m Series A at about $5bn, led by Valor",
+     "source": "Dealroom",
+     "url": "https://dealroom.co/news/149266-uforce-eyes-500m-series-a-at-5b-valuation-to-arm-nato-with-combat-drones/"
+    },
+    {
+     "date": "2026-03-05",
+     "title": "Ukraine battlefield tech firm UFORCE tops $1bn valuation",
+     "source": "Bloomberg",
+     "url": "https://www.bloomberg.com/news/articles/2026-03-05/ukraine-battlefield-tech-firm-uforce-nears-1-billion-valuation"
+    }
+   ],
+   "esg": {
+    "asof": "2026-11-21",
+    "method": "own",
+    "pillars": [
+     [
+      "Disclosure",
+      5,
+      "No accounts, revenue figure, emissions data or sustainability report are published; the Big Four auditor the company says it hired is not named.",
+      "https://www.techtimes.com/articles/330604/20261114/uforce-raises-700-million-uk-wealth-fund-touts-british-drone-boats-ceo-puts-ukraine-first.htm"
+     ],
+     [
+      "Environment",
+      9,
+      "Small, low-cost uncrewed systems use far less material than crewed warships, but the group reports no energy use or emissions for its 15 sites.",
+      "https://dou.ua/lenta/news/everything-about-uforce/"
+     ],
+     [
+      "Social",
+      10,
+      "Staff tripled to more than 1,000 and the products defend a country under attack, but lethal autonomous systems raise open questions on human oversight.",
+      "https://www.defenseone.com/business/2026/11/defense-business-brief-ukraine-founded-drone-maker-now-worth-6-billion-what-now/417207"
+     ],
+     [
+      "Governance",
+      8,
+      "A strong board (Honcharuk, Wallace, Cavoli), but two Ukrainian nationals each hold 25-50% and the UK register lists the persons with significant control as not available; Cavoli is also a partner of the lead investor.",
+      "https://seriesastories.substack.com/p/britain-is-buying-a-drone-industry"
+     ],
+     [
+      "Controversies",
+      14,
+      "No fines or lawsuits found; combat, revenue and bookings figures are self-reported and sometimes conflict between sources.",
+      "https://seriesastories.substack.com/p/britain-is-buying-a-drone-industry"
+     ]
+    ],
+    "score": 46,
+    "grade": "Weak",
+    "summary": "UFORCE has no record of fines and its products defend Ukraine, but it publishes no financial or environmental data and its owners are not named in the UK register."
    }
   }
  }

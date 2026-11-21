@@ -1,5 +1,19 @@
 [
   {
+    "slug": "uforce",
+    "date": "2026-11-21",
+    "sector": "Start-ups",
+    "country": "United Kingdom",
+    "company": "UFORCE",
+    "ticker": "Private",
+    "headline": "A Ukrainian-founded drone group valued at $6bn, six times its March price, with a proven combat record but no published revenue",
+    "rating": "STRETCHED",
+    "target": "$4.2bn",
+    "price": "$6.0bn (Series A)",
+    "potential": "−30%",
+    "private": true
+  },
+  {
     "slug": "randstad",
     "date": "2026-11-18",
     "sector": "Staffing & HR services",
